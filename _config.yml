@@ -1,0 +1,53 @@
+title: FRM Part I Prep
+description: >-
+  Complete, free study companion for the GARP FRM Part I exam (2026 curriculum) —
+  chapter notes, formula sheets, question banks, and a full mock exam.
+url: ""
+remote_theme: just-the-docs/just-the-docs
+
+plugins:
+  - jekyll-remote-theme
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+search_enabled: true
+search:
+  heading_level: 3
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+  tokenizer_separator: /[\s/]+/
+  rel_url: true
+  button: false
+
+heading_anchors: true
+back_to_top: true
+back_to_top_text: "Back to top"
+
+aux_links:
+  "GARP Official FRM Site":
+    - "https://www.garp.org/frm"
+
+callouts_level: quiet
+callouts:
+  note:
+    title: Note
+    color: blue
+  important:
+    title: Important
+    color: yellow
+  tip:
+    title: Exam Tip
+    color: green
+  warning:
+    title: Warning
+    color: red
+
+footer_content: >-
+  Independent study notes prepared from publicly available GARP learning
+  objectives. Not affiliated with or endorsed by GARP. FRM&reg; is a registered
+  trademark of the Global Association of Risk Professionals.
