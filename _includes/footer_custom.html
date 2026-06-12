@@ -1,0 +1,37 @@
+<button class="frm-theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+
+<script>
+  (function () {
+    var btn = document.querySelector('.frm-theme-toggle');
+    if (!btn) return;
+
+    function schemeLink() {
+      var links = document.querySelectorAll('link[rel="stylesheet"]');
+      for (var i = 0; i < links.length; i++) {
+        var href = links[i].getAttribute('href') || '';
+        if (/\/just-the-docs-[\w-]+\.css/.test(href)) return links[i];
+      }
+      return null;
+    }
+
+    function isDark() {
+      var l = schemeLink();
+      return !!(l && /just-the-docs-frm-dark\.css/.test(l.getAttribute('href')));
+    }
+
+    function setIcon() { btn.textContent = isDark() ? '☀️' : '🌙'; }
+
+    function setTheme(dark) {
+      var l = schemeLink();
+      if (!l) return;
+      var href = l.getAttribute('href');
+      var next = href.replace(/(\/just-the-docs-)[\w-]+(\.css)/, '$1' + (dark ? 'frm-dark' : 'frm') + '$2');
+      l.setAttribute('href', next);
+      try { localStorage.setItem('frm-theme', dark ? 'dark' : 'light'); } catch (e) {}
+      setIcon();
+    }
+
+    btn.addEventListener('click', function () { setTheme(!isDark()); });
+    setIcon();
+  })();
+</script>

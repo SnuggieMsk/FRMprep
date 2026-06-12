@@ -11,154 +11,154 @@ nav_order: 1
 ---
 
 **Q1 (Ch 1).** A bank holds capital primarily to absorb:
-A. Expected losses on its loan book
-B. Operating expenses during downturns
-C. Unexpected losses beyond the anticipated level
-D. Dividend payments to shareholders
+- **A.** Expected losses on its loan book
+- **B.** Operating expenses during downturns
+- **C.** Unexpected losses beyond the anticipated level
+- **D.** Dividend payments to shareholders
 
 **Q2 (Ch 1).** A dealer in a stressed market faces widening bid-ask spreads and shrinking quote sizes when trying to unwind a large corporate bond position. This is best described as:
-A. Funding liquidity risk
-B. Market (trading) liquidity risk
-C. Settlement risk
-D. Basis risk
+- **A.** Funding liquidity risk
+- **B.** Market (trading) liquidity risk
+- **C.** Settlement risk
+- **D.** Basis risk
 
 **Q3 (Ch 2).** In a frictionless Modigliani–Miller world, corporate hedging:
-A. Adds value by reducing the firm's beta
-B. Adds value by stabilizing earnings
-C. Adds no value, since investors can adjust risk on their own account
-D. Destroys value because of transaction costs
+- **A.** Adds value by reducing the firm's beta
+- **B.** Adds value by stabilizing earnings
+- **C.** Adds no value, since investors can adjust risk on their own account
+- **D.** Destroys value because of transaction costs
 
 **Q4 (Ch 2).** A gold producer wants downside price protection on next year's output but insists on keeping the benefit if gold rallies. The most suitable instrument is:
-A. Selling gold futures
-B. Buying put options on gold
-C. Entering a fixed-for-floating gold swap as fixed receiver
-D. Selling call options on gold
+- **A.** Selling gold futures
+- **B.** Buying put options on gold
+- **C.** Entering a fixed-for-floating gold swap as fixed receiver
+- **D.** Selling call options on gold
 
 **Q5 (Ch 3).** Which arrangement best supports the independence of the risk management function?
-A. The CRO reports to the head of trading, who knows the risks best
-B. The CRO reports to the CEO with unrestricted access to the board risk committee
-C. Risk managers are paid bonuses tied to the revenue of the desks they monitor
-D. Each business line appoints and pays its own risk officers
+- **A.** The CRO reports to the head of trading, who knows the risks best
+- **B.** The CRO reports to the CEO with unrestricted access to the board risk committee
+- **C.** Risk managers are paid bonuses tied to the revenue of the desks they monitor
+- **D.** Each business line appoints and pays its own risk officers
 
 **Q6 (Ch 3).** Within the three lines of defense, designing and performing independent *assurance* that the risk framework operates as intended belongs to:
-A. The business line
-B. The risk management function
-C. Internal audit
-D. The board risk committee
+- **A.** The business line
+- **B.** The risk management function
+- **C.** Internal audit
+- **D.** The board risk committee
 
 **Q7 (Ch 4).** A protection buyer under a single-name CDS is exposed to which residual risk?
-A. None — the credit risk is fully extinguished
-B. Default of the protection seller, especially if correlated with the reference entity
-C. Market risk of the reference bond's coupon payments
-D. The SPV's bankruptcy remoteness failing
+- **A.** None — the credit risk is fully extinguished
+- **B.** Default of the protection seller, especially if correlated with the reference entity
+- **C.** Market risk of the reference bond's coupon payments
+- **D.** The SPV's bankruptcy remoteness failing
 
 **Q8 (Ch 4).** Which feature distinguishes a total return swap (TRS) from a CDS?
-A. A TRS transfers both market risk and credit risk of the reference asset
-B. A TRS requires upfront funding by the protection buyer
-C. A TRS only pays out on a formal credit event
-D. A TRS eliminates counterparty risk
+- **A.** A TRS transfers both market risk and credit risk of the reference asset
+- **B.** A TRS requires upfront funding by the protection buyer
+- **C.** A TRS only pays out on a formal credit event
+- **D.** A TRS eliminates counterparty risk
 
 **Q9 (Ch 5).** Assets A and B have $$\sigma_A = 12\%$$, $$\sigma_B = 20\%$$, correlation 0.30. The standard deviation of a portfolio with 50% in each is closest to:
-A. 16.0%
-B. 13.1%
-C. 11.7%
-D. 9.4%
+- **A.** 16.0%
+- **B.** 13.1%
+- **C.** 11.7%
+- **D.** 9.4%
 
 **Q10 (Ch 5).** Stock Q has covariance with the market of 0.027; market variance is 0.0225. With $$R_f = 3\%$$ and an equity risk premium of 5%, the CAPM expected return of Q is closest to:
-A. 8.0%
-B. 9.0%
-C. 6.6%
-D. 9.6%
+- **A.** 8.0%
+- **B.** 9.0%
+- **C.** 6.6%
+- **D.** 9.6%
 
 **Q11 (Ch 5).** Which statement about the CML and SML is correct?
-A. The CML plots expected return against beta
-B. Any fairly priced single security must plot on the CML
-C. The slope of the CML equals the market's Sharpe ratio
-D. The SML applies only to efficient portfolios
+- **A.** The CML plots expected return against beta
+- **B.** Any fairly priced single security must plot on the CML
+- **C.** The slope of the CML equals the market's Sharpe ratio
+- **D.** The SML applies only to efficient portfolios
 
 **Q12 (Ch 5).** A portfolio holds 70% in the market portfolio and 30% in the risk-free asset. Its beta is:
-A. 1.00
-B. 0.30
-C. 0.70
-D. Cannot be determined without volatilities
+- **A.** 1.00
+- **B.** 0.30
+- **C.** 0.70
+- **D.** Cannot be determined without volatilities
 
 **Q13 (Ch 6).** Which assumption is required by the APT but NOT by the CAPM?
-A. Investors have homogeneous expectations
-B. Returns are generated by a linear factor model
-C. All investors hold the market portfolio
-D. Investors can borrow unlimited amounts at the risk-free rate
+- **A.** Investors have homogeneous expectations
+- **B.** Returns are generated by a linear factor model
+- **C.** All investors hold the market portfolio
+- **D.** Investors can borrow unlimited amounts at the risk-free rate
 
 **Q14 (Ch 6).** A stock has factor betas of 1.5 (industrial production) and −0.8 (credit spread). The expected return is 8%. Industrial production surprises +2% and the credit spread factor surprises +1%; firm-specific return is +0.5%. The realized return is closest to:
-A. 10.7%
-B. 11.5%
-C. 8.0%
-D. 12.3%
+- **A.** 10.7%
+- **B.** 11.5%
+- **C.** 8.0%
+- **D.** 12.3%
 
 **Q15 (Ch 6).** Fund G has Fama–French loadings $$\beta_m = 0.95$$, $$\beta_{SMB} = -0.40$$, $$\beta_{HML} = 0.70$$. The fund is best described as tilted toward:
-A. Small-cap growth
-B. Large-cap value
-C. Small-cap value
-D. Large-cap growth
+- **A.** Small-cap growth
+- **B.** Large-cap value
+- **C.** Small-cap value
+- **D.** Large-cap growth
 
 **Q16 (Ch 7).** An investor holds a single mutual fund as her entire investment portfolio. The most appropriate measure for comparing candidate funds is the:
-A. Treynor ratio
-B. Jensen's alpha
-C. Sharpe ratio
-D. Information ratio
+- **A.** Treynor ratio
+- **B.** Jensen's alpha
+- **C.** Sharpe ratio
+- **D.** Information ratio
 
 **Q17 (Ch 7).** Fund M returned 14% with σ = 22% and β = 1.2. The market returned 10%, σ = 16%, and the risk-free rate is 2%. Which is correct?
-A. Sharpe = 0.545; Treynor = 10.0%; α = +2.4%
-B. Sharpe = 0.545; Treynor = 11.7%; α = +2.4%
-C. Sharpe = 0.636; Treynor = 10.0%; α = +4.0%
-D. Sharpe = 0.545; Treynor = 10.0%; α = −2.4%
+- **A.** Sharpe = 0.545; Treynor = 10.0%; α = +2.4%
+- **B.** Sharpe = 0.545; Treynor = 11.7%; α = +2.4%
+- **C.** Sharpe = 0.636; Treynor = 10.0%; α = +4.0%
+- **D.** Sharpe = 0.545; Treynor = 10.0%; α = −2.4%
 
 **Q18 (Ch 7).** An active manager's annual returns exceed the benchmark by 1.8% on average, with tracking error of 4.5%. Her information ratio is closest to:
-A. 0.40
-B. 2.50
-C. 0.18
-D. 0.045
+- **A.** 0.40
+- **B.** 2.50
+- **C.** 0.18
+- **D.** 0.045
 
 **Q19 (Ch 7).** A business unit generates revenues of \$60m, costs of \$18m, and expected losses of \$12m. Economic capital is \$120m, invested at the risk-free rate of 3%. Ignoring taxes, the unit's RAROC is closest to:
-A. 25.0%
-B. 28.0%
-C. 32.4%
-D. 22.5%
+- **A.** 25.0%
+- **B.** 28.0%
+- **C.** 32.4%
+- **D.** 22.5%
 
 **Q20 (Ch 7).** Using Q19's unit: its equity beta is 1.4 and the expected market return is 9% (risk-free 3%). Under the adjusted RAROC rule, the unit:
-A. Destroys value, because ARAROC is below the risk-free rate
-B. Creates value, because ARAROC exceeds the risk-free rate
-C. Creates value, because RAROC exceeds the market return
-D. Cannot be evaluated without the hurdle rate
+- **A.** Destroys value, because ARAROC is below the risk-free rate
+- **B.** Creates value, because ARAROC exceeds the risk-free rate
+- **C.** Creates value, because RAROC exceeds the market return
+- **D.** Cannot be evaluated without the hurdle rate
 
 **Q21 (Ch 8).** A firm hedges each business line's FX exposure separately, even though the lines have large offsetting positions. An ERM advocate would point out that the firm is:
-A. Correctly minimizing operational complexity
-B. Paying to hedge gross exposures when only the smaller net exposure needs hedging
-C. Violating Basel III netting rules
-D. Increasing its funding liquidity risk
+- **A.** Correctly minimizing operational complexity
+- **B.** Paying to hedge gross exposures when only the smaller net exposure needs hedging
+- **C.** Violating Basel III netting rules
+- **D.** Increasing its funding liquidity risk
 
 **Q22 (Ch 9).** Which case is the best illustration of *model risk* in GARP's disaster taxonomy?
-A. Barings (1995)
-B. Northern Rock (2007)
-C. Long-Term Capital Management (1998)
-D. Volkswagen (2015)
+- **A.** Barings (1995)
+- **B.** Northern Rock (2007)
+- **C.** Long-Term Capital Management (1998)
+- **D.** Volkswagen (2015)
 
 **Q23 (Ch 9).** Orange County's 1994 bankruptcy resulted primarily from:
-A. A rogue trader concealing unauthorized equity positions
-B. Leveraged exposure to rising interest rates via reverse repos and structured notes
-C. Losses on credit default swaps written on subprime mortgages
-D. A depositor run on the county's investment pool's commercial paper
+- **A.** A rogue trader concealing unauthorized equity positions
+- **B.** Leveraged exposure to rising interest rates via reverse repos and structured notes
+- **C.** Losses on credit default swaps written on subprime mortgages
+- **D.** A depositor run on the county's investment pool's commercial paper
 
 **Q24 (Ch 10).** During 2007–2008, rising repo haircuts on securitized collateral functioned most like:
-A. An increase in deposit insurance coverage
-B. A bank run in the wholesale funding market, forcing deleveraging and fire sales
-C. A monetary policy tightening engineered by the Fed
-D. A reduction in systemic risk through higher collateralization
+- **A.** An increase in deposit insurance coverage
+- **B.** A bank run in the wholesale funding market, forcing deleveraging and fire sales
+- **C.** A monetary policy tightening engineered by the Fed
+- **D.** A reduction in systemic risk through higher collateralization
 
 **Q25 (Ch 11).** A GARP member's risk model relies on an assumption of normally distributed returns that materially understates tail risk. When presenting results to management, the Code of Conduct requires her to:
-A. Present only the point estimates to avoid confusing the audience
-B. Disclose the model's assumptions and limitations clearly, distinguishing fact from opinion
-C. Refuse to present any model with limitations
-D. Report the model to GARP's disciplinary committee
+- **A.** Present only the point estimates to avoid confusing the audience
+- **B.** Disclose the model's assumptions and limitations clearly, distinguishing fact from opinion
+- **C.** Refuse to present any model with limitations
+- **D.** Report the model to GARP's disciplinary committee
 
 ---
 

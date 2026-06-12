@@ -7,6 +7,14 @@ permalink: /book-2/
 
 # Book 2: Quantitative Analysis
 
+<ul class="frm-chips" markdown="0">
+  <li class="frm-chip-gold">📐 Exam weight 20%</li>
+  <li>15 chapters</li>
+  <li>~20 exam questions</li>
+  <li><a href="../practice/book-2-questions">Question bank</a></li>
+  <li><a href="../formula-sheets/book-2">Formula sheet</a></li>
+</ul>
+
 **Exam weight: 20% (~20 questions).** The statistical toolkit: probability,
 distributions, sampling, hypothesis testing, regression, time series,
 volatility measurement, simulation, and machine learning.

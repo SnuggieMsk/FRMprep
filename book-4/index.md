@@ -7,6 +7,14 @@ permalink: /book-4/
 
 # Book 4: Valuation and Risk Models
 
+<ul class="frm-chips" markdown="0">
+  <li class="frm-chip-gold">⚖️ Exam weight 30%</li>
+  <li>16 chapters</li>
+  <li>~30 exam questions</li>
+  <li><a href="../practice/book-4-questions">Question bank</a></li>
+  <li><a href="../formula-sheets/book-4">Formula sheet</a></li>
+</ul>
+
 **Exam weight: 30% (~30 questions).** Where everything converges: VaR and
 expected shortfall, volatility estimation, credit ratings and credit risk,
 country risk, operational risk, stress testing, bond valuation and the term

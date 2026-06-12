@@ -11,184 +11,184 @@ nav_order: 4
 ---
 
 **Q1 (Ch 1).** A $200 million portfolio has normally distributed daily returns with zero mean and daily volatility of 1.5%. The one-day 99% VaR is closest to:
-A. $3.00 million
-B. $4.94 million
-C. $5.88 million
-D. $6.98 million
+- **A.** $3.00 million
+- **B.** $4.94 million
+- **C.** $5.88 million
+- **D.** $6.98 million
 
 **Q2 (Ch 1).** Which property of a coherent risk measure does VaR fail to satisfy in general?
-A. Monotonicity
-B. Positive homogeneity
-C. Subadditivity
-D. Translation invariance
+- **A.** Monotonicity
+- **B.** Positive homogeneity
+- **C.** Subadditivity
+- **D.** Translation invariance
 
 **Q3 (Ch 2).** From 100 historical scenario losses, the six largest are (in $ millions): 12, 10, 9, 8, 7, 6. The 95% expected shortfall is closest to:
-A. $7.0 million
-B. $8.7 million
-C. $9.2 million
-D. $12.0 million
+- **A.** $7.0 million
+- **B.** $8.7 million
+- **C.** $9.2 million
+- **D.** $12.0 million
 
 **Q4 (Ch 2).** A desk's one-day 99% VaR is $3.0 million. Assuming iid returns, the 10-day 99% VaR is closest to:
-A. $3.00 million
-B. $9.49 million
-C. $13.42 million
-D. $30.00 million
+- **A.** $3.00 million
+- **B.** $9.49 million
+- **C.** $13.42 million
+- **D.** $30.00 million
 
 **Q5 (Ch 2).** A historical simulation uses 500 daily P&L observations. The five largest losses are (in $ millions): 8.4, 7.1, 6.6, 6.0, 5.7, and the sixth largest is 5.2. The one-day 99% VaR is closest to:
-A. $5.2 million
-B. $5.7 million
-C. $6.0 million
-D. $8.4 million
+- **A.** $5.2 million
+- **B.** $5.7 million
+- **C.** $6.0 million
+- **D.** $8.4 million
 
 **Q6 (Ch 3).** Using EWMA with $$\lambda = 0.94$$, yesterday's volatility estimate was 1.0% and yesterday's return was −3.0%. Today's updated volatility estimate is closest to:
-A. 0.97%
-B. 1.12%
-C. 1.22%
-D. 1.48%
+- **A.** 0.97%
+- **B.** 1.12%
+- **C.** 1.22%
+- **D.** 1.48%
 
 **Q7 (Ch 3).** A GARCH(1,1) model is estimated as $$\sigma_t^2 = 0.000002 + 0.08\,r_{t-1}^2 + 0.90\,\sigma_{t-1}^2$$. The long-run daily volatility is closest to:
-A. 0.10%
-B. 1.00%
-C. 1.41%
-D. 15.9%
+- **A.** 0.10%
+- **B.** 1.00%
+- **C.** 1.41%
+- **D.** 15.9%
 
 **Q8 (Ch 3).** A GARCH(1,1) model has $$\omega = 0.000003$$, $$\alpha = 0.05$$, $$\beta = 0.92$$. Yesterday's volatility estimate was 1.0% and yesterday's return was 1.5%. Today's volatility estimate is closest to:
-A. 1.00%
-B. 1.03%
-C. 1.06%
-D. 1.23%
+- **A.** 1.00%
+- **B.** 1.03%
+- **C.** 1.06%
+- **D.** 1.23%
 
 **Q9 (Ch 4).** Compared with a point-in-time (PIT) rating approach, a through-the-cycle (TTC) approach produces ratings that are:
-A. More volatile and more responsive to the credit cycle
-B. More stable, migrating less as macro conditions change
-C. Always one notch lower for speculative-grade issuers
-D. Based only on quantitative default models
+- **A.** More volatile and more responsive to the credit cycle
+- **B.** More stable, migrating less as macro conditions change
+- **C.** Always one notch lower for speculative-grade issuers
+- **D.** Based only on quantitative default models
 
 **Q10 (Ch 4).** A one-year transition matrix shows: from A — 90% stay A, 8% migrate to B, 2% default; from B — 10% migrate to A, 85% stay B, 5% default. Default is absorbing. The probability that an A-rated firm defaults within two years is closest to:
-A. 2.0%
-B. 4.0%
-C. 4.2%
-D. 5.8%
+- **A.** 2.0%
+- **B.** 4.0%
+- **C.** 4.2%
+- **D.** 5.8%
 
 **Q11 (Ch 5).** Which statement about sovereign risk is correct?
-A. A government can always avoid default on local-currency debt by printing money, so local-currency ratings are riskless
-B. Governments have defaulted on local-currency debt, since financing deficits by money creation carries inflationary costs they may be unwilling to bear
-C. Foreign-currency sovereign ratings are always higher than local-currency ratings
-D. High foreign-exchange reserves eliminate sovereign default risk
+- **A.** A government can always avoid default on local-currency debt by printing money, so local-currency ratings are riskless
+- **B.** Governments have defaulted on local-currency debt, since financing deficits by money creation carries inflationary costs they may be unwilling to bear
+- **C.** Foreign-currency sovereign ratings are always higher than local-currency ratings
+- **D.** High foreign-exchange reserves eliminate sovereign default risk
 
 **Q12 (Ch 6).** A loan has EAD of $10 million, PD of 2%, and recovery rate of 40%. The expected loss is closest to:
-A. $80,000
-B. $120,000
-C. $200,000
-D. $1,200,000
+- **A.** $80,000
+- **B.** $120,000
+- **C.** $200,000
+- **D.** $1,200,000
 
 **Q13 (Ch 6).** For the same loan (EAD $10 million, PD = 2%, LGD = 60%), assume the standard deviation of LGD is 25% and LGD and default are independent. Using $$UL = EAD\sqrt{PD\,\sigma_{LGD}^2 + LGD^2\,\sigma_{PD}^2}$$ with $$\sigma_{PD}^2 = PD(1-PD)$$, the unexpected loss is closest to:
-A. $0.35 million
-B. $0.84 million
-C. $0.91 million
-D. $1.20 million
+- **A.** $0.35 million
+- **B.** $0.84 million
+- **C.** $0.91 million
+- **D.** $1.20 million
 
 **Q14 (Ch 7).** A bank models operational losses with a Poisson frequency of 4 events per year and an average severity of $250,000 per event, with frequency and severity independent. The expected annual operational loss is closest to:
-A. $62,500
-B. $250,000
-C. $1,000,000
-D. $4,000,000
+- **A.** $62,500
+- **B.** $250,000
+- **C.** $1,000,000
+- **D.** $4,000,000
 
 **Q15 (Ch 8).** Reverse stress testing requires a firm to:
-A. Apply historical scenarios in reverse chronological order
-B. Identify scenarios that would cause the firm to fail or breach its capital requirements, then assess their plausibility
-C. Stress only the asset side of the balance sheet
-D. Reduce capital until VaR limits are breached
+- **A.** Apply historical scenarios in reverse chronological order
+- **B.** Identify scenarios that would cause the firm to fail or breach its capital requirements, then assess their plausibility
+- **C.** Stress only the asset side of the balance sheet
+- **D.** Reduce capital until VaR limits are breached
 
 **Q16 (Ch 9).** Discount factors are $$d(0.5) = 0.985$$ and $$d(1.0) = 0.970$$. The arbitrage-free price of a 1-year bond paying a 4% annual coupon semiannually ($100 face) is closest to:
-A. $98.94
-B. $100.00
-C. $100.91
-D. $104.00
+- **A.** $98.94
+- **B.** $100.00
+- **C.** $100.91
+- **D.** $104.00
 
 **Q17 (Ch 10).** With semiannual compounding, the 0.5-year spot rate is 2.0% and the 1.0-year spot rate is 3.0%. The six-month forward rate starting in six months is closest to:
-A. 2.0%
-B. 3.5%
-C. 4.0%
-D. 5.0%
+- **A.** 2.0%
+- **B.** 3.5%
+- **C.** 4.0%
+- **D.** 5.0%
 
 **Q18 (Ch 11).** An investor buys a bond at $98.00. Six months later she receives a $2.50 coupon and sells the bond at $99.00. Her six-month gross realized return is closest to:
-A. 1.02%
-B. 2.55%
-C. 3.57%
-D. 7.14%
+- **A.** 1.02%
+- **B.** 2.55%
+- **C.** 3.57%
+- **D.** 7.14%
 
 **Q19 (Ch 12).** A bond has modified duration 7.2 and convexity 80. If its yield rises by 50 basis points, the estimated percentage price change using duration and convexity is closest to:
-A. −3.40%
-B. −3.50%
-C. −3.60%
-D. −3.70%
+- **A.** −3.40%
+- **B.** −3.50%
+- **C.** −3.60%
+- **D.** −3.70%
 
 **Q20 (Ch 12).** A trader is long bonds with a total DV01 of $6,800. A futures contract available for hedging has a DV01 of $85 per contract. To neutralize the position's interest rate exposure, the trader should:
-A. Buy 80 contracts
-B. Short 80 contracts
-C. Short 8 contracts
-D. Short 118 contracts
+- **A.** Buy 80 contracts
+- **B.** Short 80 contracts
+- **C.** Short 8 contracts
+- **D.** Short 118 contracts
 
 **Q21 (Ch 12).** A bond has Macaulay duration of 8.0 years and yields 6% with semiannual compounding. Its modified duration is closest to:
-A. 7.55
-B. 7.77
-C. 8.00
-D. 8.24
+- **A.** 7.55
+- **B.** 7.77
+- **C.** 8.00
+- **D.** 8.24
 
 **Q22 (Ch 13).** A portfolio has key rate durations of 0.5 (2-year), 1.5 (5-year), and 3.0 (10-year). If the 2-year rate rises 10 bp, the 5-year rises 20 bp, and the 10-year *falls* 10 bp, the estimated percentage price change is closest to:
-A. −0.05%
-B. −0.65%
-C. +0.05%
-D. −0.35%
+- **A.** −0.05%
+- **B.** −0.65%
+- **C.** +0.05%
+- **D.** −0.35%
 
 **Q23 (Ch 14).** In a one-period binomial tree, the up factor is 1.2, the down factor is 0.9, and the continuously compounded risk-free rate is 4% per period (no dividends). The risk-neutral probability of an up move is closest to:
-A. 0.333
-B. 0.469
-C. 0.500
-D. 0.531
+- **A.** 0.333
+- **B.** 0.469
+- **C.** 0.500
+- **D.** 0.531
 
 **Q24 (Ch 14).** A two-step binomial tree has $$S_0 = 100$$, $$u = 1.1$$, $$d = 0.9$$, and a continuously compounded risk-free rate of 2% per step. The value of a two-period European call with strike $100 is closest to:
-A. $5.04
-B. $7.29
-C. $7.44
-D. $7.59
+- **A.** $5.04
+- **B.** $7.29
+- **C.** $7.44
+- **D.** $7.59
 
 **Q25 (Ch 15).** A non-dividend stock trades at $50. For an at-the-money call with strike $50, six months to expiry, $$r = 4\%$$ (continuous), and volatility 30%, the BSM $$d_1$$ is closest to:
-A. −0.01
-B. 0.09
-C. 0.20
-D. 0.31
+- **A.** −0.01
+- **B.** 0.09
+- **C.** 0.20
+- **D.** 0.31
 
 **Q26 (Ch 15).** Using the Q25 inputs with $$N(d_1) = 0.5793$$ and $$N(d_2) = 0.4960$$, the BSM call price is closest to:
-A. $4.17
-B. $4.26
-C. $4.66
-D. $4.97
+- **A.** $4.17
+- **B.** $4.26
+- **C.** $4.66
+- **D.** $4.97
 
 **Q27 (Ch 15).** A one-year European call with strike $100 on a non-dividend stock trading at $100 is priced at $6.20. With a continuously compounded risk-free rate of 5%, put-call parity implies the one-year $100-strike put is worth closest to:
-A. $1.32
-B. $6.20
-C. $11.08
-D. $4.88
+- **A.** $1.32
+- **B.** $6.20
+- **C.** $11.08
+- **D.** $4.88
 
 **Q28 (Ch 16).** A trader has sold 1,000 call option contracts (100 options each) with a delta of 0.55. To make the position delta-neutral, the trader should:
-A. Buy 45,000 shares
-B. Buy 55,000 shares
-C. Sell 55,000 shares
-D. Buy 100,000 shares
+- **A.** Buy 45,000 shares
+- **B.** Buy 55,000 shares
+- **C.** Sell 55,000 shares
+- **D.** Buy 100,000 shares
 
 **Q29 (Ch 16).** A delta-neutral portfolio has gamma of −5,000. A traded option has gamma 0.5 and delta 0.6. To make the portfolio both gamma-neutral and delta-neutral, the trader should:
-A. Buy 10,000 options and sell 6,000 shares
-B. Buy 10,000 options and buy 6,000 shares
-C. Sell 10,000 options and sell 6,000 shares
-D. Buy 2,500 options and sell 1,500 shares
+- **A.** Buy 10,000 options and sell 6,000 shares
+- **B.** Buy 10,000 options and buy 6,000 shares
+- **C.** Sell 10,000 options and sell 6,000 shares
+- **D.** Buy 2,500 options and sell 1,500 shares
 
 **Q30 (Ch 16).** A call option has delta 0.50 and gamma 0.04. Using a delta-gamma approximation, if the underlying rises by $2, the option price change is closest to:
-A. $0.92
-B. $1.00
-C. $1.08
-D. $1.16
+- **A.** $0.92
+- **B.** $1.00
+- **C.** $1.08
+- **D.** $1.16
 
 ---
 

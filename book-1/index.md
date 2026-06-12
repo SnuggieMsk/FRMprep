@@ -7,6 +7,14 @@ permalink: /book-1/
 
 # Book 1: Foundations of Risk Management
 
+<ul class="frm-chips" markdown="0">
+  <li class="frm-chip-gold">🏛️ Exam weight 20%</li>
+  <li>11 chapters</li>
+  <li>~20 exam questions</li>
+  <li><a href="../practice/book-1-questions">Question bank</a></li>
+  <li><a href="../formula-sheets/book-1">Formula sheet</a></li>
+</ul>
+
 **Exam weight: 20% (~20 questions).** The conceptual backbone of the program:
 what risk is, how firms govern and transfer it, the classical portfolio
 theory toolkit (CAPM, APT, performance measures), what history teaches

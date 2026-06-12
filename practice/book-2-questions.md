@@ -11,154 +11,154 @@ nav_order: 2
 ---
 
 **Q1 (Ch 1).** 10% of the firms in a loan portfolio are high-risk. A rating downgrade occurs with probability 60% for high-risk firms and 20% for low-risk firms. Given that a firm has just been downgraded, the probability it is high-risk is closest to:
-A. 0.06
-B. 0.25
-C. 0.33
-D. 0.60
+- **A.** 0.06
+- **B.** 0.25
+- **C.** 0.33
+- **D.** 0.60
 
 **Q2 (Ch 1).** Events A and B are independent with $$P(A) = 0.40$$ and $$P(B) = 0.50$$. $$P(A \cup B)$$ is closest to:
-A. 0.70
-B. 0.90
-C. 0.20
-D. 0.50
+- **A.** 0.70
+- **B.** 0.90
+- **C.** 0.20
+- **D.** 0.50
 
 **Q3 (Ch 2).** A random variable $$X$$ has variance 5. The variance of $$Y = 3 + 2X$$ is:
-A. 10
-B. 20
-C. 23
-D. 100
+- **A.** 10
+- **B.** 20
+- **C.** 23
+- **D.** 100
 
 **Q4 (Ch 3).** A portfolio contains 10 independent loans, each with a 10% probability of default over one year. The probability that exactly 2 loans default is closest to:
-A. 0.4%
-B. 19.4%
-C. 38.7%
-D. 93.0%
+- **A.** 0.4%
+- **B.** 19.4%
+- **C.** 38.7%
+- **D.** 93.0%
 
 **Q5 (Ch 3).** Operational risk events at a desk arrive at a Poisson rate of 2 per month. The probability of exactly 3 events next month is closest to:
-A. 13.5%
-B. 18.0%
-C. 27.1%
-D. 85.7%
+- **A.** 13.5%
+- **B.** 18.0%
+- **C.** 27.1%
+- **D.** 85.7%
 
 **Q6 (Ch 4).** $$\mathrm{Cov}(X, Y) = 0.006$$. The covariance between $$2X + 3$$ and $$5Y - 1$$ is:
-A. 0.006
-B. 0.012
-C. 0.060
-D. 0.063
+- **A.** 0.006
+- **B.** 0.012
+- **C.** 0.060
+- **D.** 0.063
 
 **Q7 (Ch 5).** Five monthly returns are observed: 2%, 4%, 6%, 8%, 10%. The standard error of the sample mean is closest to:
-A. 0.63%
-B. 1.41%
-C. 2.00%
-D. 3.16%
+- **A.** 0.63%
+- **B.** 1.41%
+- **C.** 2.00%
+- **D.** 3.16%
 
 **Q8 (Ch 5).** A hedge fund's monthly returns have sample skewness of −1.2 and sample kurtosis of 6.5. Relative to a normal distribution with the same mean and variance, the fund's returns exhibit:
-A. A longer right tail and thinner tails overall
-B. A longer left tail and fatter tails overall
-C. A longer left tail and thinner tails overall
-D. Symmetry, since kurtosis above 3 offsets negative skew
+- **A.** A longer right tail and thinner tails overall
+- **B.** A longer left tail and fatter tails overall
+- **C.** A longer left tail and thinner tails overall
+- **D.** Symmetry, since kurtosis above 3 offsets negative skew
 
 **Q9 (Ch 6).** A strategy's 36 monthly excess returns average 1.2% with a sample standard deviation of 3.6%. Testing $$H_0\!: \mu = 0$$ against $$H_1\!: \mu \neq 0$$ (two-tailed critical values: $$t_{35,2.5\%} = 2.03$$, $$t_{35,5\%} = 1.69$$), the best conclusion is:
-A. t = 2.00; reject $$H_0$$ at 5% because 2.00 > 1.96
-B. t = 2.00; fail to reject $$H_0$$ at 5%, but reject at 10%
-C. t = 0.33; fail to reject $$H_0$$ at any conventional level
-D. t = 7.20; reject $$H_0$$ at both 5% and 10%
+- **A.** t = 2.00; reject $$H_0$$ at 5% because 2.00 > 1.96
+- **B.** t = 2.00; fail to reject $$H_0$$ at 5%, but reject at 10%
+- **C.** t = 0.33; fail to reject $$H_0$$ at any conventional level
+- **D.** t = 7.20; reject $$H_0$$ at both 5% and 10%
 
 **Q10 (Ch 6).** A test of $$H_0\!: \mu = 0$$ is run at a 5% significance level and has power of 0.80. Which statement is correct?
-A. The probability of a Type II error is 0.20, and increasing the sample size would increase power
-B. The probability of a Type I error is 0.20, and increasing the sample size would reduce it
-C. Lowering the significance level to 1% while holding the sample fixed would increase power
-D. Power is the probability of rejecting $$H_0$$ when $$H_0$$ is true
+- **A.** The probability of a Type II error is 0.20, and increasing the sample size would increase power
+- **B.** The probability of a Type I error is 0.20, and increasing the sample size would reduce it
+- **C.** Lowering the significance level to 1% while holding the sample fixed would increase power
+- **D.** Power is the probability of rejecting $$H_0$$ when $$H_0$$ is true
 
 **Q11 (Ch 6).** A risk manager tests whether daily return volatility exceeds 5%. From $$n = 20$$ observations, the sample standard deviation is 6%. Testing $$H_0\!: \sigma^2 = 0.0025$$ against $$H_1\!: \sigma^2 > 0.0025$$ at 5% (critical value $$\chi^2_{19,\,0.05} = 30.14$$), the best conclusion is:
-A. Test statistic 27.36; fail to reject $$H_0$$ — the evidence does not establish that volatility exceeds 5%
-B. Test statistic 27.36; reject $$H_0$$ — volatility significantly exceeds 5%
-C. Test statistic 28.80; fail to reject $$H_0$$
-D. Test statistic 1.44; reject $$H_0$$ because 1.44 is less than 30.14
+- **A.** Test statistic 27.36; fail to reject $$H_0$$ — the evidence does not establish that volatility exceeds 5%
+- **B.** Test statistic 27.36; reject $$H_0$$ — volatility significantly exceeds 5%
+- **C.** Test statistic 28.80; fail to reject $$H_0$$
+- **D.** Test statistic 1.44; reject $$H_0$$ because 1.44 is less than 30.14
 
 **Q12 (Ch 7).** A regression of a stock's excess returns ($$Y$$) on the market's excess returns ($$X$$) gives $$\mathrm{Cov}(X,Y) = 0.0045$$, $$\mathrm{Var}(X) = 0.0030$$, $$\bar{Y} = 0.9\%$$, $$\bar{X} = 0.5\%$$. The OLS slope and intercept are closest to:
-A. Slope 1.50; intercept 0.15%
-B. Slope 0.67; intercept 0.57%
-C. Slope 1.50; intercept 0.90%
-D. Slope 1.50; intercept −0.15%
+- **A.** Slope 1.50; intercept 0.15%
+- **B.** Slope 0.67; intercept 0.57%
+- **C.** Slope 1.50; intercept 0.90%
+- **D.** Slope 1.50; intercept −0.15%
 
 **Q13 (Ch 8).** A regression with $$k = 3$$ explanatory variables and $$n = 62$$ observations has $$R^2 = 0.64$$. The adjusted R² is closest to:
-A. 0.6034
-B. 0.6214
-C. 0.6400
-D. 0.6595
+- **A.** 0.6034
+- **B.** 0.6214
+- **C.** 0.6400
+- **D.** 0.6595
 
 **Q14 (Ch 8).** A hedge ratio regression estimates $$\hat\beta = 0.85$$ with standard error 0.34 (large sample). Testing $$H_0\!: \beta = 1$$ against $$H_1\!: \beta \neq 1$$ at 5%, the best conclusion is:
-A. t = −0.44; fail to reject — the slope is not significantly different from 1
-B. t = 2.50; reject — the slope is significantly different from 1
-C. t = −0.44; reject — the slope is significantly different from 1
-D. t = 2.50; fail to reject — the slope is not significantly different from 1
+- **A.** t = −0.44; fail to reject — the slope is not significantly different from 1
+- **B.** t = 2.50; reject — the slope is significantly different from 1
+- **C.** t = −0.44; reject — the slope is significantly different from 1
+- **D.** t = 2.50; fail to reject — the slope is not significantly different from 1
 
 **Q15 (Ch 9).** Omitting a variable from a regression biases the estimated coefficient on an included regressor only if the omitted variable:
-A. Has nonzero variance
-B. Is uncorrelated with the included regressor but affects the dependent variable
-C. Both affects the dependent variable and is correlated with the included regressor
-D. Is measured with error
+- **A.** Has nonzero variance
+- **B.** Is uncorrelated with the included regressor but affects the dependent variable
+- **C.** Both affects the dependent variable and is correlated with the included regressor
+- **D.** Is measured with error
 
 **Q16 (Ch 9).** If regression errors are heteroskedastic but all other classical assumptions hold, OLS coefficient estimates are:
-A. Biased, and the usual standard errors are invalid
-B. Unbiased, and the usual standard errors remain valid
-C. Unbiased, but the usual standard errors are invalid — White standard errors should be used
-D. Biased, but White standard errors correct the coefficient bias
+- **A.** Biased, and the usual standard errors are invalid
+- **B.** Unbiased, and the usual standard errors remain valid
+- **C.** Unbiased, but the usual standard errors are invalid — White standard errors should be used
+- **D.** Biased, but White standard errors correct the coefficient bias
 
 **Q17 (Ch 10).** A stationary AR(1) process follows $$Y_t = 0.6 + 0.7\,Y_{t-1} + \epsilon_t$$. The level to which the process mean-reverts is:
-A. 0.35
-B. 0.60
-C. 0.86
-D. 2.00
+- **A.** 0.35
+- **B.** 0.60
+- **C.** 0.86
+- **D.** 2.00
 
 **Q18 (Ch 10).** An MA(1) process is $$Y_t = \mu + \epsilon_t + 0.5\,\epsilon_{t-1}$$. Its first-order autocorrelation is closest to:
-A. 0.25
-B. 0.33
-C. 0.40
-D. 0.50
+- **A.** 0.25
+- **B.** 0.33
+- **C.** 0.40
+- **D.** 0.50
 
 **Q19 (Ch 10).** An AR(1) process follows $$Y_t = 0.5 + 0.8\,Y_{t-1} + \epsilon_t$$ and the current value is $$Y_t = 4.0$$. The two-step-ahead forecast $$E_t[Y_{t+2}]$$ is closest to:
-A. 2.50
-B. 3.06
-C. 3.46
-D. 3.70
+- **A.** 2.50
+- **B.** 3.06
+- **C.** 3.46
+- **D.** 3.70
 
 **Q20 (Ch 11).** A price index follows a driftless random walk with daily volatility of 2%. The standard deviation of the change over the next 25 days is closest to:
-A. 2.0%
-B. 4.5%
-C. 10.0%
-D. 50.0%
+- **A.** 2.0%
+- **B.** 4.5%
+- **C.** 10.0%
+- **D.** 50.0%
 
 **Q21 (Ch 12).** A stock rises from $100 to $110 over one month. The continuously compounded (log) return is closest to:
-A. 9.00%
-B. 9.53%
-C. 10.00%
-D. 10.52%
+- **A.** 9.00%
+- **B.** 9.53%
+- **C.** 10.00%
+- **D.** 10.52%
 
 **Q22 (Ch 12).** Using EWMA with $$\lambda = 0.94$$, yesterday's volatility estimate was 1.0% and yesterday's return was 2.0%. The updated daily volatility estimate is closest to:
-A. 0.97%
-B. 1.06%
-C. 1.09%
-D. 1.18%
+- **A.** 0.97%
+- **B.** 1.06%
+- **C.** 1.09%
+- **D.** 1.18%
 
 **Q23 (Ch 13).** A Monte Carlo pricing run uses 10,000 independent replications; the standard deviation of the simulated discounted payoffs is $4.00. The standard error of the price estimate is closest to:
-A. $0.0004
-B. $0.04
-C. $0.40
-D. $4.00
+- **A.** $0.0004
+- **B.** $0.04
+- **C.** $0.40
+- **D.** $4.00
 
 **Q24 (Ch 14).** Which statement correctly distinguishes ridge regression from LASSO?
-A. Ridge can set coefficients exactly to zero; LASSO only shrinks them
-B. LASSO can set coefficients exactly to zero, performing variable selection; ridge shrinks but retains all coefficients
-C. Ridge penalizes the absolute value of coefficients; LASSO penalizes their squares
-D. Increasing the penalty $$\lambda$$ reduces bias and increases variance in both methods
+- **A.** Ridge can set coefficients exactly to zero; LASSO only shrinks them
+- **B.** LASSO can set coefficients exactly to zero, performing variable selection; ridge shrinks but retains all coefficients
+- **C.** Ridge penalizes the absolute value of coefficients; LASSO penalizes their squares
+- **D.** Increasing the penalty $$\lambda$$ reduces bias and increases variance in both methods
 
 **Q25 (Ch 15).** A default-prediction model produces TP = 40, FP = 10, FN = 20, TN = 130 on a test set. The model's F1 score is closest to:
-A. 0.67
-B. 0.73
-C. 0.80
-D. 0.85
+- **A.** 0.67
+- **B.** 0.73
+- **C.** 0.80
+- **D.** 0.85
 
 ---
 

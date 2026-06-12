@@ -7,6 +7,14 @@ permalink: /book-3/
 
 # Book 3: Financial Markets and Products
 
+<ul class="frm-chips" markdown="0">
+  <li class="frm-chip-gold">🏦 Exam weight 30%</li>
+  <li>20 chapters</li>
+  <li>~30 exam questions</li>
+  <li><a href="../practice/book-3-questions">Question bank</a></li>
+  <li><a href="../formula-sheets/book-3">Formula sheet</a></li>
+</ul>
+
 **Exam weight: 30% (~30 questions).** The largest book: financial
 institutions, derivatives markets and clearing, forwards, futures, swaps,
 options and option strategies, interest rates, bonds, mortgages, and FX and
