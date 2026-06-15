@@ -1,56 +1,67 @@
-# FRM Part I Prep — 2026 Curriculum
+# FRM Part I Study Hub
 
-A complete, self-contained study companion for the **GARP FRM Part I exam**,
-built as a GitHub Pages site:
+An interactive, self-contained study app for the **GARP FRM® Part I** exam
+(2026 curriculum), served as a static site on GitHub Pages — no build step
+required on GitHub's side.
 
-- Chapter-by-chapter notes for **all 62 readings** across the four books,
-  aligned to GARP's published 2026 learning objectives
-- **Formula sheets** (one per book) for final-week revision
-- **Question banks** per book + a full-length **100-question mock exam**
-  with a fully worked answer key
-- Study plans (16-week and 10-week), exam-day guide, calculator guide,
-  and an A–Z glossary
+**Live site:** enable Pages (below), then visit
+`https://<your-username>.github.io/FRMprep/`
 
-## Viewing the site (GitHub Pages)
+## Features
 
-1. In this repository on GitHub, go to **Settings → Pages**.
-2. Under **Build and deployment**, set **Source** to *Deploy from a branch*.
-3. Select the default branch, folder **/ (root)**, and save.
-4. After a minute or two, the site is live at
-   `https://<your-username>.github.io/FRMprep/`.
+- **62 chapter readings** across all four books, each with three tabs:
+  **Notes**, **Flashcards**, and an **interactive Quiz** (tap to answer,
+  instant worked explanations, difficulty tiers, score tracking).
+- **Full 100-question Mock Exam** runner — exam-weighted (20/20/30/30),
+  4-hour timer, no negative marking, auto-scored with worked solutions.
+- **Reference & Revision:** four formula sheets, an A–Z glossary, the study
+  plan, exam-day guide, and free-resource links.
+- **Floating financial calculator** (TVM / finance / basic), **full-text
+  search** (press `/`), **dark mode**, adjustable **text size**, and
+  **progress tracking** — all saved in the browser.
+- Beautiful math via **KaTeX**, rendered from `$$...$$` in the source.
 
-The site uses Jekyll with the [just-the-docs](https://just-the-docs.github.io/just-the-docs/)
-theme (sidebar navigation + full-text search) and MathJax for formulas —
-all rendered automatically by GitHub Pages; no local build needed.
+## How it works
 
-### Running locally (optional)
+The app is plain HTML/CSS/JS — `index.html` + `style.css` + `app.js` —
+that renders a single data file, `content.js`, with
+[marked](https://marked.js.org) and [KaTeX](https://katex.org).
+
+`content.js` is **generated** from the markdown sources by `build.js`:
 
 ```bash
-gem install bundler jekyll
-bundle init && bundle add jekyll github-pages webrick
-bundle exec jekyll serve
+node build.js      # reads book-*/ch*.md, practice/*.md, formula-sheets/*.md,
+                   # glossary.md, study-plan.md, exam-guide.md, resources.md,
+                   # flashcards/*.md, content/readme.md  ->  content.js
 ```
 
-## Structure
+Edit the markdown, re-run `node build.js`, commit the regenerated
+`content.js`. The site needs no Jekyll (a `.nojekyll` file is included).
+
+### Source layout
 
 ```
-index.md           Home — exam overview & how to use the site
-study-plan.md      16-week and 10-week schedules
-exam-guide.md      Logistics, calculator mastery, exam-day strategy
-book-1/            Foundations of Risk Management (11 chapters, 20%)
-book-2/            Quantitative Analysis (15 chapters, 20%)
-book-3/            Financial Markets and Products (20 chapters, 30%)
-book-4/            Valuation and Risk Models (16 chapters, 30%)
-formula-sheets/    One formula sheet per book
-practice/          Question banks per book + 100-question mock exam + key
-glossary.md        A–Z glossary of FRM Part I terms
-resources.md       Links to free official GARP materials
+index.html style.css app.js     the app shell + engine
+content.js                       generated study data (committed)
+build.js                         markdown -> content.js generator
+content/readme.md                home page
+book-<b>/ch<NN>.md               chapter notes (+ trailing "## Quick quiz")
+practice/book-<b>-questions.md   per-book question banks (+ answer keys)
+practice/mock-exam-1*.md         100-question mock + answer key -> Mock Exam
+flashcards/<id>.md               per-chapter flashcards (id = book*100 + ch)
+formula-sheets/ glossary.md      reference pages
+study-plan.md exam-guide.md resources.md
 ```
+
+## Enable GitHub Pages
+
+1. **Settings → Pages**
+2. **Source:** *Deploy from a branch*
+3. Branch: your default branch · folder **/ (root)** · **Save**
+4. Wait ~1–2 minutes, then open the published URL.
 
 ## Disclaimer
 
 Independent study notes prepared from publicly available GARP learning
 objectives. Not affiliated with or endorsed by GARP. FRM® is a registered
-trademark of the Global Association of Risk Professionals. Always verify
-exam policies, dates, and the current study guide at
-[garp.org/frm](https://www.garp.org/frm).
+trademark of the Global Association of Risk Professionals.
