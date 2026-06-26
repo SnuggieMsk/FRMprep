@@ -170,8 +170,8 @@ function parseBank(b) {
 //   - A. ..  - B. ..  - C. ..  - D. ..
 //   **Answer: B**
 //   <multi-paragraph detailed explanation, markdown + $$math$$>
-function parsePractice(cid) {
-  const src = read(path.join(ROOT, "practice-bank", cid + ".md"));
+function parseQABank(dir, cid) {
+  const src = read(path.join(ROOT, dir, cid + ".md"));
   if (!src.trim()) return [];
   const s = src.replace(/^---\n[\s\S]*?\n---\n?/, "");
   const blocks = s.split(/\n(?=\*\*Q\d+\.\*\*)/);
@@ -195,9 +195,11 @@ function parsePractice(cid) {
   });
   return qs;
 }
+const parsePractice = (cid) => parseQABank("practice-bank", cid);
+const parseExam = (cid) => parseQABank("exam-bank", cid);
 
 // ---- assemble a chapter's quiz markdown (tiered) ----
-function buildQuiz(concept, bankQs, practiceQs) {
+function buildQuiz(concept, bankQs, practiceQs, examQs) {
   let n = 0;
   let out = "";
   if (practiceQs && practiceQs.length) {
@@ -215,6 +217,10 @@ function buildQuiz(concept, bankQs, practiceQs) {
     out += "## " + label + "\n\n";
     qs.forEach((q) => { n++; out += emitQ(n, q.stem, q.opts, q.L, q.expl) + "\n"; });
   });
+  if (examQs && examQs.length) {
+    out += "## 🎯 Exam-level — fully worked\n\n";
+    examQs.forEach((q) => { n++; out += emitQ(n, q.stem, q.opts, q.L, q.expl) + "\n"; });
+  }
   if (!n) out = "_Interactive questions for this chapter are being added. Use the chapter notes and the full Mock Exam in the meantime._\n";
   return out.trim() + "\n";
 }
@@ -226,11 +232,9 @@ function buildFlashcards(cid, title) {
   return "_Flashcards for " + title + " are being added._\n";
 }
 
-// ---- mock exam -> paper ----
-function buildPapers() {
-  const qsrc = read(path.join(ROOT, "practice", "mock-exam-1.md"));
-  const asrc = read(path.join(ROOT, "practice", "mock-exam-1-answers.md"));
-  if (!qsrc || !asrc) return [];
+// ---- one mock exam -> paper markdown ----
+function buildOnePaper(qsrc, asrc, title) {
+  if (!qsrc || !asrc) return null;
   // answers: **Q1 — Book 3, Forward pricing** — **C.** expl...
   const answers = {};
   const are = /\*\*Q(\d+)\s*[—-]+\s*Book\s*(\d)[^—]*\*\*\s*[—-]+\s*\*\*([A-D])\.?\*\*\s*([\s\S]*?)(?=\n\*\*Q\d+\s*[—-]|\n##\s|\Z)/g;
@@ -252,7 +256,7 @@ function buildPapers() {
     if (!opts || !ans) return;
     bucket[ans.book].push({ num: parseInt(num, 10), stem, opts, L: ans.L, expl: ans.expl });
   });
-  let md = "# Mock Exam 1\n**Total: 100 questions · 4 hours · no negative marking**\n\n";
+  let md = "# " + title + "\n**Total: 100 questions · 4 hours · no negative marking**\n\n";
   let emitted = 0;
   [1, 2, 3, 4].forEach((b) => {
     if (!bucket[b].length) return;
@@ -262,8 +266,19 @@ function buildPapers() {
       md += emitQ(q.num, q.stem, q.opts, q.L, q.expl) + "\n";
     });
   });
-  if (!emitted) return [];
-  return [{ num: "01", md }];
+  return emitted ? md : null;
+}
+function buildPapers() {
+  const out = [];
+  [["1", "Mock Exam 1"], ["2", "Mock Exam 2"], ["3", "Mock Exam 3"]].forEach(([k, title], i) => {
+    const md = buildOnePaper(
+      read(path.join(ROOT, "practice", "mock-exam-" + k + ".md")),
+      read(path.join(ROOT, "practice", "mock-exam-" + k + "-answers.md")),
+      title
+    );
+    if (md) out.push({ num: String(out.length + 1).padStart(2, "0"), md });
+  });
+  return out;
 }
 
 // ---- README / home ----
@@ -287,7 +302,7 @@ for (let b = 1; b <= 4; b++) {
     let title = fm ? fm[1].replace(/^\d+\.\s*/, "") : ("Chapter " + c);
     const notes = cleanNotes(raw);
     const concept = parseQuickQuiz(raw);
-    const quiz = buildQuiz(concept, bankByCh[cid] || [], parsePractice(cid));
+    const quiz = buildQuiz(concept, bankByCh[cid] || [], parsePractice(cid), parseExam(cid));
     const flashcards = buildFlashcards(cid, title);
     chapters.push({
       num: cid,

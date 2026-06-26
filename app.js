@@ -668,7 +668,8 @@
     parts.forEach(function (part) {
       var hm = part.match(/^##\s*(.*)/), title = hm ? hm[1] : "";
       var cls = "mix", dot = "📝", label = "MCQs";
-      if (/easy/i.test(title) || /🟢/.test(title)) { cls = "easy"; dot = "🟢"; label = "Easy"; }
+      if (/exam-level/i.test(title) || /🎯/.test(title)) { cls = "hard"; dot = "🎯"; label = "Exam-level"; }
+      else if (/easy/i.test(title) || /🟢/.test(title)) { cls = "easy"; dot = "🟢"; label = "Easy"; }
       else if (/medium/i.test(title) || /🟡/.test(title)) { cls = "med"; dot = "🟡"; label = "Medium"; }
       else if (/hard/i.test(title) || /🔴/.test(title)) { cls = "hard"; dot = "🔴"; label = "Hard"; }
       else if (/standalone/i.test(title)) { cls = "mix"; dot = "📝"; label = "Skill MCQs"; }
