@@ -137,7 +137,7 @@ function parseBank(b) {
   const apart = ai > -1 ? src.slice(ai) : "";
   // answers: **Q1 — C.** *(Easy.)* expl
   const answers = {};
-  const are = /\*\*Q(\d+)\s*[—-]+\s*([A-D])\.?\*\*\s*([\s\S]*?)(?=\n\*\*Q\d+\s*[—-]|\Z)/g;
+  const are = /\*\*Q(\d+)\s*[—-]+\s*([A-D])\.?\*\*\s*([\s\S]*?)(?=\n\*\*Q\d+\s*[—-]|$)/g;
   let a;
   while ((a = are.exec(apart))) {
     let expl = a[3].trim();
@@ -237,7 +237,7 @@ function buildOnePaper(qsrc, asrc, title) {
   if (!qsrc || !asrc) return null;
   // answers: **Q1 — Book 3, Forward pricing** — **C.** expl...
   const answers = {};
-  const are = /\*\*Q(\d+)\s*[—-]+\s*Book\s*(\d)[^—]*\*\*\s*[—-]+\s*\*\*([A-D])\.?\*\*\s*([\s\S]*?)(?=\n\*\*Q\d+\s*[—-]|\n##\s|\Z)/g;
+  const are = /\*\*Q(\d+)\s*[—-]+\s*Book\s*(\d)[^—]*\*\*\s*[—-]+\s*\*\*([A-D])\.?\*\*\s*([\s\S]*?)(?=\n\*\*Q\d+\s*[—-]|\n##\s|$)/g;
   let a;
   while ((a = are.exec(asrc))) answers[a[1]] = { book: parseInt(a[2], 10), L: a[3], expl: a[4].trim() };
   // questions: **1.** stem \n - A. .. - B. ..
