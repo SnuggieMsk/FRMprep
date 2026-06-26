@@ -164,10 +164,46 @@ function parseBank(b) {
   return byChapter;
 }
 
+// ---- per-chapter practice bank (easy, fully-worked) ----
+// Source format per question:
+//   **Q1.** stem
+//   - A. ..  - B. ..  - C. ..  - D. ..
+//   **Answer: B**
+//   <multi-paragraph detailed explanation, markdown + $$math$$>
+function parsePractice(cid) {
+  const src = read(path.join(ROOT, "practice-bank", cid + ".md"));
+  if (!src.trim()) return [];
+  const s = src.replace(/^---\n[\s\S]*?\n---\n?/, "");
+  const blocks = s.split(/\n(?=\*\*Q\d+\.\*\*)/);
+  const qs = [];
+  blocks.forEach((b) => {
+    const qm = b.match(/\*\*Q(\d+)\.\*\*\s*([\s\S]*)/);
+    if (!qm) return;
+    const rest = qm[2];
+    const om = rest.search(/(?:^|\n)\s*(?:[-*]\s*)?(?:\*\*)?[A-D][\.\)]/);
+    if (om < 0) return;
+    const stem = rest.slice(0, om).trim();
+    const after = rest.slice(om);
+    const am = after.search(/\*\*\s*(?:Answer|Correct)\b/i);
+    if (am < 0) return;
+    const opts = parseOptions(after.slice(0, am));
+    const ansPart = after.slice(am);
+    const lm = ansPart.match(/\*\*\s*(?:Answer|Correct)\s*[:=]?\s*\(?([A-D])\)?\.?\s*\*\*/i);
+    if (!opts || !lm) return;
+    const expl = ansPart.replace(/^[\s\S]*?\*\*\s*(?:Answer|Correct)\s*[:=]?\s*\(?[A-D]\)?\.?\s*\*\*\s*/i, "").trim();
+    qs.push({ stem, opts, L: lm[1].toUpperCase(), expl });
+  });
+  return qs;
+}
+
 // ---- assemble a chapter's quiz markdown (tiered) ----
-function buildQuiz(concept, bankQs) {
+function buildQuiz(concept, bankQs, practiceQs) {
   let n = 0;
   let out = "";
+  if (practiceQs && practiceQs.length) {
+    out += "## 🟢 Easy practice — fully worked\n\n";
+    practiceQs.forEach((q) => { n++; out += emitQ(n, q.stem, q.opts, q.L, q.expl) + "\n"; });
+  }
   if (concept.length) {
     out += "## 📝 Concept check\n\n";
     concept.forEach((q) => { n++; out += emitQ(n, q.stem, q.opts, q.L, q.expl) + "\n"; });
@@ -251,7 +287,7 @@ for (let b = 1; b <= 4; b++) {
     let title = fm ? fm[1].replace(/^\d+\.\s*/, "") : ("Chapter " + c);
     const notes = cleanNotes(raw);
     const concept = parseQuickQuiz(raw);
-    const quiz = buildQuiz(concept, bankByCh[cid] || []);
+    const quiz = buildQuiz(concept, bankByCh[cid] || [], parsePractice(cid));
     const flashcards = buildFlashcards(cid, title);
     chapters.push({
       num: cid,
