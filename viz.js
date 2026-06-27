@@ -313,16 +313,145 @@
       + '<figcaption>Answer map — ✓ is correct' + (chosen != null && chosen !== correct ? ", ✗ was your pick" : "") + '.</figcaption></figure>';
   }
 
+  // ---------- data-driven computation explainers (use the question's own numbers) ----------
+  function fmtN(v) {
+    if (!isFinite(v)) return String(v);
+    var r = Math.round(v * 1e6) / 1e6;
+    if (r % 1 === 0 && Math.abs(r) >= 1000) return r.toLocaleString("en-US");
+    if (r % 1 === 0) return String(r);
+    return Math.abs(r) >= 1000 ? r.toLocaleString("en-US", { maximumFractionDigits: 4 }) : String(r);
+  }
+  // turn LaTeX-ish explanation into a plain arithmetic string
+  function flatten(raw) {
+    return String(raw || "")
+      .replace(/\\times|\\cdot/g, "×")
+      .replace(/\\left|\\right/g, "")
+      .replace(/\{,\}/g, "").replace(/,/g, "")
+      .replace(/\\[a-zA-Z]+/g, " ")     // drop remaining LaTeX commands
+      .replace(/[{}$]/g, " ")
+      .replace(/\s+/g, " ");
+  }
+  function unitOf(raw) { return /%/.test(raw) ? "%" : (/\$|\\\$/.test(raw) ? "$" : ""); }
+  function near(a, b) { return b != null && isFinite(a) && Math.abs(a - b) <= Math.max(0.02, Math.abs(b) * 0.012); }
+  // Only accept a sum/product whose RESULT equals the question's actual answer.
+  function findSum(t, target) {
+    var re = /(-?\d+(?:\.\d+)?(?:\s*\+\s*-?\d+(?:\.\d+)?){1,7})\s*=\s*(-?\d+(?:\.\d+)?)/g, m;
+    while ((m = re.exec(t))) {
+      var adds = m[1].split("+").map(parseFloat);
+      if (adds.length < 2 || adds.some(function (a) { return !isFinite(a); })) continue;
+      var total = parseFloat(m[2]);
+      if (Math.abs(adds.reduce(function (a, b) { return a + b; }, 0) - total) > Math.max(0.05, Math.abs(total) * 0.02)) continue;
+      if (near(total, target)) return { adds: adds, total: total };
+    }
+    return null;
+  }
+  function findProduct(t, target) {
+    var re = /(-?\d+(?:\.\d+)?(?:\s*×\s*-?\d+(?:\.\d+)?){1,3})\s*=\s*(-?\d+(?:\.\d+)?)/g, m;
+    while ((m = re.exec(t))) {
+      var fs = m[1].split("×").map(parseFloat);
+      if (fs.length < 2 || fs.some(function (a) { return !isFinite(a); })) continue;
+      var r = parseFloat(m[2]);
+      if (Math.abs(fs.reduce(function (a, b) { return a * b; }, 1) - r) > Math.max(0.02, Math.abs(r) * 0.05)) continue;
+      if (near(r, target)) return { factors: fs, result: r };
+    }
+    return null;
+  }
+  function withUnit(v, u) { return u === "$" ? "$" + fmtN(v) : (u === "%" ? fmtN(v) + "%" : fmtN(v)); }
+  function sumChartHTML(adds, total, u) {
+    var allPos = adds.every(function (a) { return a > 0; });
+    var bar = "";
+    if (allPos) {
+      bar = '<div class="frm-stack">' + adds.map(function (a, i) {
+        return '<span class="frm-seg s' + (i % 6) + '" style="flex-grow:' + a + '">' + fmtN(a) + '</span>';
+      }).join("") + '</div>';
+    }
+    var eq = adds.map(function (a) { return withUnit(a, u); }).join(" + ") + " = <b>" + withUnit(total, u) + "</b>";
+    return '<figure class="frm-fig"><div class="frm-calc">' + bar + '<div class="frm-eq">' + eq + "</div></div>"
+      + '<figcaption>The answer is built by <b>adding the pieces</b>' + (allPos ? " — the bar shows their relative sizes" : "") + ". Total = " + withUnit(total, u) + ".</figcaption></figure>";
+  }
+  function productChartHTML(factors, result, u) {
+    var chips = factors.map(function (f) { return '<span class="frm-pf">' + fmtN(f) + "</span>"; }).join('<span class="frm-op">×</span>');
+    return '<figure class="frm-fig"><div class="frm-calc"><div class="frm-prod">' + chips
+      + '<span class="frm-op">=</span><span class="frm-pf res">' + withUnit(result, u) + "</span></div></div>"
+      + '<figcaption>The answer comes from <b>multiplying the given values</b>: ' + factors.map(fmtN).join(" × ") + " = " + withUnit(result, u) + ".</figcaption></figure>";
+  }
+  // safe arithmetic evaluator: + - * / ^ ( ) and unary minus
+  function evalExpr(str) {
+    var s = String(str).replace(/×/g, "*").replace(/\s+/g, ""); var i = 0;
+    function number() { var st = i; while (i < s.length && /[0-9.]/.test(s[i])) i++; return parseFloat(s.slice(st, i)); }
+    function powTail(b) { if (s[i] === "^") { i++; return Math.pow(b, factor()); } return b; }
+    function factor() {
+      if (s[i] === "(") { i++; var v = expr(); if (s[i] === ")") i++; return powTail(v); }
+      if (s[i] === "-") { i++; return -factor(); }
+      if (s[i] === "+") { i++; return factor(); }
+      return powTail(number());
+    }
+    function term() {
+      var v = factor();
+      for (;;) {
+        if (s[i] === "*" || s[i] === "/") { var o = s[i++]; var r = factor(); v = o === "*" ? v * r : v / r; }
+        else if (s[i] === "(") { v = v * factor(); }   // implicit multiplication: 0.2(100)
+        else break;
+      }
+      return v;
+    }
+    function expr() { var v = term(); while (s[i] === "+" || s[i] === "-") { var o = s[i++]; var r = term(); v = o === "+" ? v + r : v - r; } return v; }
+    var val = expr(); return i < s.length ? NaN : val;
+  }
+  function prettyExpr(lhs) {
+    var s = esc(lhs).replace(/\*/g, " × ");
+    s = s.replace(/\d{4,}(?:\.\d+)?/g, function (m) { return Number(m).toLocaleString("en-US"); });
+    s = s.replace(/\^(\d+(?:\.\d+)?|\([^)]*\))/g, "<sup>$1</sup>").replace(/\^/g, "");
+    return s;
+  }
+  // find an equation "EXPR = number" whose left side actually computes to the answer
+  function findEquation(t, target) {
+    if (target == null) return null;
+    var re = /([0-9(][0-9.\s+\-×*/^()]*?[0-9)])\s*=\s*(-?\d+(?:\.\d+)?)/g, m;
+    while ((m = re.exec(t))) {
+      var lhs = m[1];
+      if (!/[+\-×*/^]/.test(lhs.slice(1))) continue;                 // needs a real operator
+      if ((lhs.match(/\d+(?:\.\d+)?/g) || []).length < 2) continue;  // needs ≥2 numbers
+      var rhs = parseFloat(m[2]), val = evalExpr(lhs);
+      if (!isFinite(val) || Math.abs(val - rhs) > Math.max(0.01, Math.abs(rhs) * 0.01)) continue;
+      if (near(rhs, target)) return { lhs: lhs.trim(), rhs: rhs };   // only if it equals the actual answer
+    }
+    return null;
+  }
+  function equationPanelHTML(lhs, rhs, u) {
+    return '<figure class="frm-fig"><div class="frm-calc"><div class="frm-eqbox">' + prettyExpr(lhs)
+      + ' = <b>' + withUnit(rhs, u) + "</b></div></div>"
+      + '<figcaption>This is the exact calculation that produces the answer — plug the given numbers in and compute.</figcaption></figure>';
+  }
+  function calcExplainers(rawExpl, target, unit) {
+    if (!rawExpl || target == null) return [];
+    var t = flatten(rawExpl), out = [];
+    var s = findSum(t, target); if (s) return [sumChartHTML(s.adds, s.total, unit)];
+    var p = findProduct(t, target); if (p) return [productChartHTML(p.factors, p.result, unit)];
+    var e = findEquation(t, target); if (e) return [equationPanelHTML(e.lhs, e.rhs, unit)];
+    return out;
+  }
+
   // ---------- public: build the full visual block for a question ----------
-  function buildQuestionViz(opts, correct, chosen, conceptText) {
-    var parts = [];
-    var num = numericChartHTML(opts, correct, chosen);
+  // is this answer option essentially just a number (not a sentence)?
+  function answerValue(s) {
+    var t = String(s == null ? "" : s).trim();
+    if (!/^[-−+(]?\s*\$?\s*\d[\d,]*(?:\.\d+)?\s*%?\s*\)?$/.test(t)) return null;
+    return { val: parseNum(t), unit: /%/.test(t) ? "%" : (/\$/.test(t) ? "$" : "") };
+  }
+  function buildQuestionViz(opts, correct, chosen, conceptText, rawExpl) {
+    var ansStr = (opts && opts[correct] != null) ? opts[correct] : "";
+    var av = answerValue(ansStr);
+    var parts = av ? calcExplainers(rawExpl, av.val, av.unit) : [];  // 1) the exact arithmetic that yields THIS answer
+    var num = numericChartHTML(opts, correct, chosen);  // 2) compare the four choices (answer-specific)
     if (num) parts.push(num);
-    var ck = pickConcept(conceptText);
-    if (ck) parts.push(conceptSVG(ck));
+    if (!parts.length) {                                // 3) conceptual question -> concept diagram
+      var ck = pickConcept(conceptText);
+      if (ck) parts.push(conceptSVG(ck));
+    }
     if (!parts.length) { var ch = chipsHTML(opts, correct, chosen); if (ch) parts.push(ch); }
     if (!parts.length) return "";
-    return '<div class="q-viz"><div class="q-viz-title">📊 Visual aid</div>' + parts.join("") + '</div>';
+    return '<div class="q-viz"><div class="q-viz-title">📊 How to get the answer</div>' + parts.join("") + '</div>';
   }
 
   window.FRMViz = {

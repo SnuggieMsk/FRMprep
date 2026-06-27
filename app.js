@@ -694,7 +694,7 @@
     ["A", "B", "C", "D"].forEach(function (L, i) {
       opts += '<button class="q-opt" data-i="' + i + '"><span class="q-letter">' + L + '</span><span class="q-otext">' + inlineMd(q.options[i]) + "</span></button>";
     });
-    return '<div class="q-card" data-tier="' + t.cls + '" data-qid="' + q.id + '" data-correct="' + q.correct + '">'
+    return '<div class="q-card" data-tier="' + t.cls + '" data-qid="' + q.id + '" data-correct="' + q.correct + '" data-expl="' + encodeURIComponent(q.expl || "") + '">'
       + '<div class="q-head"><span class="q-num">Q' + q.id + '</span><span class="q-tierlabel ' + t.cls + '">' + t.dot + " " + t.label + "</span></div>"
       + '<div class="q-text">' + inlineMd(q.q) + "</div>"
       + '<div class="q-opts">' + opts + "</div>"
@@ -732,7 +732,9 @@
     if (!expl || expl.querySelector(".q-viz")) return;
     var opts = Array.prototype.map.call(card.querySelectorAll(".q-otext"), function (o) { return o.textContent.trim(); });
     var stem = (card.querySelector(".q-text") || {}).textContent || "";
-    var html = window.FRMViz.buildQuestionViz(opts, correct, chosen, stem + " " + (expl.textContent || ""));
+    var rawExpl = "";
+    try { rawExpl = decodeURIComponent(card.dataset.expl || ""); } catch (e) { rawExpl = card.dataset.expl || ""; }
+    var html = window.FRMViz.buildQuestionViz(opts, correct, chosen, stem + " " + (expl.textContent || ""), rawExpl);
     if (html) expl.insertAdjacentHTML("beforeend", html);
   }
   function applyAnswer(card, chosen, restore) {
@@ -961,7 +963,7 @@
     ["A", "B", "C", "D"].forEach(function (L, i) {
       opts += '<button class="q-opt" data-i="' + i + '"><span class="q-letter">' + L + '</span><span class="q-otext">' + inlineMd(q.options[i]) + "</span></button>";
     });
-    return '<div class="q-card" data-sec="' + gi + '" data-qid="' + q.id + '" data-correct="' + q.correct + '">'
+    return '<div class="q-card" data-sec="' + gi + '" data-qid="' + q.id + '" data-correct="' + q.correct + '" data-expl="' + encodeURIComponent(q.expl || "") + '">'
       + '<div class="q-head"><span class="q-num">Q' + q.id + '</span><span class="q-tierlabel mix">' + g.marks + " mark" + (g.marks > 1 ? "s" : "") + "</span></div>"
       + '<div class="q-text">' + inlineMd(q.q) + "</div>"
       + '<div class="q-opts">' + opts + "</div>"
