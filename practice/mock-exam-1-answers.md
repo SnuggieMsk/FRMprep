@@ -242,16 +242,19 @@ exercise of an American call is never optimal (you would forfeit time
 value and the interest on the strike), so it is worth the *same* as the
 European call — which is why C is wrong. Early exercise of a deep
 in-the-money American put can be optimal.
+[[DIAGRAM]]{"type":"compare","title":"Early exercise (no dividends)","cols":[{"h":"American call","items":["Never optimal early","= European value","Forfeits time value + interest"]},{"h":"American put","items":["Can be optimal early","Deep ITM cases","> European value"]}]}[[/DIAGRAM]]
 
 **Q36 — Book 2, Normal probability** — **B.**
 $$P(R < 0) = P\!\left(Z < \frac{0 - 8}{12}\right) = P(Z < -0.67) = 1 - 0.7486 = 25.1\%$$
 Choice D (74.9%) is the complement error — forgetting to take
 $$1 - N(0.67)$$.
+[[DIAGRAM]]{"type":"steps","title":"P(R<0) via z-score","steps":["z = (0 − 8) / 12 = −0.67","P(Z < −0.67) = 1 − N(0.67)","= 1 − 0.7486","= 25.1%"]}[[/DIAGRAM]]
 
 **Q37 — Book 4, Expected shortfall** — **B.** Worst 5% of 100 scenarios
 = worst 5 losses:
 $$ES = \frac{6.0 + 5.2 + 4.8 + 4.5 + 4.0}{5} = \frac{24.5}{5} = \$4.90 \text{ million}$$
 Choice A is the 95% VaR (the cutoff loss), not the tail average.
+[[DIAGRAM]]{"type":"compare","title":"VaR vs Expected Shortfall","cols":[{"h":"95% VaR","items":["Cutoff (5th-worst) loss","A single threshold"]},{"h":"ES","items":["Average of tail losses","Mean of worst 5","= 4.90 million"]}]}[[/DIAGRAM]]
 
 **Q38 — Book 3, Swap valuation** — **C.** Value the swap as bonds. The
 floating leg just reset, so $$B_{fl} = 100$$. Fixed leg:
@@ -259,10 +262,12 @@ $$B_{fix} = \frac{5}{1.06} + \frac{105}{1.06^2} = 4.717 + 93.450 = 98.167$$
 $$V_{payer} = B_{fl} - B_{fix} = 100 - 98.167 = +\$1.83 \text{ million}$$
 Paying 5% when market rates are 6% is valuable. Choice A is the
 receiver's value — a sign flip.
+[[DIAGRAM]]{"type":"steps","title":"Swap value (payer of fixed)","steps":["Floating leg just reset → B_fl = 100","Discount fixed cash flows → B_fix = 98.167","V_payer = B_fl − B_fix","= +1.83 million (pay 5% vs 6% market)"]}[[/DIAGRAM]]
 
 **Q39 — Book 1, GARP Code of Conduct** — **D.** Candidates may state
 facts ("passed FRM Part I") but may not use the FRM designation or any
 variant of it until certified. There is no "partial" designation (B).
+[[DIAGRAM]]{"type":"highlight","title":"Using the FRM credential","options":["Use FRM after passing Part I","Claim a partial designation","State facts: passed FRM Part I","Use FRM once registered"],"correct":2,"why":"May state factual exam progress, but cannot use the designation until certified."}[[/DIAGRAM]]
 
 **Q40 — Book 4, Bootstrapping discount factors** — **C.**
 $$101 = 5(0.95) + 105\,d_{1.0} \;\Rightarrow\; d_{1.0} = \frac{101 - 4.75}{105} = \frac{96.25}{105} = 0.9167$$
