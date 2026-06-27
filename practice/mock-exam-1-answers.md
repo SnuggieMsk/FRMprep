@@ -119,22 +119,26 @@ subtract the risk-free rate.
 $$95.50 - 95.26 = 24$$ basis points; a long position loses when the quote
 falls: $$24 \times \$25 = \$600$$ lost. Choice A flips the sign (rates
 rose, so the long *loses*); D treats the move as 96 ticks.
+[[DIAGRAM]]{"type":"compare","title":"SOFR futures (price = 100 − rate)","cols":[{"h":"Quote falls","items":["Rates rise","Long position loses","Here: −24 bp × $25 = −$600"]},{"h":"Quote rises","items":["Rates fall","Long position gains"]}]}[[/DIAGRAM]]
 
 **Q16 — Book 2, Volatility estimation (EWMA)** — **B.**
 $$\sigma_n^2 = 0.94(0.015)^2 + 0.06(0.020)^2 = 0.0002115 + 0.0000240 = 0.0002355$$
 $$\sigma_n = \sqrt{0.0002355} = 1.53\%$$
 Choice D (1.97%) averages the volatilities instead of the variances —
 always update in variance space.
+[[DIAGRAM]]{"type":"steps","title":"EWMA variance update","steps":["Work in variance, not volatility","σ²ₙ = λ·σ²ₙ₋₁ + (1−λ)·u²ₙ₋₁","= 0.94(0.015²) + 0.06(0.020²)","σₙ = √0.0002355 = 1.53%"]}[[/DIAGRAM]]
 
 **Q17 — Book 4, Expected loss** — **B.**
 $$EL = EAD \times PD \times LGD = 5{,}000{,}000 \times 0.02 \times (1 - 0.40) = \$60{,}000$$.
 Choice A ($40,000) multiplies by the recovery rate instead of the loss
 given default — the classic recovery/LGD swap.
+[[DIAGRAM]]{"type":"steps","title":"Expected loss","steps":["EL = EAD × PD × LGD","LGD = 1 − recovery = 1 − 0.40 = 0.60","= 5,000,000 × 0.02 × 0.60","EL = 60,000"]}[[/DIAGRAM]]
 
 **Q18 — Book 3, Minimum-variance hedge ratio** — **A.**
 $$h^* = \rho\,\frac{\sigma_S}{\sigma_F} = 0.8 \times \frac{0.0263}{0.0313} = 0.6722$$
 $$N = \frac{0.6722 \times 2{,}000{,}000}{42{,}000} = 32.0 \text{ contracts}$$
 Choice D (48) hedges gallon-for-gallon, ignoring the hedge ratio.
+[[DIAGRAM]]{"type":"steps","title":"Minimum-variance hedge","steps":["h* = ρ·(σS/σF) = 0.6722","Scale by exposure / contract size","N = h*·2,000,000 / 42,000","N ≈ 32 contracts"]}[[/DIAGRAM]]
 
 **Q19 — Book 1, Enterprise risk management** — **D.** ERM's defining
 benefit is the integrated, top-of-the-house view that captures

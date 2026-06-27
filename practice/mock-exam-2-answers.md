@@ -56,12 +56,14 @@
 [[DIAGRAM]]{"type":"highlight","title":"Inducement affecting vendor choice","options":["Accept, under tax limit","Accept, keep confidential","Disclose and manage conflict","Accept if small"],"correct":2,"why":"Identify, disclose, manage conflicts of interest"}[[/DIAGRAM]]
 
 **Q20 — Book 1, Portfolio theory** — **C.** Diversification benefit comes from imperfect correlation. With a correlation of +1, the portfolio standard deviation equals the weighted average of the component standard deviations, so there is no reduction and thus no diversification benefit. With zero correlation the portfolio standard deviation falls below that weighted average, providing a benefit; the perfectly correlated case yields zero benefit, not a larger or negative one.
+[[DIAGRAM]]{"type":"scale","title":"Correlation and diversification","items":["ρ=-1 max benefit","ρ=0 benefit","|ρ=+1 no benefit"],"left":"More diversification","right":"None"}[[/DIAGRAM]]
 
 **Q21 — Book 2, Bayes' theorem** — **B.** Let $D$ = default (0.04), $L$ = prior late payment. $P(L|D)=0.70$, $P(L|\bar D)=0.10$. The total probability of a late payment is $P(L)=0.70(0.04)+0.10(0.96)=0.028+0.096=0.124$. Then $P(D|L)=\frac{0.70\times0.04}{0.124}=\frac{0.028}{0.124}=0.2258\approx0.226$. The trap (C, 0.280) confuses the joint probability $0.028$ scaled incorrectly, and (D, 0.700) is the reverse conditional $P(L|D)$; (A) drops a digit of precision.
 
 **Q22 — Book 2, Variance of a discrete RV** — **A.** $E[X]=-2(0.4)+1(0.4)+4(0.2)=-0.8+0.4+0.8=0.4$. $E[X^2]=4(0.4)+1(0.4)+16(0.2)=1.6+0.4+3.2=5.2$. $\text{Var}(X)=E[X^2]-(E[X])^2=5.2-(0.4)^2=5.2-0.16=5.04$. The trap (B, 5.44) forgets to subtract the squared mean ($5.2$ rounded loosely is not it; 5.44 adds the mean term with the wrong sign); (C, 0.40) reports the mean instead of the variance; (D) miscomputes $E[X^2]$.
 
 **Q23 — Book 2, Skewness and kurtosis** — **B.** Negative skewness ($-0.8$) indicates a longer/fatter left tail (large losses more likely than a symmetric distribution implies). Positive excess kurtosis ($+2.5 > 0$) indicates fatter tails (leptokurtic) than the normal. So the distribution has a longer left tail and fatter tails overall. (A) wrongly assigns the long tail to the right (that would be positive skew); (C) and (D) wrongly call the tails thin—positive excess kurtosis means fat tails.
+[[DIAGRAM]]{"type":"compare","title":"Skew -0.8, excess kurtosis +2.5","cols":[{"h":"Skewness <0","items":["Longer/fatter LEFT tail","Large losses likelier"]},{"h":"Excess kurt >0","items":["Leptokurtic","Fatter tails than normal"]}]}[[/DIAGRAM]]
 
 **Q24 — Book 2, Poisson distribution** — **B.** Poisson pmf: $P(X=k)=\frac{\lambda^k e^{-\lambda}}{k!}$ with $\lambda=3$, $k=2$. $P(X=2)=\frac{3^2 e^{-3}}{2!}=\frac{9\times0.049787}{2}=\frac{0.448}{2}=0.224$. The trap (A, 0.149) is $P(X=1)$; (C, 0.168) is $P(X=4)$; (D) is an arbitrary distractor.
 
@@ -74,6 +76,7 @@
 **Q28 — Book 2, Hypothesis test on a mean** — **A.** $t=\frac{\bar x-\mu_0}{s/\sqrt{n}}=\frac{0.12\%-0}{0.40\%/\sqrt{36}}=\frac{0.12\%}{0.40\%/6}=\frac{0.12\%}{0.0667\%}=1.80$. Since $|1.80| < 1.96$, fail to reject $H_0$ at 5%—the mean is not statistically distinguishable from zero. (B) reaches the wrong decision; (C) miscomputes the SE; (D) mislabels a clear non-rejection as inconclusive.
 
 **Q29 — Book 2, Type I and Type II errors** — **B.** Lowering the significance level from 5% to 1% directly reduces the probability of a Type I error (rejecting a true null). But making the test more conservative raises the Type II error probability (failing to reject a false null), reducing power. There is a trade-off, so (A), (C), and (D) violate the inverse relationship between the two error types at fixed sample size.
+[[DIAGRAM]]{"type":"compare","title":"Lower alpha (5%→1%) trade-off","cols":[{"h":"Type I error","items":["Reject true null","Falls (less likely)"]},{"h":"Type II error","items":["Fail to reject false null","Rises, power falls"]}]}[[/DIAGRAM]]
 
 **Q30 — Book 2, Regression slope t-test** — **B.** Test against a hypothesized value of 1, not 0: $t=\frac{\hat\beta-\beta_0}{SE}=\frac{1.20-1.00}{0.30}=\frac{0.20}{0.30}=0.67$. The trap (A, 4.00) tests against zero ($1.20/0.30$); (D, 3.33) inverts the numerator/scale; (C) is spurious. With $t=0.67$ the slope is not significantly different from 1.
 
@@ -82,6 +85,7 @@
 **Q32 — Book 2, Adjusted R-squared** — **A.** $\bar R^2=1-(1-R^2)\frac{n-1}{n-k-1}=1-(1-0.40)\frac{99}{100-5-1}=1-0.60\times\frac{99}{94}=1-0.60\times1.0532=1-0.6319=0.3681\approx0.366$. (B) ignores the adjustment; (C) and (D) use the wrong degrees-of-freedom counts (e.g., $n-k$ instead of $n-k-1$).
 
 **Q33 — Book 2, Heteroskedasticity** — **B.** Residual variance changing systematically with a regressor is heteroskedasticity. Under heteroskedasticity, OLS coefficient estimates remain unbiased and consistent, but the usual standard errors are biased, making t-tests and F-tests unreliable (use White/robust standard errors). (A) describes multicollinearity wrongly (and OLS stays unbiased there too); (C) mislabels it as serial correlation; (D) wrongly claims the coefficients become biased.
+[[DIAGRAM]]{"type":"compare","title":"Heteroskedasticity effect on OLS","cols":[{"h":"Coefficients","items":["Still unbiased","Still consistent"]},{"h":"Standard errors","items":["Biased","t/F tests unreliable","Use robust SEs"]}]}[[/DIAGRAM]]
 
 **Q34 — Book 2, AR(1) long-run mean** — **C.** For $x_t=c+\phi x_{t-1}+\varepsilon_t$ with $|\phi|<1$, the unconditional mean is $\mu=\frac{c}{1-\phi}=\frac{0.4}{1-0.6}=\frac{0.4}{0.4}=1.00$. The trap (A, 0.40) reports just the intercept; (B, 0.67) and (D, 1.50) use $1/(1+\phi)$ or other wrong denominators.
 

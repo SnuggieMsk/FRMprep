@@ -344,11 +344,15 @@ $$\frac{\Delta P}{P} = -\left[0.5 \times 0.0010 + 1.5 \times 0.0020 + 3.0 \times
 
 The 10-year *rally* offsets nearly all of the short-end selloff — exactly why key-rate analysis matters for non-parallel shifts. Distractor B treats all shifts as if they had the same sign.
 
+[[DIAGRAM]]{"type":"steps","title":"Key-rate contributions (sum them)","steps":["2y: −0.5×10bp = −0.05%","5y: −1.5×20bp = −0.30%","10y: −3.0×(−10bp) = +0.30%","Total ≈ −0.05%"]}[[/DIAGRAM]]
+
 **Q23 — B.** *(Easy.)*
 
 $$p = \frac{e^{rT} - d}{u - d} = \frac{e^{0.04} - 0.9}{1.2 - 0.9} = \frac{1.0408 - 0.9}{0.3} = 0.469$$
 
 Distractor C forgets that risk-neutral probabilities embed the risk-free drift; A uses $$(1-d)/(u-d)$$, i.e., growth of zero.
+
+[[DIAGRAM]]{"type":"steps","title":"Risk-neutral valuation","steps":["Compute p = (e^{rT}−d)/(u−d)","p embeds the risk-free drift, not real-world odds","Value = e^{−rT} × E_p[payoff]"]}[[/DIAGRAM]]
 
 **Q24 — B.** *(Hard.)*
 
@@ -359,6 +363,8 @@ Terminal nodes: $$S_{uu} = 121$$ (payoff 21); $$S_{ud} = 99$$ and $$S_{dd} = 81$
 $$C = e^{-0.04} \times p^2 \times 21 = 0.9608 \times 0.3612 \times 21 = \$7.29$$
 
 Distractor D skips discounting; C discounts only one period; A uses $$p = 0.5$$.
+
+[[DIAGRAM]]{"type":"timeline","title":"Two-step binomial terminal payoffs","events":["S₀=100","up→110 / down→90","S_uu=121 (payoff 21)","S_ud=99, S_dd=81 (payoff 0)","C = e^{−0.04}×p²×21 = $7.29"]}[[/DIAGRAM]]
 
 **Q25 — C.** *(Medium.)*
 

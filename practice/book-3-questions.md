@@ -274,8 +274,10 @@ D (48) skips $$h^*$$ entirely; C (38) forgets the correlation.
 $$X = \frac{200{,}000 \times 0.004}{1 - (1.004)^{-360}} = \frac{800}{1 - 0.23761} = \frac{800}{0.76239} = \$1{,}049.33$$
 
 First-month interest = $$0.004 \times 200{,}000 = \$800$$; principal = $$1{,}049.33 - 800 = \textbf{\$249.33}$$. C is the interest portion; D is the full payment; B assumes straight-line amortization.
+[[DIAGRAM]]{"type":"steps","title":"First-month principal","steps":["Monthly payment ≈ $1,049.33","Interest = 0.004 × 200,000 = $800","Principal = payment − interest","1,049.33 − 800 = $249.33"]}[[/DIAGRAM]]
 
 **Q27 — C.** *(Hard.)* Corporate bonds use **30/360**: March 1 → July 3 counts $$4 \times 30 + 2 = 122$$ days of a 180-day period. AI = $$3.5 \times 122/180 = \textbf{\$2.372}$$. B ($$3.5 \times 124/184 = 2.359$$) applies the Treasury Actual/Actual convention — the intended trap; D mixes actual days with a 360 denominator.
+[[DIAGRAM]]{"type":"compare","title":"Day-count conventions","cols":[{"h":"Corporate 30/360","items":["122 / 180 days","3.5 × 122/180","AI = $2.372"]},{"h":"Treasury Act/Act","items":["124 / 184 actual days","3.5 × 124/184","AI = $2.359 (trap)"]}]}[[/DIAGRAM]]
 
 **Q28 — C.** *(Easy.)* The quote rose 26 basis points; a long gains $25 per bp per contract: $$26 \times 25 \times 10 = \textbf{\$6,500}$$. A long Eurodollar/SOFR position profits when rates **fall** (quote rises).
 
