@@ -396,6 +396,7 @@ error the Sortino ratio exists to avoid.
 **Q60 — Book 4, Operational risk** — **C.** With independent frequency
 and severity, expected annual loss
 $$= \lambda \times E[\text{severity}] = 4 \times \$50{,}000 = \$200{,}000$$.
+[[DIAGRAM]]{"type":"tree","title":"Expected annual op-risk loss","root":"EL = frequency × severity","children":["λ = 4 events/yr","E[severity] = 50,000","Independent → multiply","EL = 200,000"]}[[/DIAGRAM]]
 
 **Q61 — Book 3, Cheapest-to-deliver** — **A.** Delivery cost = quoted
 price − futures × CF.
@@ -403,96 +404,115 @@ Bond X: $$98.50 - 96.00 \times 1.02 = 98.50 - 97.92 = 0.58$$.
 Bond Y: $$121.80 - 96.00 \times 1.26 = 121.80 - 120.96 = 0.84$$.
 X is cheapest. Choice B compares raw quoted prices — the conversion
 factor exists precisely to make that comparison invalid.
+[[DIAGRAM]]{"type":"compare","title":"CTD = min(quoted − futures×CF)","cols":[{"h":"Bond X","items":["98.50 − 96×1.02","cost = 0.58","cheapest"]},{"h":"Bond Y","items":["121.80 − 96×1.26","cost = 0.84"]}]}[[/DIAGRAM]]
 
 **Q62 — Book 2, Regression inference** — **A.**
 $$t = 0.85/0.34 = 2.5$$; since $$1.96 < 2.5 < 2.576$$, significant at 5%
 but not at 1%. Significance needs only the coefficient and its standard
 error, not $$R^2$$ (D).
+[[DIAGRAM]]{"type":"scale","title":"Coefficient t = 0.85/0.34 = 2.5","items":["1.96 (5%)","|t = 2.5","2.576 (1%)"],"left":"significant at 5%","right":"not at 1%"}[[/DIAGRAM]]
 
 **Q63 — Book 4, Key rate durations** — **A.** A parallel shift moves
 every key rate by the same amount, so the key rate durations sum
 (approximately) to the effective duration. B describes a parallel-shift
 measure, not key rates; a zero-coupon bond's exposure is concentrated at
 its own maturity (so D is wrong).
+[[DIAGRAM]]{"type":"tree","title":"Key rate durations","root":"Σ key rate durations","children":["Each isolates one maturity shift","Parallel shift moves all rates equally","Sum ≈ effective (parallel) duration"]}[[/DIAGRAM]]
 
 **Q64 — Book 1, CML vs. SML** — **D.** The CML prices only efficient
 (fully diversified) portfolios and uses total risk $$\sigma$$; the SML
 prices *any* asset using beta, because only systematic risk is rewarded.
 A swaps the two.
+[[DIAGRAM]]{"type":"compare","title":"CML vs SML","cols":[{"h":"CML","items":["Efficient portfolios only","x-axis: total risk σ","Diversified holdings"]},{"h":"SML","items":["Any asset","x-axis: beta","Only systematic risk priced"]}]}[[/DIAGRAM]]
 
 **Q65 — Book 3, Mortgage prepayments** — **C.**
 $$SMM = 1 - (1 - CPR)^{1/12} = 1 - 0.94^{1/12} = 0.514\%$$
 Choice B (0.500%) is the simple-division error $$6\%/12$$ — the
 relationship is geometric, not linear.
+[[DIAGRAM]]{"type":"steps","title":"CPR → SMM (geometric)","steps":["Annual survival = 1 − CPR = 0.94","Monthly survival = 0.94^(1/12)","SMM = 1 − 0.94^(1/12)","= 0.514% (not 6%/12)"]}[[/DIAGRAM]]
 
 **Q66 — Book 2, Stationarity** — **D.** An AR(1) is covariance
 stationary iff $$\lvert\phi\rvert < 1$$. With $$\phi = 1$$ (B) the
 process is a random walk — the unit-root case.
+[[DIAGRAM]]{"type":"scale","title":"AR(1) coefficient φ","items":["|φ| < 1 (stationary)","|φ = 1 (random walk)","|φ| > 1 (explosive)"],"left":"covariance stationary","right":"non-stationary"}[[/DIAGRAM]]
 
 **Q67 — Book 4, Credit spreads and PD** — **C.** Spread
 $$\approx PD \times LGD$$, so
 $$PD = \frac{0.02}{1 - 0.40} = \frac{0.02}{0.60} = 3.33\%$$
 Choice A (1.20%) multiplies by LGD instead of dividing; D divides by the
 recovery rate instead of LGD.
+[[DIAGRAM]]{"type":"steps","title":"PD from spread","steps":["Spread ≈ PD × LGD","LGD = 1 − recovery = 0.60","PD = spread / LGD = 0.02 / 0.60","PD = 3.33%"]}[[/DIAGRAM]]
 
 **Q68 — Book 3, Valuing a forward position** — **B.**
 $$V = (F_0 - K)\,e^{-rT} = (53 - 50)\,e^{-0.04 \times 0.5} = 3\,e^{-0.02} = \$2.94$$
 Choice C ($3.00) skips the discounting; D ($3.06) compounds instead —
 a sign flip in the exponent.
+[[DIAGRAM]]{"type":"steps","title":"Value of a long forward","steps":["V = (F0 − K)·e^(−rT)","Gain at maturity = 53 − 50 = 3","Discount back: × e^(−0.04×0.5)","V = 2.94"]}[[/DIAGRAM]]
 
 **Q69 — Book 1, Rationales for corporate hedging** — **D.** Shareholders
 *can* diversify firm-specific risk cheaply on their own, so D is not a
 valid rationale — that is exactly the Modigliani-Miller objection.
 Distress costs (A), convex taxes (B), and protecting investment plans
 (C) are the standard valid reasons.
+[[DIAGRAM]]{"type":"highlight","title":"NOT a valid hedging rationale","options":["Reduce distress costs","Smooth convex taxes","Protect investment plans","Diversify firm-specific risk for holders"],"correct":3,"why":"Shareholders can diversify cheaply themselves (Modigliani-Miller)."}[[/DIAGRAM]]
 
 **Q70 — Book 4, Delta-gamma approximation** — **C.**
 $$\Delta c \approx \Delta \cdot \Delta S + \tfrac{1}{2}\Gamma (\Delta S)^2 = 0.60(2) + \tfrac{1}{2}(0.05)(4) = 1.20 + 0.10 = \$1.30$$
 Choice B is delta-only; D ($1.40) forgets the $$\tfrac{1}{2}$$ on the
 gamma term.
+[[DIAGRAM]]{"type":"steps","title":"Delta-gamma approximation","steps":["Δc ≈ Δ·ΔS + ½·Γ·(ΔS)²","Delta term: 0.60 × 2 = 1.20","Gamma term: ½ × 0.05 × 4 = 0.10","Δc = 1.30"]}[[/DIAGRAM]]
 
 **Q71 — Book 3, Hedge fund fees** — **B.** Management fee 2% leaves 16%;
 incentive fee $$0.20 \times 16\% = 3.2\%$$. Net
 $$= 16\% - 3.2\% = 12.8\%$$. Choice A (12.4%) charges the incentive fee
 on the gross 18% — read whether the incentive applies net of the
 management fee.
+[[DIAGRAM]]{"type":"steps","title":"Net return after 2-and-20","steps":["Gross return 18% − 2% mgmt = 16%","Incentive = 20% × 16% (net) = 3.2%","Net = 16% − 3.2%","= 12.8%"]}[[/DIAGRAM]]
 
 **Q72 — Book 2, Correlation** — **B.**
 $$\rho = \frac{0.0018}{0.05 \times 0.06} = \frac{0.0018}{0.0030} = 0.60$$.
 Choice D (1.67) inverts the ratio — impossible, since
 $$\lvert\rho\rvert \le 1$$.
+[[DIAGRAM]]{"type":"tree","title":"Correlation","root":"ρ = Cov / (σX·σY)","children":["Cov = 0.0018","σX·σY = 0.05×0.06 = 0.0030","ρ = 0.60 (must be ≤ 1)"]}[[/DIAGRAM]]
 
 **Q73 — Book 4, Reverse stress testing** — **A.** Reverse stress tests
 start from the outcome (e.g., insolvency) and search backward for the
 scenarios that produce it, uncovering vulnerabilities conventional
 forward-looking scenarios may miss.
+[[DIAGRAM]]{"type":"compare","title":"Stress test direction","cols":[{"h":"Forward stress","items":["Scenario → outcome","Pick shocks first"]},{"h":"Reverse stress","items":["Outcome → scenario","Start at insolvency","Find what causes it"]}]}[[/DIAGRAM]]
 
 **Q74 — Book 1, The 2007–2009 crisis** — **D.** Under
 originate-to-distribute, credit risk left the originator's balance
 sheet, gutting incentives to screen and monitor borrowers — the moral
 hazard at the heart of the subprime collapse. A states the opposite.
+[[DIAGRAM]]{"type":"steps","title":"Originate-to-distribute moral hazard","steps":["Originator sells loans on","Credit risk leaves the balance sheet","Weak incentive to screen/monitor","Lax underwriting → subprime collapse"]}[[/DIAGRAM]]
 
 **Q75 — Book 3, Barrier options** — **A.** In-out parity: for the same
 barrier, strike, and expiry, knock-in + knock-out = vanilla, because
 exactly one of the two pays off along any path.
+[[DIAGRAM]]{"type":"tree","title":"In-out barrier parity","root":"Knock-in + Knock-out = Vanilla","children":["Same strike, barrier, expiry","Any path hits OR misses barrier","Exactly one of the pair pays off"]}[[/DIAGRAM]]
 
 **Q76 — Book 2, Monte Carlo standard error** — **B.** The standard
 error scales as $$1/\sqrt{n}$$, so halving it requires
 $$4\times$$ the trials. Choice A treats the error as $$1/n$$.
+[[DIAGRAM]]{"type":"steps","title":"Monte Carlo standard error","steps":["SE ∝ 1/√n","Halve SE → need √n to double","So n must be 4×","Quadruple the trials"]}[[/DIAGRAM]]
 
 **Q77 — Book 4, Gamma** — **A.** A delta-neutral, long-gamma position
 gains from large moves in either direction (the P&L is locally
 $$\tfrac{1}{2}\Gamma (\Delta S)^2 > 0$$), at the cost of theta decay if
 the underlying sits still. D has the volatility comparison backward.
+[[DIAGRAM]]{"type":"compare","title":"Delta-neutral long gamma","cols":[{"h":"Large move (either way)","items":["P&L ≈ ½Γ(ΔS)² > 0","Gains"]},{"h":"Underlying still","items":["Theta decay","Loses (cost of gamma)"]}]}[[/DIAGRAM]]
 
 **Q78 — Book 3, Cost of carry (gold)** — **C.** Storage costs *add* to
 the carry:
 $$F_0 = S_0 e^{(r + u)T} = 2{,}400\,e^{(0.05 + 0.005)(1)} = 2{,}400\,e^{0.055} = \$2{,}535.70$$
 Choice A ($2,510.47) subtracts storage costs — a sign flip; B ignores
 them.
+[[DIAGRAM]]{"type":"steps","title":"Forward with storage cost","steps":["F0 = S0·e^((r+u)T)","Storage u ADDS to carry: r+u = 0.055","2,400 × e^(0.055)","F0 = 2,535.70"]}[[/DIAGRAM]]
 
 **Q79 — Book 1, Information ratio** — **B.**
 $$IR = \frac{\text{active return}}{\text{tracking error}} = \frac{2\%}{4\%} = 0.50$$.
+[[DIAGRAM]]{"type":"tree","title":"Information ratio","root":"IR = active return / tracking error","children":["Active return = 2% (vs benchmark)","Tracking error = 4% (active risk)","IR = 0.50"]}[[/DIAGRAM]]
 
 **Q80 — Book 3, DV01-based hedging** — **B.**
 $$N = \frac{DV01_P}{DV01_F} = \frac{9{,}000}{75} = 120 \text{ contracts short}$$.
@@ -502,98 +522,118 @@ A and C are factor-of-ten slips.
 $$\text{Invoice} = F \times CF + AI = 95.00 \times 1.10 + 1.20 = 104.50 + 1.20 = \$105.70$$
 Choice B ($104.50) forgets accrued interest; A divides by the conversion
 factor instead of multiplying.
+[[DIAGRAM]]{"type":"steps","title":"Futures invoice price","steps":["Invoice = futures × CF + accrued interest","Multiply by CF: 95.00 × 1.10 = 104.50","Add AI: + 1.20","Invoice = 105.70"]}[[/DIAGRAM]]
 
 **Q82 — Book 2, Bootstrap simulation** — **D.** The bootstrap resamples
 the observed data with replacement, so no parametric distribution (or
 covariance matrix) need be specified — A and B describe parametric
 Monte Carlo. Its limitation is the mirror of C: it cannot generate
 outcomes outside the historical sample.
+[[DIAGRAM]]{"type":"compare","title":"Bootstrap vs parametric MC","cols":[{"h":"Bootstrap","items":["Resamples real data","No distribution assumed","Cannot exceed sample range"]},{"h":"Parametric MC","items":["Assumes distribution","Needs covariance matrix","Can generate new tails"]}]}[[/DIAGRAM]]
 
 **Q83 — Book 4, Theta** — **C.** Long options almost always bleed value
 as time passes (theta < 0), and the decay accelerates for at-the-money
 options near expiry. For long options theta and gamma have *opposite*
 signs (D), which is the gamma-theta trade-off.
+[[DIAGRAM]]{"type":"compare","title":"Long option: gamma vs theta","cols":[{"h":"Gamma","items":["Positive","Gains from moves"]},{"h":"Theta","items":["Negative (decays)","Worst for ATM near expiry"]}]}[[/DIAGRAM]]
 
 **Q84 — Book 1, Treynor ratio** — **D.** Treynor divides excess return
 by beta, so it is the right measure when the portfolio is a small slice
 of a diversified whole and idiosyncratic risk washes out. For total
 wealth (A) use Sharpe.
+[[DIAGRAM]]{"type":"compare","title":"Treynor vs Sharpe","cols":[{"h":"Treynor (÷ beta)","items":["Portfolio is one slice","Idiosyncratic risk diversified away","Systematic risk matters"]},{"h":"Sharpe (÷ σ)","items":["Portfolio is total wealth","All risk matters"]}]}[[/DIAGRAM]]
 
 **Q85 — Book 4, Credit ratings** — **B.** Investment grade extends down
 to BBB− (Moody's Baa3); BB+ (Ba1) is the top *speculative* grade.
+[[DIAGRAM]]{"type":"scale","title":"Investment grade boundary","items":["BBB− / Baa3 (lowest IG)","|","BB+ / Ba1 (top speculative)"],"left":"investment grade","right":"speculative / junk"}[[/DIAGRAM]]
 
 **Q86 — Book 2, LASSO vs. ridge** — **A.** The LASSO's L1 penalty can
 set coefficients exactly to zero, performing variable selection; ridge's
 L2 penalty (described by C) only shrinks them toward zero.
+[[DIAGRAM]]{"type":"compare","title":"LASSO vs Ridge","cols":[{"h":"LASSO (L1)","items":["Can set coeffs to 0","Performs variable selection"]},{"h":"Ridge (L2)","items":["Shrinks toward 0","Keeps all variables"]}]}[[/DIAGRAM]]
 
 **Q87 — Book 4, Stress scenario design** — **D.** Scenarios must be
 severe but plausible, with coherent joint movements across risk factors.
 Single-factor shocks (C) are sensitivity tests, not scenarios.
+[[DIAGRAM]]{"type":"compare","title":"Scenario vs sensitivity test","cols":[{"h":"Stress scenario","items":["Many factors jointly","Severe but plausible","Coherent co-movements"]},{"h":"Sensitivity test","items":["Single-factor shock","One risk at a time"]}]}[[/DIAGRAM]]
 
 **Q88 — Book 1, Risk governance** — **A.** The CRO needs independence:
 direct access to the CEO/board risk committee and pay decoupled from the
 P&L of the desks being policed. B and C recreate the conflicts that
 sank Barings-style controls.
+[[DIAGRAM]]{"type":"highlight","title":"Sound CRO governance","options":["CRO reports to head of trading","CRO pay tied to desk P&L","Direct access to board, pay decoupled from desks","CRO also runs front office"],"correct":2,"why":"Independence requires board access and pay decoupled from policed P&L."}[[/DIAGRAM]]
 
 **Q89 — Book 3, Currency swaps** — **A.** Because the legs are in
 different currencies, principals are exchanged at initiation and
 re-exchanged at maturity — unlike an interest rate swap, where notional
 is never exchanged. This makes counterparty exposure larger, not zero
 (D).
+[[DIAGRAM]]{"type":"compare","title":"Currency swap vs IRS","cols":[{"h":"Currency swap","items":["Different currencies","Principals exchanged at start & end","Larger counterparty exposure"]},{"h":"Interest rate swap","items":["Same currency","Notional never exchanged"]}]}[[/DIAGRAM]]
 
 **Q90 — Book 2, Independence** — **B.**
 $$P(A)P(B) = 0.4 \times 0.5 = 0.20 = P(A \cap B)$$, equivalently
 $$P(A \mid B) = 0.2/0.5 = 0.4 = P(A)$$: independent. Choice C confuses
 dependence with overlap; mutually exclusive (A) would require
 $$P(A \cap B) = 0$$.
+[[DIAGRAM]]{"type":"steps","title":"Test for independence","steps":["Check if P(A∩B) = P(A)·P(B)","0.4 × 0.5 = 0.20","Given P(A∩B) = 0.20 ✓","Independent (not mutually exclusive)"]}[[/DIAGRAM]]
 
 **Q91 — Book 4, Spot, forward, and par rates** — **A.** With an
 upward-sloping spot curve, forwards sit above spots (they are the
 marginal rates pulling the average up), and par yields sit below spots
 (early coupons are discounted at lower rates): forward > spot > par.
+[[DIAGRAM]]{"type":"scale","title":"Upward-sloping curve ordering","items":["par yields","|spot rates","forward rates"],"left":"lowest","right":"highest"}[[/DIAGRAM]]
 
 **Q92 — Book 1, APT** — **D.** APT rests on no-arbitrage in a
 multifactor return model; it needs neither the market portfolio nor the
 strong investor assumptions of the CAPM (A, C), and it allows many
 factors (B).
+[[DIAGRAM]]{"type":"compare","title":"APT vs CAPM","cols":[{"h":"APT","items":["No-arbitrage basis","Many factors allowed","No market portfolio needed"]},{"h":"CAPM","items":["Single factor (market)","Needs market portfolio","Strong investor assumptions"]}]}[[/DIAGRAM]]
 
 **Q93 — Book 3, Central clearing** — **D.** Novation substitutes the CCP
 into each trade, and multilateral netting compresses bilateral
 exposures — but credit risk is transformed and concentrated in the CCP,
 not eliminated (A). Initial margin is required, not removed (C).
+[[DIAGRAM]]{"type":"steps","title":"Central clearing (CCP)","steps":["Novation: CCP becomes counterparty to each side","Multilateral netting compresses exposures","Initial margin still required","Credit risk concentrated in CCP, not eliminated"]}[[/DIAGRAM]]
 
 **Q94 — Book 2, Kurtosis** — **A.** Kurtosis of 4.8 > 3 means excess
 kurtosis of 1.8: fatter tails than the normal, so extreme outcomes are
 more likely. Kurtosis says nothing about skew (C).
+[[DIAGRAM]]{"type":"steps","title":"Interpreting kurtosis","steps":["Normal kurtosis = 3","Here 4.8 → excess = 1.8","Leptokurtic: fatter tails","Extreme outcomes more likely (says nothing on skew)"]}[[/DIAGRAM]]
 
 **Q95 — Book 4, Sovereign risk** — **D.** A government can tax and print
 its own currency but must *earn* foreign currency, so foreign-currency
 ratings are typically at or below local-currency ratings.
+[[DIAGRAM]]{"type":"compare","title":"Sovereign ratings by currency","cols":[{"h":"Local currency","items":["Can tax and print","Usually higher rating"]},{"h":"Foreign currency","items":["Must EARN FX","Rating at or below local"]}]}[[/DIAGRAM]]
 
 **Q96 — Book 1, GARP Code of Conduct** — **C.** The Code requires full
 and fair disclosure of actual or potential conflicts to affected
 parties; it does not mandate automatic resignation (A) or reporting to
 GARP (D).
+[[DIAGRAM]]{"type":"highlight","title":"Handling a conflict of interest","options":["Resign immediately","Ignore if immaterial","Full, fair disclosure to affected parties","Report it to GARP"],"correct":2,"why":"The Code requires disclosing actual/potential conflicts, not resignation or GARP reporting."}[[/DIAGRAM]]
 
 **Q97 — Book 3, Trading book vs. banking book** — **A.** Trading book:
 held to trade, marked to market daily. Banking book: loans and
 held-to-maturity assets on accrual accounting. Both attract capital
 (C), and regulators restrict reclassification precisely to prevent D.
+[[DIAGRAM]]{"type":"compare","title":"Trading book vs banking book","cols":[{"h":"Trading book","items":["Held to trade","Marked to market daily","Fair-value accounting"]},{"h":"Banking book","items":["Loans, held-to-maturity","Accrual accounting"]}]}[[/DIAGRAM]]
 
 **Q98 — Book 3, Dividends and option prices** — **B.** A larger dividend
 lowers the expected ex-dividend stock price, which hurts calls and helps
 puts. (Holders of *European* options are not protected against
 dividend announcements.)
+[[DIAGRAM]]{"type":"compare","title":"Larger dividend → ex-div price falls","cols":[{"h":"Calls","items":["Value falls","Hurt by dividend"]},{"h":"Puts","items":["Value rises","Helped by dividend"]}]}[[/DIAGRAM]]
 
 **Q99 — Book 4, EL vs. UL** — **D.** Expected loss is a predictable cost
 covered by loan pricing and provisions; unexpected loss — the
 volatility around EL — is what economic capital is held against.
 Choice B reverses the pairing.
+[[DIAGRAM]]{"type":"compare","title":"Expected vs Unexpected Loss","cols":[{"h":"Expected loss","items":["Predictable cost","Covered by pricing & provisions"]},{"h":"Unexpected loss","items":["Volatility around EL","Held against by economic capital"]}]}[[/DIAGRAM]]
 
 **Q100 — Book 4, Implied volatility** — **A.** Implied volatility is the
 value of $$\sigma$$ that equates the BSM model price to the observed
 market price — it is backed out of prices, not estimated from
 historical returns (B) or a GARCH model (D).
+[[DIAGRAM]]{"type":"compare","title":"Implied vs historical volatility","cols":[{"h":"Implied vol","items":["Backed out of market price","Set BSM price = market price","Forward-looking"]},{"h":"Historical/GARCH","items":["Estimated from past returns","Backward-looking"]}]}[[/DIAGRAM]]
 
 ## Scoring
 
