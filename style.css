@@ -550,3 +550,42 @@ body{
 .xl-titlebar{background:#13315f}
 .xl-cpt{background:#13315f}.xl-cpt:hover{background:#0d2243}
 .xl-formula{color:#1d54c4}[data-theme="dark"] .xl-formula{color:#9bc1ff}
+
+/* ===================================================================
+   VISUAL AIDS (viz.js) — charts & concept diagrams in answers
+   =================================================================== */
+.q-viz{margin:14px 0 2px;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+.q-viz-title{font-family:"Inter",sans-serif;font-weight:800;font-size:.82rem;color:var(--brand);margin-bottom:8px;letter-spacing:.02em}
+.concept-banner{margin:0 0 18px;padding:12px 14px;border:1px solid var(--border);border-left:4px solid var(--gold,#c9a227);border-radius:12px;background:var(--surface);box-shadow:var(--shadow)}
+.frm-fig{margin:10px 0 0;text-align:center}
+.frm-fig+.frm-fig{margin-top:14px;padding-top:14px;border-top:1px dashed var(--border)}
+.frm-svg{display:block;width:100%;max-width:380px;height:auto;margin:0 auto;background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:6px}
+.frm-fig figcaption{font-size:.86rem;line-height:1.55;color:var(--text-soft);margin-top:8px;text-align:left}
+.frm-fig figcaption b{color:var(--text)}
+
+/* numeric answer-choice bars */
+.frm-bars{display:flex;flex-direction:column;gap:7px;max-width:460px;margin:0 auto}
+.frm-bar-row{display:grid;grid-template-columns:22px 1fr auto;align-items:center;gap:9px;font-size:.9rem}
+.frm-bar-key{width:22px;height:22px;border-radius:6px;background:var(--surface-2);border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;color:var(--text-soft)}
+.frm-bar-track{height:14px;background:var(--surface-2);border-radius:99px;overflow:hidden}
+.frm-bar-fill{display:block;height:100%;border-radius:99px;background:var(--text-soft);opacity:.5}
+.frm-bar-val{font-variant-numeric:tabular-nums;color:var(--text-soft);white-space:nowrap}
+.frm-bar-val b{margin-left:2px}
+.frm-bar-row.ok .frm-bar-key{background:var(--accent);color:#fff;border-color:var(--accent)}
+.frm-bar-row.ok .frm-bar-fill{background:var(--accent);opacity:1}
+.frm-bar-row.ok .frm-bar-val{color:var(--accent);font-weight:700}
+.frm-bar-row.no .frm-bar-key{background:var(--danger);color:#fff;border-color:var(--danger)}
+.frm-bar-row.no .frm-bar-fill{background:var(--danger);opacity:.9}
+.frm-bar-row.no .frm-bar-val{color:var(--danger)}
+
+/* fallback answer-map chips */
+.frm-chips-v{display:flex;flex-direction:column;gap:7px;max-width:460px;margin:0 auto}
+.frm-chip-row{display:grid;grid-template-columns:22px 1fr 22px;align-items:center;gap:9px;padding:7px 10px;border:1px solid var(--border);border-radius:9px;background:var(--surface-2);font-size:.9rem}
+.frm-chip-key{width:22px;height:22px;border-radius:6px;background:var(--surface);border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;color:var(--text-soft)}
+.frm-chip-mark{font-weight:800;text-align:center}
+.frm-chip-row.ok{border-color:var(--accent);background:rgba(22,163,74,.12)}
+.frm-chip-row.ok .frm-chip-key{background:var(--accent);color:#fff;border-color:var(--accent)}
+.frm-chip-row.ok .frm-chip-mark{color:var(--accent)}
+.frm-chip-row.no{border-color:var(--danger);background:rgba(220,38,38,.10)}
+.frm-chip-row.no .frm-chip-key{background:var(--danger);color:#fff;border-color:var(--danger)}
+.frm-chip-row.no .frm-chip-mark{color:var(--danger)}

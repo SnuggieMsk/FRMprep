@@ -512,6 +512,7 @@
       labState.streak = 0;
       fb.innerHTML = "<div class='lab-msg no'>❌ Not quite — the correct answer is <b>" + esc(p.options[p.correctIndex]) + "</b>. Study the steps below.</div>";
     }
+    labState.lastChoice = choice;
     syncLabScores();
     showLabSolution();
   }
@@ -521,6 +522,11 @@
     var d = document.createElement("div");
     d.className = "lab-sol markdown-body";
     d.innerHTML = md(labState.q.sol);
+    if (window.FRMViz) {
+      var chart = window.FRMViz.numericChartHTML(labState.q.options, labState.q.correctIndex,
+        labState.lastChoice == null ? -1 : labState.lastChoice);
+      if (chart) d.innerHTML += '<div class="q-viz">' + chart + "</div>";
+    }
     fb.appendChild(d);
   }
   var LAB_CHEATSHEET = [
@@ -644,7 +650,7 @@
   }
   function renderNotes(num) {
     var c = chapterByNum(num);
-    contentEl.innerHTML = viewTabs(num, "notes") + '<div class="markdown-body">' + md(c.notes) + "</div>";
+    contentEl.innerHTML = viewTabs(num, "notes") + conceptBanner(num) + '<div class="markdown-body">' + md(c.notes) + "</div>";
     bindMarkRead(num, "notes");
   }
   // ----- Interactive quiz: parse markdown question bank into structured MCQs -----
@@ -702,6 +708,31 @@
   }
   function correctMap() { var map = {}; quizCtx.parsed.tiers.forEach(function (t) { t.questions.forEach(function (q) { map[q.id] = q.correct; }); }); return map; }
   function saveQuiz() { try { localStorage.setItem(quizCtx.qkey, JSON.stringify(quizCtx.saved)); } catch (e) {} }
+  // chapter -> a representative concept diagram (for the banner at the top of Notes/Quiz)
+  var CH_CONCEPT = {
+    "101": "lossDist", "105": "sml", "106": "sml", "107": "cml",
+    "203": "fatTails", "205": "normalTest", "206": "normalTest", "207": "regression",
+    "208": "regression", "209": "regression", "212": "ewma",
+    "308": "hedgeBasis", "311": "hedgeBasis", "312": "callPayoff", "313": "parity",
+    "314": "straddle", "316": "yieldCurve", "318": "psa",
+    "401": "normalVaR", "402": "normalVaR", "403": "ewma", "404": "lossDist", "406": "lossDist",
+    "409": "yieldCurve", "410": "yieldCurve", "411": "bondConvexity", "412": "bondConvexity",
+    "413": "curveShift", "414": "binomial2", "415": "callPayoff", "416": "callPayoff"
+  };
+  function conceptBanner(num) {
+    var key = CH_CONCEPT[num];
+    if (!key || !window.FRMViz || !window.FRMViz.has(key)) return "";
+    return '<div class="concept-banner"><div class="q-viz-title">📊 Visualize this topic</div>' + window.FRMViz.conceptSVG(key) + "</div>";
+  }
+  function injectViz(card, correct, chosen) {
+    if (!window.FRMViz) return;
+    var expl = card.querySelector(".q-expl");
+    if (!expl || expl.querySelector(".q-viz")) return;
+    var opts = Array.prototype.map.call(card.querySelectorAll(".q-otext"), function (o) { return o.textContent.trim(); });
+    var stem = (card.querySelector(".q-text") || {}).textContent || "";
+    var html = window.FRMViz.buildQuestionViz(opts, correct, chosen, stem + " " + (expl.textContent || ""));
+    if (html) expl.insertAdjacentHTML("beforeend", html);
+  }
   function applyAnswer(card, chosen, restore) {
     card.classList.add("answered");
     var correct = parseInt(card.dataset.correct, 10);
@@ -712,6 +743,7 @@
       if (idx === chosen) o.classList.add("chosen");
     });
     card.querySelector(".q-expl").hidden = false;
+    injectViz(card, correct, chosen);
     if (!restore) {
       var fl = chosen === correct ? "flash-ok" : "flash-no";
       card.classList.add(fl); setTimeout(function () { card.classList.remove(fl); }, 700);
@@ -776,7 +808,7 @@
     var tools = '<div class="quiz-tools"><button id="qShuffle">🔀 Shuffle</button><button id="qReset">↺ Reset answers</button><button id="qReading">📄 Reading mode</button><button id="toTop">↑ Top</button></div>';
     var tip = '<div class="q-tip">💡 Tap an option to lock your answer — you will instantly see the right choice and a full explanation. FRM Part I has <b>no negative marking</b>, so never leave a question blank.</div>';
     var caseHtml = parsed.caseMd ? '<div class="q-case markdown-body"><div class="q-case-tag">🧩 Worked Case Study — read & learn the method</div>' + md(parsed.caseMd.replace(/^##\s*🧩[^\n]*\n/, "")) + "</div>" : "";
-    contentEl.innerHTML = viewTabs(num, "questions")
+    contentEl.innerHTML = viewTabs(num, "questions") + conceptBanner(num)
       + '<div id="quizInteractive">' + chips + bar + tip + tools + '<div id="qList">' + renderTierCards(parsed) + "</div>" + caseHtml + "</div>";
     bindMarkRead(num, "questions");
 
