@@ -493,15 +493,15 @@
   // labeled timeline (self-contained coordinates; alternates labels above/below)
   DIA.timeline = function (s) {
     var pts = (s.points || []).slice(0, 6), n = pts.length || 1, out = "";
-    function xp(i) { return n === 1 ? 170 : (32 + (276 * i) / (n - 1)); }
-    out += '<line x1="18" y1="78" x2="322" y2="78" stroke="var(--border)" stroke-width="2"/>';
+    function xp(i) { return n === 1 ? 170 : (50 + (240 * i) / (n - 1)); }
+    out += '<line x1="22" y1="78" x2="318" y2="78" stroke="var(--border)" stroke-width="2"/>';
     pts.forEach(function (p, i) {
       var x = xp(i), up = i % 2 === 0, by = up ? 34 : 100;
       out += '<line x1="' + x + '" y1="78" x2="' + x + '" y2="' + (up ? 62 : 94) + '" stroke="var(--border)" stroke-width="1"/>';
       out += '<circle cx="' + x + '" cy="78" r="4" fill="var(--brand)"/>';
       out += '<text x="' + x + '" y="' + by + '" text-anchor="middle" font-family="Inter,sans-serif">'
         + '<tspan x="' + x + '" fill="var(--brand)" font-size="10" font-weight="700">' + esc(p.t || "") + "</tspan>"
-        + '<tspan x="' + x + '" dy="12" fill="var(--text-soft)" font-size="8.5">' + esc((p.l || "").slice(0, 18)) + "</tspan></text>";
+        + '<tspan x="' + x + '" dy="12" fill="var(--text-soft)" font-size="8.5">' + esc((p.l || "").slice(0, 16)) + "</tspan></text>";
     });
     return figd('<svg class="frm-svg" viewBox="0 0 340 150" preserveAspectRatio="xMidYMid meet">' + out + "</svg>", s.note, s.title);
   };
