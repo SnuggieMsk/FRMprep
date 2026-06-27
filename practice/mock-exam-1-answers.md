@@ -144,20 +144,24 @@ Choice D (48) hedges gallon-for-gallon, ignoring the hedge ratio.
 benefit is the integrated, top-of-the-house view that captures
 cross-risk interactions and diversification. It does not guarantee
 losses stay within appetite (A) or replace specialist functions (B).
+[[DIAGRAM]]{"type":"highlight","title":"Defining benefit of ERM","options":["Guarantees losses within appetite","Replaces specialist risk units","Integrated top-of-house view of all risks","Eliminates the need for capital"],"correct":2,"why":"ERM captures cross-risk interactions and diversification firmwide."}[[/DIAGRAM]]
 
 **Q20 — Book 4, Historical simulation VaR** — **B.** At 99% with 500
 scenarios, $$1\% \times 500 = 5$$, so VaR is the **5th-worst** loss
 (Hull/GARP convention): $3.1 million. Choice C ($3.3 million, the
 4th-worst) is the one-step-early error; D is the worst loss.
+[[DIAGRAM]]{"type":"steps","title":"Historical sim VaR (99%, n=500)","steps":["Rank losses worst to best","(1 − conf) × n = 0.01 × 500 = 5","VaR = 5th-worst loss","= 3.1 million"]}[[/DIAGRAM]]
 
 **Q21 — Book 3, Option spreads** — **A.** This is a bull call spread
 costing $$5 - 2 = \$3$$. Maximum payoff is the strike gap
 $$55 - 50 = \$5$$, so maximum profit is $$5 - 3 = \$2$$. Choice B is the
 cost, C the gap; D ignores the short call cap.
+[[DIAGRAM]]{"type":"steps","title":"Bull call spread max profit","steps":["Net cost = 5 − 2 = 3 (buy low, sell high strike)","Payoff capped at strike gap = 55 − 50 = 5","Max profit = gap − cost","= 5 − 3 = 2"]}[[/DIAGRAM]]
 
 **Q22 — Book 2, Binomial distribution** — **B.**
 $$P(X = 2) = \binom{10}{2}(0.1)^2(0.9)^8 = 45 \times 0.01 \times 0.4305 = 19.4\%$$
 Choice A omits the $$\binom{10}{2} = 45$$ combinations factor.
+[[DIAGRAM]]{"type":"steps","title":"Binomial P(X=2)","steps":["Combinations: C(10,2) = 45","Successes: p² = 0.1²","Failures: (1−p)⁸ = 0.9⁸","45 × 0.01 × 0.4305 = 19.4%"]}[[/DIAGRAM]]
 
 **Q23 — Book 4, DV01** — **C.**
 $$DV01 = D \times P \times 0.0001 = 5.2 \times 25{,}000{,}000 \times 0.0001 = \$13{,}000$$.
@@ -168,12 +172,14 @@ convergence trades unwound when the 1998 Russia crisis drove correlated
 spread widening; margin calls forced liquidation into falling markets —
 the textbook funding-liquidity spiral. A is Barings; B is the 2007
 crisis.
+[[DIAGRAM]]{"type":"steps","title":"LTCM funding-liquidity spiral","steps":["Leveraged convergence trades","1998 Russia default → correlated spread widening","Margin calls demand cash","Forced liquidation into falling markets"]}[[/DIAGRAM]]
 
 **Q25 — Book 3, Swaps and comparative advantage** — **A.** Fixed-rate
 spread $$= 6.4\% - 5.0\% = 1.4\%$$; floating spread
 $$= 1.0\% - 0.5\% = 0.5\%$$. Total gain
 $$= 1.4\% - 0.5\% = 0.9\%$$. Choice B is the fixed spread alone, D the
 floating spread alone.
+[[DIAGRAM]]{"type":"steps","title":"Swap comparative advantage gain","steps":["Fixed-rate spread = 1.4%","Floating-rate spread = 0.5%","Total gain = |difference of spreads|","= 1.4% − 0.5% = 0.9%"]}[[/DIAGRAM]]
 
 **Q26 — Book 2, Hypothesis testing errors** — **A.** Cutting
 $$\alpha$$ from 5% to 1% directly lowers the Type I error rate, but with

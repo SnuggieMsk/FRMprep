@@ -282,9 +282,11 @@ First-month interest = $$0.004 \times 200{,}000 = \$800$$; principal = $$1{,}049
 **Q28 — C.** *(Easy.)* The quote rose 26 basis points; a long gains $25 per bp per contract: $$26 \times 25 \times 10 = \textbf{\$6,500}$$. A long Eurodollar/SOFR position profits when rates **fall** (quote rises).
 
 **Q29 — B.** *(Medium.)* Fixed-rate difference = 6.4 − 5.0 = 1.4%; floating difference = 0.6 − 0.1 = 0.5%. Total gain = 1.4 − 0.5 = 0.9%. After the bank's 0.1%, the remaining 0.8% splits equally: **0.40% each**. C forgets the intermediary; D is the total gain.
+[[DIAGRAM]]{"type":"steps","title":"Comparative-advantage gain","steps":["Fixed spread 6.4−5.0 = 1.4%","Floating spread 0.6−0.1 = 0.5%","Total gain = 1.4−0.5 = 0.9%","Less bank 0.1% → 0.8% split → 0.40% each"]}[[/DIAGRAM]]
 
 **Q30 — C.** *(Medium.)* Value the exchange as an FRA, assuming the forward rate is realized:
 
 $$V = 50{,}000{,}000 \times (0.050 - 0.042) \times 1 \times 0.96 = 50{,}000{,}000 \times 0.008 \times 0.96 = \textbf{+\$384{,}000}$$
 
 D forgets to discount; A flips the sign (that is the payer's value).
+[[DIAGRAM]]{"type":"steps","title":"Swap value via forward rate","steps":["Receive fixed 5.0%, pay forward 4.2%","Net rate = 0.8% on $50M","Cash flow = $400,000","Discount × 0.96 = +$384,000"]}[[/DIAGRAM]]

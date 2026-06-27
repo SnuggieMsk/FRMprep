@@ -364,13 +364,15 @@ $$C = e^{-0.04} \times p^2 \times 21 = 0.9608 \times 0.3612 \times 21 = \$7.29$$
 
 Distractor D skips discounting; C discounts only one period; A uses $$p = 0.5$$.
 
-[[DIAGRAM]]{"type":"timeline","title":"Two-step binomial terminal payoffs","events":["S₀=100","up→110 / down→90","S_uu=121 (payoff 21)","S_ud=99, S_dd=81 (payoff 0)","C = e^{−0.04}×p²×21 = $7.29"]}[[/DIAGRAM]]
+[[DIAGRAM]]{"type":"timeline","title":"Two-step binomial tree","points":[{"t":"S₀=100","l":"start"},{"t":"Step 1","l":"110 or 90"},{"t":"Step 2","l":"121/99/81"},{"t":"Payoffs","l":"21,0,0"},{"t":"C=$7.29","l":"e^-rT·p²·21"}]}[[/DIAGRAM]]
 
 **Q25 — C.** *(Medium.)*
 
 $$d_1 = \frac{\ln(50/50) + \left(0.04 + \tfrac{0.30^2}{2}\right) \times 0.5}{0.30\sqrt{0.5}} = \frac{0.0425}{0.2121} = 0.20$$
 
 Distractor A is $$d_2 = d_1 - \sigma\sqrt{T} = -0.01$$; B omits the $$\sigma^2/2$$ term; D adds $$\sigma^2$$ without halving it.
+
+[[DIAGRAM]]{"type":"tree","title":"BSM assumptions","root":"BSM model","children":["Lognormal prices","Constant σ and r","No dividends","Frictionless, no arbitrage","European exercise"]}[[/DIAGRAM]]
 
 **Q26 — C.** *(Medium.)*
 
