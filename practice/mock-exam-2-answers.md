@@ -176,16 +176,19 @@
 [[DIAGRAM]]{"type":"compare","title":"Swap value (two-bond method)","cols":[{"h":"Fixed payer","items":["V = Bfloat - Bfix","Bfloat = par at reset","Bfix = $103.76M → V = -$3.76M"]},{"h":"Fixed receiver","items":["V = Bfix - Bfloat","Opposite sign"]}]}[[/DIAGRAM]]
 
 **Q70 — Book 3, currency swap valuation (two-bond method)** — **A.** From A's view (pay EUR, receive USD), the swap is long a USD-denominated bond and short a EUR-denominated bond. Its value in dollars = $B_{USD} - S_0 \times B_{EUR}$, i.e., the dollar bond value minus the euro bond value converted to dollars at the current spot rate. Trap: B values it in euros with the legs reversed; C wrongly ignores principal exchange (in a currency swap principals do not net because they are in different currencies); D adds the legs instead of netting.
+[[DIAGRAM]]{"type":"compare","title":"Currency swap (pay EUR, receive USD)","cols":[{"h":"Long","items":["USD-denominated bond","B_USD"]},{"h":"Short","items":["EUR-denominated bond","S0 × B_EUR"]}]}[[/DIAGRAM]]
 
 **Q71 — Book 4, Delta-normal VaR** — **B.** With zero mean, $$VaR_{99\%} = z \times \sigma = 2.326 \times 2{,}000{,}000 = 4{,}652{,}000.$$ Trap: option A uses the 99.95% / 3.29 figure incorrectly; option D uses $z$ alone ($2.326 \times 1{,}000{,}000$ style mismatch / forgets to multiply the full sigma); option C uses $z=2.0$. The correct one-tailed 99% z-value is 2.326.
 
 **Q72 — Book 4, Square-root-of-time scaling** — **B.** Under i.i.d. returns, $$VaR_{10} = VaR_1 \times \sqrt{10} = 500{,}000 \times 3.1623 = 1{,}581{,}139.$$ Trap: option A scales linearly by 10 (wrong — that would assume perfectly correlated, not i.i.d.); options C and D use $\sqrt5$ and $\sqrt{20}$.
 
 **Q73 — Book 4, Coherence (VaR vs ES)** — **C.** ES (expected shortfall) is coherent: it satisfies monotonicity, translation invariance, positive homogeneity, and subadditivity. VaR can violate subadditivity for non-elliptical/fat-tailed distributions, so it is not coherent in general. Trap: A reverses the two measures; B confuses ES with a tail probability (ES is an average tail loss, not a probability); D is false — ES $\geq$ VaR at the same confidence level.
+[[DIAGRAM]]{"type":"compare","title":"VaR vs Expected Shortfall","cols":[{"h":"VaR","items":["A quantile/threshold","Can violate subadditivity","Not coherent in general"]},{"h":"ES","items":["Avg loss beyond VaR","Subadditive","Coherent"]}]}[[/DIAGRAM]]
 
 **Q74 — Book 4, Expected shortfall calculation** — **C.** ES is the average loss conditional on exceeding VaR. The three equally likely tail losses average to $$\frac{9 + 11 + 16}{3} = \frac{36}{3} = 12 \text{ million}.$$ Trap: option A reports VaR itself, not ES; B picks the median tail loss; D picks the worst case only.
 
 **Q75 — Book 4, Coherent risk measure axioms** — **D.** The four coherence axioms are monotonicity, translation invariance, positive homogeneity, and subadditivity. "Risk neutrality" is not one of them. Trap: candidates may not recall that subadditivity (not listed) is the fourth axiom, and that "risk neutrality" is a distractor unrelated to coherence.
+[[DIAGRAM]]{"type":"tree","title":"Coherence axioms","root":"Coherent risk measure","children":["Monotonicity","Translation invariance","Positive homogeneity","Subadditivity"]}[[/DIAGRAM]]
 
 **Q76 — Book 4, EWMA volatility** — **B.** $$\sigma_n^2 = \lambda \sigma_{n-1}^2 + (1-\lambda)u_{n-1}^2 = 0.94(0.01)^2 + 0.06(0.03)^2.$$ $$= 0.94(0.0001) + 0.06(0.0009) = 0.000094 + 0.000054 = 0.000148.$$ $$\sigma_n = \sqrt{0.000148} = 0.012166 \approx 1.22\%.$$ Trap: option A ignores the new return entirely (just keeps yesterday's vol); option D over-weights the return as if $\lambda$ were small (treats it like the raw return); option C overstates the update.
 
@@ -196,24 +199,30 @@
 **Q79 — Book 4, Rating transition matrices** — **B.** Under Markov independence, the two-year survival in BBB is $$0.86 \times 0.86 = 0.7396 = 73.96\%.$$ Trap: option A forgets the second year; option D incorrectly multiplies by a near-1 adjustment; option C adds rather than multiplies.
 
 **Q80 — Book 4, Transition matrix limitations** — **C.** Agency ratings are through-the-cycle, so transition matrices built from them lag and may not reflect current point-in-time conditions. Trap: A is backwards (they are historical, not forward-looking); B is wrong (matrices assume the Markov/path-independent property); D is false — historical (real-world) PDs are generally smaller than risk-neutral PDs, not larger.
+[[DIAGRAM]]{"type":"highlight","title":"Transition matrix limitation","options":["Forward-looking","Drop Markov property","Through-the-cycle, lag PIT","Real-world PD > risk-neutral"],"correct":2,"why":"Agency ratings lag current conditions"}[[/DIAGRAM]]
 
 **Q81 — Book 4, Expected loss (EL)** — **B.** $$EL = PD \times LGD \times EAD = 0.02 \times 0.40 \times 10{,}000{,}000 = 80{,}000.$$ Trap: option A omits LGD ($0.02 \times 10\text{m}$); option C omits PD ($0.40 \times 10\text{m} \times 0.1$ slip); option D uses $0.02 \times 0.40 \times$ wrong notional.
 
 **Q82 — Book 4, Unexpected loss / Bernoulli SD** — **B.** $$\sqrt{PD(1-PD)} = \sqrt{0.02 \times 0.98} = \sqrt{0.0196} = 0.140.$$ Trap: option C reports the variance 0.0196 rather than its square root; option A reports PD itself; option D miscomputes the square root.
 
 **Q83 — Book 4, Merton model** — **B.** Equity is a call on firm assets, so higher asset volatility increases equity value (longer-tail upside). Debtholders are effectively short a put on assets; higher volatility raises the put value, reducing risky-debt value. So equity up, debt down. Trap: A and D get the equity/debt direction wrong; C ignores that volatility transfers value from debtholders to equityholders.
+[[DIAGRAM]]{"type":"compare","title":"Higher asset volatility (Merton)","cols":[{"h":"Equity = call","items":["Long call on assets","Value rises"]},{"h":"Debt = short put","items":["Short put on assets","Put worth more","Risky debt falls"]}]}[[/DIAGRAM]]
 
 **Q84 — Book 4, Operational risk event types** — **C.** Internal fraud is one of the seven Basel operational-risk loss event categories (along with external fraud; employment practices; clients/products/business practices; damage to physical assets; business disruption/system failures; execution/delivery/process management). Trap: A, B, and D are market/banking-book/strategic risks, which are explicitly outside the operational risk definition.
+[[DIAGRAM]]{"type":"highlight","title":"A Basel operational-risk event type","options":["Interest rate risk","Equity price risk","Internal fraud","Strategic risk"],"correct":2,"why":"One of the seven op-risk loss categories"}[[/DIAGRAM]]
 
 **Q85 — Book 4, Loss distribution approach** — **B.** The LDA standardly models frequency with a Poisson distribution and severity with a lognormal distribution, then convolves them. Trap: A/C/D use distributions not standard for operational-risk frequency-severity modeling; Poisson-Poisson (D) wrongly applies a count distribution to severity.
+[[DIAGRAM]]{"type":"compare","title":"Loss Distribution Approach","cols":[{"h":"Frequency","items":["Count of events","Poisson"]},{"h":"Severity","items":["Loss size","Lognormal"]}]}[[/DIAGRAM]]
 
 **Q86 — Book 4, Stress testing (reverse)** — **B.** A reverse stress test starts from a defined adverse outcome (e.g., insolvency or breaching a capital threshold) and works backward to identify scenarios that could cause it. Trap: A describes a conventional (forward) scenario stress test; C and D are not what "reverse" means.
+[[DIAGRAM]]{"type":"compare","title":"Forward vs Reverse stress test","cols":[{"h":"Forward","items":["Start with scenario","Compute the outcome"]},{"h":"Reverse","items":["Start with bad outcome","Find scenarios that cause it"]}]}[[/DIAGRAM]]
 
 **Q87 — Book 4, Discounting / zero-coupon pricing** — **A.** With continuous compounding, $$P = 1000 \, e^{-0.04 \times 2} = 1000 \, e^{-0.08} = 1000 \times 0.923116 = 923.12.$$ Trap: option C uses annual compounding $1000/1.04^2 = 924.56$; option D uses one year of discounting only ($1000 e^{-0.04}=960.79$); option B applies a slightly mismeasured exponent. The continuously compounded answer is $923.12$.
 
 **Q88 — Book 4, Forward rates** — **C.** With continuous compounding, the forward rate satisfies $$f_{1,2} = \frac{r_2 \cdot 2 - r_1 \cdot 1}{2 - 1} = \frac{0.04(2) - 0.03(1)}{1} = 0.08 - 0.03 = 0.05 = 5.0\%.$$ Trap: option A averages the two spot rates; option B/D interpolate incorrectly. The continuously compounded forward locks in 5.0%.
 
 **Q89 — Book 4, Bond yields (par bond)** — **A.** A bond trading at par has YTM equal to its coupon rate. Trap: B describes a discount bond (price below par, YTM > coupon); C is false (current yield = coupon/price > 0); D is false — par pricing applies to coupon bonds too.
+[[DIAGRAM]]{"type":"scale","title":"Price vs YTM relative to coupon","items":["Discount: YTM>coupon","|Par: YTM=coupon","Premium: YTM<coupon"],"left":"Below par","right":"Above par"}[[/DIAGRAM]]
 
 **Q90 — Book 4, Duration and convexity** — **B.** $$\frac{\Delta P}{P} \approx -D \cdot \Delta y + \tfrac{1}{2} C (\Delta y)^2 = -6.2(0.01) + 0.5(55)(0.01)^2.$$ $$= -0.062 + 0.5(55)(0.0001) = -0.062 + 0.00275 = -0.05925 \approx -5.93\%.$$ Trap: option A uses duration only and ignores the positive convexity adjustment; option C subtracts convexity (wrong sign); option D over-adjusts.
 
@@ -222,6 +231,7 @@
 **Q92 — Book 4, DV01 hedging** — **B.** To be DV01-neutral, $$F_B = F_A \times \frac{DV01_A}{DV01_B} = 20{,}000{,}000 \times \frac{0.072}{0.090} = 20{,}000{,}000 \times 0.8 = 16{,}000{,}000.$$ Trap: option A inverts the ratio ($0.090/0.072$); option C ignores the DV01 difference; option D uses an incorrect ratio.
 
 **Q93 — Book 4, Key rate / non-parallel shifts** — **C.** Key rate exposures (key rate '01s) measure sensitivity to shifts at individual points on the curve, capturing non-parallel (e.g., steepening/flattening) movements. Trap: A describes a parallel shift (that is DV01, not key rates); B is false — the key rate '01s sum approximately to total DV01; D is false — key rate analysis applies to any fixed-income position.
+[[DIAGRAM]]{"type":"compare","title":"DV01 vs Key rate '01s","cols":[{"h":"DV01","items":["Parallel shift only","One number"]},{"h":"Key rate '01s","items":["Shifts at single points","Non-parallel moves","Sum ≈ total DV01"]}]}[[/DIAGRAM]]
 
 **Q94 — Book 4, Binomial risk-neutral probability** — **B.** With $u = 55/50 = 1.1$, $d = 45/50 = 0.9$, $$p = \frac{e^{r} - d}{u - d} = \frac{e^{0.04} - 0.9}{1.1 - 0.9} = \frac{1.040811 - 0.9}{0.2} = \frac{0.140811}{0.2} = 0.7041.$$ Trap: option A assumes equal probabilities; option D uses $1-p$; option C uses simple (non-continuous) compounding incorrectly.
 
@@ -230,9 +240,13 @@
 **Q96 — Book 4, Two-step binomial probabilities** — **B.** Probability of two up moves $$= p^2 = 0.6^2 = 0.36.$$ Trap: option A reports a single-step $p$; option C reports the middle-node probability $2p(1-p)=2(0.6)(0.4)=0.48$; option D reports two-down $(1-p)^2 = 0.16$.
 
 **Q97 — Book 4, Black-Scholes-Merton (put sensitivity)** — **C.** Higher volatility raises the value of all options, including European puts. Trap: A (higher stock price) lowers put value; B (higher rate) lowers put value via the discounted strike; D (less time) generally lowers a European put's value (less time value). Only the volatility increase reliably raises the put.
+[[DIAGRAM]]{"type":"highlight","title":"What raises a European put's value?","options":["Higher stock price","Higher interest rate","Higher volatility","Less time to expiry"],"correct":2,"why":"Volatility raises value of all options"}[[/DIAGRAM]]
 
 **Q98 — Book 4, BSM and the Greeks** — **C.** In the BSM call formula $c = S_0 N(d_1) - K e^{-rT} N(d_2)$, the term $N(d_1)$ is the call's delta (sensitivity to the underlying). Trap: A confuses $N(d_1)$ with $N(d_2)$, which is the risk-neutral probability the call finishes in the money; B and D misidentify the term.
+[[DIAGRAM]]{"type":"compare","title":"BSM call: N(d1) vs N(d2)","cols":[{"h":"N(d1)","items":["Call's delta","Sensitivity to underlying"]},{"h":"N(d2)","items":["Risk-neutral prob ITM","Prob call exercised"]}]}[[/DIAGRAM]]
 
 **Q99 — Book 4, Option Greeks** — **B.** Theta of a long European call on a non-dividend stock is typically negative (time decay erodes value). Trap: A is false — gamma is largest for at-the-money options, not deep ITM/OTM; C is false — vega is highest for at-the-money options; D is false — a long call's delta ranges from 0 to +1 (it is the put whose delta is −1 to 0).
+[[DIAGRAM]]{"type":"highlight","title":"True statement about Greeks","options":["Gamma largest deep ITM/OTM","Long call theta negative","Vega highest deep OTM","Long call delta -1 to 0"],"correct":1,"why":"Time decay erodes long call value"}[[/DIAGRAM]]
 
 **Q100 — Book 4, Gamma / delta-neutral position** — **B.** With negative gamma, a delta-neutral portfolio loses value when the underlying makes a large move in either direction (the delta hedge fails to keep pace), so the gamma effect is negative. Trap: A describes positive gamma; C wrongly assumes delta-neutrality eliminates second-order (gamma) P&L; D ignores that the price-move P&L is driven by gamma, not vega (vega captures volatility changes, which are held constant here).
+[[DIAGRAM]]{"type":"compare","title":"Delta-neutral with gamma","cols":[{"h":"Negative gamma","items":["Loses on large moves","Either direction","Hedge lags"]},{"h":"Positive gamma","items":["Gains on large moves","Hedge keeps pace"]}]}[[/DIAGRAM]]

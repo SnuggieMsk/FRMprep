@@ -273,16 +273,19 @@ variant of it until certified. There is no "partial" designation (B).
 $$101 = 5(0.95) + 105\,d_{1.0} \;\Rightarrow\; d_{1.0} = \frac{101 - 4.75}{105} = \frac{96.25}{105} = 0.9167$$
 Choice D (0.9625) divides by 100 (face) instead of 105 — forgetting the
 final coupon rides with the principal.
+[[DIAGRAM]]{"type":"steps","title":"Bootstrapping d(1.0)","steps":["Price = 5·d(0.5) + 105·d(1.0)","101 = 5(0.95) + 105·d(1.0)","d(1.0) = (101 − 4.75) / 105","= 0.9167 (divide by 105, not 100)"]}[[/DIAGRAM]]
 
 **Q41 — Book 2, Hypothesis testing** — **D.**
 $$t = \frac{5.2 - 4.0}{4/\sqrt{64}} = \frac{1.2}{0.5} = 2.4$$
 Since $$1.96 < 2.4 < 2.576$$: reject at 5%, fail to reject at 1%.
 Watch the standard-error step — dividing by $$\sigma$$ instead of
 $$\sigma/\sqrt{n}$$ gives "fail to reject" everywhere (B).
+[[DIAGRAM]]{"type":"scale","title":"Test statistic t = 2.4","items":["1.96 (5% crit)","|t = 2.4","2.576 (1% crit)"],"left":"reject at 5%","right":"fail to reject at 1%"}[[/DIAGRAM]]
 
 **Q42 — Book 3, Hedging with index futures** — **C.**
 $$N = \beta \times \frac{V_P}{F \times m} = 1.2 \times \frac{20{,}000{,}000}{5{,}000 \times 250} = 1.2 \times 16 = 19.2 \approx 19$$
 Choice B (16) drops the beta adjustment.
+[[DIAGRAM]]{"type":"steps","title":"Index futures hedge","steps":["N = β × V_P / (F × multiplier)","Contract value = 5,000 × 250","= 1.2 × 20,000,000 / 1,250,000","N = 19.2 ≈ 19"]}[[/DIAGRAM]]
 
 **Q43 — Book 4, Ratings transition matrices** — **D.** Default in year
 1: 2%. Default in year 2: from A (prob 0.90) default 2% → 1.80%; from
@@ -290,36 +293,43 @@ BBB (prob 0.08) default 4% → 0.32%. Cumulative:
 $$2.00\% + 1.80\% + 0.32\% = 4.12\%$$
 Choice C (4.00% = 2% + 2%) ignores migration — the one-step-early
 error of squaring the matrix without the BBB path.
+[[DIAGRAM]]{"type":"steps","title":"Cumulative 2-yr default","steps":["Year-1 default = 2.00%","Survive as A (0.90) → default 2% = 1.80%","Migrate to BBB (0.08) → default 4% = 0.32%","Total = 2.00 + 1.80 + 0.32 = 4.12%"]}[[/DIAGRAM]]
 
 **Q44 — Book 1, Jensen's alpha** — **C.**
 $$\alpha = 12\% - \left[2\% + 0.9\,(10\% - 2\%)\right] = 12\% - 9.2\% = 2.8\%$$.
 Choice B (2.0%) is the raw excess over the market, ignoring beta.
+[[DIAGRAM]]{"type":"steps","title":"Jensen's alpha","steps":["CAPM required = 2% + 0.9(10% − 2%) = 9.2%","Alpha = actual − required","= 12% − 9.2%","α = 2.8%"]}[[/DIAGRAM]]
 
 **Q45 — Book 3, Straddles** — **A.** Total premium $$= 6 + 4 = \$10$$,
 so break-evens are $$100 \pm 10$$: $90 and $110. Choices B and D use
 only one leg's premium on each side — both legs' costs must be
 recovered in *each* direction.
+[[DIAGRAM]]{"type":"scale","title":"Long straddle break-evens","items":["90 (lower BE)","|100 strike","110 (upper BE)"],"left":"profit if S falls","right":"profit if S rises"}[[/DIAGRAM]]
 
 **Q46 — Book 4, GARCH(1,1)** — **C.**
 $$\sigma_n^2 = 0.000002 + 0.08(0.02)^2 + 0.90(0.012)^2 = 0.000002 + 0.000032 + 0.0001296 = 0.0001636$$
 $$\sigma_n = \sqrt{0.0001636} = 1.28\%$$
 Choice D (1.93%) mixes volatilities instead of variances.
+[[DIAGRAM]]{"type":"steps","title":"GARCH(1,1) update","steps":["σ²ₙ = ω + α·u²ₙ₋₁ + β·σ²ₙ₋₁","ω=0.000002, α-term=0.000032, β-term=0.0001296","Sum = 0.0001636","σₙ = 1.28%"]}[[/DIAGRAM]]
 
 **Q47 — Book 4, Modified duration** — **B.**
 $$D_{mod} = \frac{D_{Mac}}{1 + y/m} = \frac{7.5}{1 + 0.06/2} = \frac{7.5}{1.03} = 7.28$$
 Choice A (7.08) divides by 1.06 — the wrong-compounding error (annual
 instead of semiannual).
+[[DIAGRAM]]{"type":"steps","title":"Modified duration","steps":["D_mod = D_Mac / (1 + y/m)","m = 2 (semiannual): 1 + 0.06/2 = 1.03","= 7.5 / 1.03","= 7.28"]}[[/DIAGRAM]]
 
 **Q48 — Book 3, Compounding conventions** — **A.**
 $$r_c = m \ln\!\left(1 + \frac{r_m}{m}\right) = 2 \ln(1.04) = 7.84\%$$
 The continuous rate is always *below* the equivalent discrete rate —
 choice C (8.16%) converts in the wrong direction.
+[[DIAGRAM]]{"type":"scale","title":"Rate equivalence (8% nominal)","items":["continuous 7.84%","|effective/discrete","semiannual 8.00%"],"left":"lower rate","right":"higher rate"}[[/DIAGRAM]]
 
 **Q49 — Book 1, Case studies (Metallgesellschaft)** — **D.** The
 stack-and-roll hedge was arguably sound at maturity, but daily
 mark-to-market losses on the futures demanded cash *now* while the
 offsetting gains on customer contracts were unrealized — funding
 liquidity risk. A is false (rolling *creates* basis risk).
+[[DIAGRAM]]{"type":"compare","title":"Metallgesellschaft mismatch","cols":[{"h":"Futures hedge","items":["Daily mark-to-market","Losses demand cash NOW"]},{"h":"Customer contracts","items":["Offsetting gains","Unrealized until delivery"]}]}[[/DIAGRAM]]
 
 **Q50 — Book 4, VaR aggregation** — **C.** With jointly normal returns
 VaR scales like volatility:
@@ -327,51 +337,61 @@ Working in $ thousands:
 $$\text{VaR}_P = \sqrt{300^2 + 400^2 + 2(0.5)(300)(400)} = \sqrt{370{,}000} \approx 608.3$$
 i.e., $608,300. Choice D ($700,000) is the undiversified sum
 ($$\rho = 1$$); A assumes $$\rho = 0$$.
+[[DIAGRAM]]{"type":"scale","title":"Portfolio VaR vs correlation ($000s)","items":["ρ=0: 500","ρ=0.5: 608 (this)","|","ρ=1: 700 (undiversified)"],"left":"more diversified","right":"no diversification"}[[/DIAGRAM]]
 
 **Q51 — Book 3, Insurance ratios** — **D.** Combined ratio
 $$= 75\% + 30\% = 105\% > 100\%$$: an underwriting loss. But insurers
 invest premiums, so investment income can still produce an overall
 profit — which is why C overreaches.
+[[DIAGRAM]]{"type":"steps","title":"Combined ratio","steps":["Loss ratio 75% + expense ratio 30%","Combined = 105% > 100%","Underwriting loss","But investment income can offset → overall profit"]}[[/DIAGRAM]]
 
 **Q52 — Book 2, Confidence intervals** — **B.** Known
 $$\sigma$$, so use z:
 $$6\% \pm 1.96 \times \frac{10\%}{\sqrt{25}} = 6\% \pm 3.92\% = [2.08\%,\ 9.92\%]$$
 Choice C uses $$z = 1.645$$ (a 90% interval); A uses 2.576 (99%) —
 wrong-z errors either way.
+[[DIAGRAM]]{"type":"compare","title":"Two-tailed z by confidence","cols":[{"h":"Confidence","items":["90%","95%","99%"]},{"h":"z","items":["1.645","1.960","2.576"]}]}[[/DIAGRAM]]
 
 **Q53 — Book 4, Coherent risk measures** — **A.** VaR can violate
 subadditivity: the VaR of a combined portfolio can exceed the sum of the
 parts, penalizing diversification. ES satisfies all four coherence
 axioms.
+[[DIAGRAM]]{"type":"compare","title":"Coherence: VaR vs ES","cols":[{"h":"VaR","items":["Can violate subadditivity","Penalizes diversification","Not coherent"]},{"h":"Expected Shortfall","items":["Subadditive","All 4 axioms hold","Coherent"]}]}[[/DIAGRAM]]
 
 **Q54 — Book 1, Risk appetite vs. capacity** — **A.** Appetite is what
 the firm is *willing* to take; capacity is what it is *able* to absorb
 (capital, liquidity, systems). A well-run firm sets appetite at or below
 capacity — the reverse of C.
+[[DIAGRAM]]{"type":"compare","title":"Appetite vs Capacity","cols":[{"h":"Risk appetite","items":["What firm is WILLING to take","A chosen target"]},{"h":"Risk capacity","items":["What firm is ABLE to absorb","Capital, liquidity, systems","Set appetite ≤ capacity"]}]}[[/DIAGRAM]]
 
 **Q55 — Book 3, Option price bounds** — **C.**
 $$c \geq S_0 - K e^{-rT} = 52 - 50\,e^{-0.025} = 52 - 48.77 = \$3.23$$
 Choice B ($2.00) uses the undiscounted strike — i.e., bare intrinsic
 value, the classic forgotten-discounting error.
+[[DIAGRAM]]{"type":"steps","title":"Lower bound on European call","steps":["c ≥ S0 − K·e^(−rT)","Discount the strike: 50·e^(−0.025) = 48.77","52 − 48.77","Lower bound = 3.23"]}[[/DIAGRAM]]
 
 **Q56 — Book 2, Poisson distribution** — **B.**
 $$P(X = 0) = e^{-\lambda} = e^{-2} = 13.5\%$$.
 Choice C (27.1%) is $$P(X = 1) = 2e^{-2}$$ — one step off.
+[[DIAGRAM]]{"type":"steps","title":"Poisson P(X=0)","steps":["P(X=k) = e^(−λ)·λ^k / k!","Set k = 0: λ⁰ = 1, 0! = 1","P(X=0) = e^(−λ) = e^(−2)","= 13.5%"]}[[/DIAGRAM]]
 
 **Q57 — Book 4, VaR time scaling** — **B.**
 $$\text{VaR}_{10} = 150{,}000 \times \sqrt{10} = \$474{,}300$$.
 Choice D multiplies by 10 — scaling VaR like variance instead of like
 volatility.
+[[DIAGRAM]]{"type":"compare","title":"Scaling VaR over time","cols":[{"h":"Correct (√t)","items":["VaR₁₀ = VaR₁·√10","150,000 × 3.162","= 474,300"]},{"h":"Wrong (×t)","items":["Scales like variance","×10 = 1.5M"]}]}[[/DIAGRAM]]
 
 **Q58 — Book 3, Forward rates** — **C.** With continuous compounding:
 $$f_{1,2} = \frac{r_2 T_2 - r_1 T_1}{T_2 - T_1} = \frac{0.05(2) - 0.04(1)}{1} = 6\%$$
 Choice A (4.5%) averages the two zero rates — the forward must sit
 *above* both when the curve is rising.
+[[DIAGRAM]]{"type":"scale","title":"Forward rate (rising curve)","items":["r1 = 4%","r2 = 5%","|","f(1,2) = 6%"],"left":"near zero rates","right":"forward sits above"}[[/DIAGRAM]]
 
 **Q59 — Book 1, Sortino ratio** — **B.**
 $$\text{Sortino} = \frac{R - MAR}{\text{downside deviation}} = \frac{10\% - 4\%}{8\%} = 0.75$$
 Choice A (0.50) divides by total volatility — that is the Sharpe-style
 error the Sortino ratio exists to avoid.
+[[DIAGRAM]]{"type":"compare","title":"Sortino vs Sharpe","cols":[{"h":"Sortino","items":["Excess over MAR","÷ downside deviation","(10−4)/8 = 0.75"]},{"h":"Sharpe","items":["Excess over rf","÷ total volatility"]}]}[[/DIAGRAM]]
 
 **Q60 — Book 4, Operational risk** — **C.** With independent frequency
 and severity, expected annual loss
