@@ -15,6 +15,7 @@
 [[DIAGRAM]]{"type":"compare","title":"Board vs Management","cols":[{"h":"Board (oversight)","items":["Set risk appetite","Oversee RM framework"]},{"h":"Management (execution)","items":["Execute hedges","Compute daily VaR","Negotiate covenants"]}]}[[/DIAGRAM]]
 
 **Q5 — Book 1, Credit risk transfer** — **B.** A single-name CDS lets the bank buy protection on a specific issuer, transferring credit risk to the protection seller while keeping the loan on its books and preserving the client relationship. An interest rate swap transfers rate risk, an equity index future transfers equity market risk, and a currency forward transfers FX risk—none address single-name default risk.
+[[DIAGRAM]]{"type":"highlight","title":"Transfer single-name default risk","options":["Single-name CDS","Interest rate swap","Equity index future","Currency forward"],"correct":0,"why":"Buy protection on a specific issuer"}[[/DIAGRAM]]
 
 **Q6 — Book 1, CAPM** — **B.** Using $$E(R)=R_f+\beta\,[E(R_m)-R_f]=3.0\%+1.4\times(9.0\%-3.0\%)=3.0\%+1.4\times6.0\%=3.0\%+8.4\%=11.4\%.$$ Choice C (12.6%) wrongly applies beta to the full market return (1.4 × 9.0%); D ignores the structure entirely; A is just the market return.
 
@@ -25,24 +26,34 @@
 **Q9 — Book 1, Treynor measure** — **B.** The Treynor measure uses systematic risk (beta) in the denominator: $$\frac{E(R_p)-R_f}{\beta_p}=\frac{12\%-2\%}{1.2}=\frac{0.10}{1.2}\approx0.083.$$ Choice A divides by 16 (mixing in standard deviation); the trap is confusing Treynor (beta) with Sharpe (total risk).
 
 **Q10 — Book 1, APT/multifactor** — **B.** APT prices assets using exposures to multiple systematic risk factors and the no-arbitrage condition, whereas CAPM relies on a single market factor and the assumption that all investors hold the market portfolio. APT makes fewer restrictive assumptions about investor behavior and distributions and applies to all assets, so options A, C, and D are incorrect.
+[[DIAGRAM]]{"type":"compare","title":"APT vs CAPM","cols":[{"h":"APT","items":["Multiple systematic factors","No-arbitrage pricing","Fewer assumptions"]},{"h":"CAPM","items":["Single market factor","All hold market portfolio","More restrictive"]}]}[[/DIAGRAM]]
 
 **Q11 — Book 1, Sortino ratio** — **B.** The Sortino ratio replaces total standard deviation with downside deviation (the dispersion of returns below a minimum acceptable or target return), penalizing only harmful volatility. The numerator still uses excess return over a target/risk-free rate, not the market return, and the ratio is not guaranteed to be larger than the Sharpe ratio in all cases.
+[[DIAGRAM]]{"type":"compare","title":"Sharpe vs Sortino denominator","cols":[{"h":"Sharpe","items":["Total std dev","Penalizes all volatility"]},{"h":"Sortino","items":["Downside deviation","Only below-target returns"]}]}[[/DIAGRAM]]
 
 **Q12 — Book 1, RAROC** — **A.** $$RAROC=\frac{\text{expected profit}}{\text{economic capital}}=\frac{\$9\text{m}}{\$60\text{m}}=15\%.$$ Because 15% exceeds the 12% hurdle rate, the unit is adding value. Choice B reverses the value conclusion; C and D miscompute the ratio. The trap is inverting the create/destroy logic relative to the hurdle.
+[[DIAGRAM]]{"type":"scale","title":"RAROC vs hurdle rate","items":["Destroys value","|12% hurdle","RAROC 15% adds value"],"left":"Reject","right":"Accept"}[[/DIAGRAM]]
 
 **Q13 — Book 1, ERM** — **B.** ERM is an integrated, firm-wide approach that aggregates and manages all material risks together, capturing interdependencies and supporting risk-return decisions. Managing risks in silos (A) is what ERM seeks to overcome; ERM is broader than regulatory capital (C) and cannot eliminate all risk (D).
+[[DIAGRAM]]{"type":"compare","title":"Silos vs ERM","cols":[{"h":"Silo approach","items":["Risks managed separately","Misses interdependencies"]},{"h":"ERM","items":["Firm-wide aggregation","Captures correlations","Supports risk-return"]}]}[[/DIAGRAM]]
 
 **Q14 — Book 1, Financial disasters** — **B.** LTCM employed very high leverage on relative-value/convergence trades that assumed spreads would narrow; when the 1998 Russian default triggered a flight to liquidity, spreads widened and positions diverged, generating massive mark-to-market losses amplified by leverage. It was not fraud, a single rogue trader, or a clearinghouse failure.
+[[DIAGRAM]]{"type":"steps","title":"LTCM collapse","steps":["High leverage on convergence trades","1998 Russian default","Flight to liquidity, spreads widen","Leverage amplifies MTM losses"]}[[/DIAGRAM]]
 
 **Q15 — Book 1, Financial disasters** — **B.** Barings collapsed because trader Nick Leeson took large unauthorized derivatives positions and concealed losses, made possible by inadequate segregation of duties and weak internal controls—an operational risk failure. The losses were not a board-approved strategy, nor a credit or deposit-run event.
+[[DIAGRAM]]{"type":"steps","title":"Barings collapse (operational risk)","steps":["Leeson trades and settles (no segregation)","Unauthorized derivatives positions","Losses hidden in error account","Weak controls let it grow","Bank insolvent"]}[[/DIAGRAM]]
 
 **Q16 — Book 1, 2007–2009 crisis** — **B.** Under originate-to-distribute, originators sold loans into securitizations and no longer bore most of the default risk, weakening their incentive to screen and monitor borrowers and contributing to lax underwriting. The model relied heavily on mortgage-backed securities rather than eliminating them, did not force banks to retain all risk, and did not require government insurance.
+[[DIAGRAM]]{"type":"steps","title":"Originate-to-distribute incentive","steps":["Originate loan","Sell into securitization","No longer bear default risk","Weak screening, lax underwriting"]}[[/DIAGRAM]]
 
 **Q17 — Book 1, 2007–2009 crisis / securitization** — **B.** Senior CDO tranches were rated highly under models that assumed low default correlation among the underlying subprime mortgages; when the housing downturn caused correlated, simultaneous defaults, losses breached supposedly safe senior tranches. Senior tranches default last and carry lower coupons than equity tranches, and agencies did rate these products, so the other options are wrong.
+[[DIAGRAM]]{"type":"steps","title":"Senior CDO tranche losses","steps":["Models assume low default correlation","Senior tranches rated AAA","Housing downturn: correlated defaults","Losses breach senior tranches"]}[[/DIAGRAM]]
 
 **Q18 — Book 1, GARP Code of Conduct** — **B.** The Code requires members to act with integrity and professional responsibility and not to knowingly engage in or conceal conduct that is dishonest, fraudulent, or misleading regarding risk information. Ignoring the manipulation, simply resigning silently, or informing competitors all fail the Code's standards of professional integrity and ethical conduct.
+[[DIAGRAM]]{"type":"highlight","title":"Discovered manipulation of risk data","options":["Ignore it","Report per the Code","Resign silently","Inform competitors"],"correct":1,"why":"Must not conceal dishonest/misleading conduct"}[[/DIAGRAM]]
 
 **Q19 — Book 1, GARP Code of Conduct** — **B.** The Code requires members to identify, disclose, and manage conflicts of interest and to maintain objectivity, avoiding gifts or arrangements that could compromise independent judgment. Accepting an inducement to influence a vendor decision—or keeping it confidential—violates the conflict-of-interest and objectivity principles; a tax threshold is not the relevant test.
+[[DIAGRAM]]{"type":"highlight","title":"Inducement affecting vendor choice","options":["Accept, under tax limit","Accept, keep confidential","Disclose and manage conflict","Accept if small"],"correct":2,"why":"Identify, disclose, manage conflicts of interest"}[[/DIAGRAM]]
 
 **Q20 — Book 1, Portfolio theory** — **C.** Diversification benefit comes from imperfect correlation. With a correlation of +1, the portfolio standard deviation equals the weighted average of the component standard deviations, so there is no reduction and thus no diversification benefit. With zero correlation the portfolio standard deviation falls below that weighted average, providing a benefit; the perfectly correlated case yields zero benefit, not a larger or negative one.
 

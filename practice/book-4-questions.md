@@ -252,13 +252,19 @@ The estimate rises toward the larger recent return but only partially — persis
 
 **Q9 — B.** *(Easy.)* TTC ratings average through the credit cycle, so they are stable and migrate less — at the cost of responsiveness. PIT ratings track current conditions and move with the cycle.
 
+[[DIAGRAM]]{"type":"compare","title":"Through-the-cycle vs Point-in-time","cols":[{"h":"TTC","items":["averages over the credit cycle","stable, migrates less","less responsive to macro"]},{"h":"PIT","items":["reflects current conditions","more volatile, migrates more","tracks the cycle"]}]}[[/DIAGRAM]]
+
 **Q10 — C.** *(Hard.)* Sum the two-year default paths from A:
 
 $$P(\text{default by yr 2}) = \underbrace{0.02}_{\text{yr 1}} + \underbrace{0.90 \times 0.02}_{A \to A \to D} + \underbrace{0.08 \times 0.05}_{A \to B \to D} = 0.02 + 0.018 + 0.004 = 4.2\%$$
 
 Distractor B doubles the one-year PD, ignoring the migration to B (and double-counts survivors); A stops at one year.
 
+[[DIAGRAM]]{"type":"tree","title":"Two-year default paths from A","root":"Sum default paths","children":["Default in yr 1: 0.02","A→A→D: 0.90×0.02 = 0.018","A→B→D: 0.08×0.05 = 0.004","Total = 4.2%"]}[[/DIAGRAM]]
+
 **Q11 — B.** *(Medium.)* Local-currency defaults happen (e.g., Russia 1998): monetizing debt creates inflation, currency, and political costs a government may judge worse than default. A overstates the printing-press argument; C is backwards as a general rule; D ignores willingness-to-pay.
+
+[[DIAGRAM]]{"type":"compare","title":"Sovereign: local vs foreign currency","cols":[{"h":"Local-currency debt","items":["can print money to repay","but inflation/political costs","default still possible (willingness)"]},{"h":"Foreign-currency debt","items":["cannot print foreign FX","constrained by reserves","usually rated lower"]}]}[[/DIAGRAM]]
 
 **Q12 — B.** *(Easy.)* LGD $$= 1 - 0.40 = 0.60$$:
 
@@ -276,11 +282,17 @@ $$= 10\text{m} \times \sqrt{0.008306} = 10\text{m} \times 0.0911 = \$0.91\text{m
 
 UL dwarfs EL ($0.12m) — that gap is what capital must cover. Distractor A keeps only the LGD-volatility term; B keeps only the default-volatility term.
 
+[[DIAGRAM]]{"type":"compare","title":"Expected vs Unexpected Loss","cols":[{"h":"Expected Loss","items":["EAD×PD×LGD = $0.12m","priced into the spread","covered by provisions"]},{"h":"Unexpected Loss","items":["volatility of loss = $0.91m","driven by σ_PD and σ_LGD","covered by economic capital"]}]}[[/DIAGRAM]]
+
 **Q14 — C.** *(Easy.)* With independent frequency and severity, expected loss = expected frequency × expected severity:
 
 $$E[L] = 4 \times \$250{,}000 = \$1{,}000{,}000$$
 
+[[DIAGRAM]]{"type":"quadrant","title":"Operational risk: frequency × severity","x":"Frequency →","y":"Severity →","q":["accept / self-insure","manage & control","insure","avoid / exit"]}[[/DIAGRAM]]
+
 **Q15 — B.** *(Easy.)* Reverse stress testing starts from the outcome (failure / breach) and works backwards to the scenarios that produce it, then asks how plausible they are — designed to uncover hidden vulnerabilities that forward scenario design misses.
+
+[[DIAGRAM]]{"type":"steps","title":"Reverse stress testing","steps":["Define the failure outcome (insolvency / breach)","Work backwards to scenarios that cause it","Assess plausibility of those scenarios","Act on hidden vulnerabilities found"]}[[/DIAGRAM]]
 
 **Q16 — C.** *(Medium.)* Semiannual coupon = $2:
 
@@ -296,6 +308,8 @@ $$1 + \tfrac{f}{2} = \frac{1.030225}{1.01} = 1.02002 \Rightarrow f \approx 4.0\%
 
 The forward sits above both spot rates because the curve is upward-sloping; B (the average) is the trap — averaging gives roughly the *spot*, not the forward.
 
+[[DIAGRAM]]{"type":"scale","title":"Upward-sloping curve: rate ordering","items":["0.5y spot 2.0%","1.0y spot 3.0%","6×12 forward ≈ 4.0%"],"left":"lower","right":"higher"}[[/DIAGRAM]]
+
 **Q18 — C.** *(Easy.)*
 
 $$R = \frac{99.00 + 2.50 - 98.00}{98.00} = \frac{3.50}{98.00} = 3.57\%$$
@@ -308,11 +322,15 @@ $$\frac{\Delta P}{P} = -7.2 \times 0.005 + \frac{1}{2} \times 80 \times (0.005)^
 
 Convexity always *helps* the bondholder — it is added for both up and down yield moves. Distractor C drops the convexity term; D subtracts it.
 
+[[DIAGRAM]]{"type":"compare","title":"Duration vs Convexity terms","cols":[{"h":"Duration term","items":["−D×Δy (linear)","sign follows yield move","dominates for small Δy"]},{"h":"Convexity term","items":["+½×C×Δy² (always positive)","helps for up OR down moves","grows with larger Δy"]}]}[[/DIAGRAM]]
+
 **Q20 — B.** *(Medium.)* Hedge ratio = position DV01 ÷ instrument DV01:
 
 $$N = \frac{6{,}800}{85} = 80 \text{ contracts}$$
 
 Long bonds gain when rates fall, so the hedge must lose when rates fall — short the futures. Buying (A) doubles the exposure.
+
+[[DIAGRAM]]{"type":"steps","title":"DV01 hedge","steps":["Compute hedge ratio = 6,800 / 85 = 80","Long bonds gain when rates fall","Hedge must offset → short the futures","Short 80 contracts"]}[[/DIAGRAM]]
 
 **Q21 — B.** *(Easy.)*
 

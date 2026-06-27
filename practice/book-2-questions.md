@@ -268,6 +268,8 @@ $$\rho_1 = \frac{\theta}{1+\theta^2} = \frac{0.5}{1.25} = 0.40$$
 
 Distractor D is the trap: $$\rho_1 \ne \theta$$. B divides by $$1+\theta$$. And remember $$\rho_h = 0$$ for $$h \ge 2$$ — the MA(1) ACF cuts off, it does not decay.
 
+[[DIAGRAM]]{"type":"compare","title":"ACF shape: MA(1) vs AR(1)","cols":[{"h":"MA(1)","items":["ρ1=θ/(1+θ²)=0.40","ρh=0 for h≥2","sharp cutoff"]},{"h":"AR(1)","items":["ρ1=φ","ρh=φ^h","geometric decay"]}]}[[/DIAGRAM]]
+
 **Q19 — C.** *(Hard.)* Iterate the recursion:
 
 $$E_t[Y_{t+1}] = 0.5 + 0.8 \times 4.0 = 3.70$$
@@ -275,6 +277,8 @@ $$E_t[Y_{t+1}] = 0.5 + 0.8 \times 4.0 = 3.70$$
 $$E_t[Y_{t+2}] = 0.5 + 0.8 \times 3.70 = 3.46$$
 
 Check via mean reversion: long-run mean $$= 0.5/0.2 = 2.5$$, and $$2.5 + 0.8^2(4.0 - 2.5) = 2.5 + 0.96 = 3.46$$. ✓ Distractor D stops after one step; A jumps all the way to the long-run mean; B incorrectly applies $$\phi^2$$ to $$Y_t$$ alone ($$0.5 + 0.64 \times 4.0 = 3.06$$).
+
+[[DIAGRAM]]{"type":"steps","title":"Iterate AR(1) forecast","steps":["Yt = 4.0","E[Yt+1]=0.5+0.8·4.0=3.70","E[Yt+2]=0.5+0.8·3.70=3.46","→ converges to mean 2.5"]}[[/DIAGRAM]]
 
 **Q20 — C.** *(Easy.)* Random-walk variance scales linearly with horizon, so the standard deviation scales with $$\sqrt{h}$$:
 
@@ -292,6 +296,8 @@ $$\sigma_t = \sqrt{0.000118} = 1.086\% \approx 1.09\%$$
 
 Distractor B averages the volatilities instead of the variances ($$0.94 \times 1\% + 0.06 \times 2\% = 1.06\%$$) — the classic EWMA error; A drops the return term.
 
+[[DIAGRAM]]{"type":"steps","title":"EWMA update (work in variance)","steps":["λ·σ²_prev = 0.94·0.0001","(1−λ)·r² = 0.06·0.0004","σ² = 0.000094+0.000024=0.000118","σ = √0.000118 = 1.09%"]}[[/DIAGRAM]]
+
 **Q23 — B.** *(Easy.)*
 
 $$SE = \frac{s}{\sqrt{N}} = \frac{4.00}{\sqrt{10{,}000}} = \frac{4.00}{100} = \$0.04$$
@@ -300,6 +306,8 @@ Distractor A divides by $$N$$; halving this SE would require $$4 \times 10{,}000
 
 **Q24 — B.** *(Easy.)* The L1 (absolute value) penalty in LASSO produces corner solutions that zero out coefficients — built-in variable selection. Ridge's L2 (squared) penalty shrinks smoothly toward but never exactly to zero. A and C swap the methods; D reverses the bias-variance effect of $$\lambda$$ (more penalty = more bias, less variance).
 
+[[DIAGRAM]]{"type":"compare","title":"Ridge vs LASSO","cols":[{"h":"Ridge (L2)","items":["penalizes squared coefs","shrinks toward zero","never exactly zero","keeps all variables"]},{"h":"LASSO (L1)","items":["penalizes absolute coefs","corner solutions","sets coefs to zero","does variable selection"]}]}[[/DIAGRAM]]
+
 **Q25 — B.** *(Medium.)*
 
 $$\text{Precision} = \frac{40}{40+10} = 0.80 \qquad \text{Recall} = \frac{40}{40+20} = 0.667$$
@@ -307,3 +315,5 @@ $$\text{Precision} = \frac{40}{40+10} = 0.80 \qquad \text{Recall} = \frac{40}{40
 $$F_1 = \frac{2 \times 0.80 \times 0.667}{0.80 + 0.667} = \frac{1.067}{1.467} = 0.73$$
 
 Distractor C is precision alone, A is recall alone, and D is accuracy ($$170/200 = 0.85$$) — which looks flattering only because the classes are imbalanced.
+
+[[DIAGRAM]]{"type":"quadrant","title":"Confusion matrix","x":"actual positive →","y":"predicted positive →","q":["TN=130","FN=20","FP=10","TP=40"]}[[/DIAGRAM]]

@@ -230,6 +230,7 @@ $$N^* = h^* \times \frac{Q_A}{Q_F} = 0.642 \times \frac{2{,}000{,}000}{42{,}000}
 D (48) skips $$h^*$$ entirely; C (38) forgets the correlation.
 
 **Q10 — B.** *(Medium.)* A short hedger's effective price = F₁ + basis at close-out. Strengthening basis (spot up relative to futures) raises the effective sale price — the short hedger *gains* from basis strengthening, the long hedger loses.
+[[DIAGRAM]]{"type":"compare","title":"Basis strengthens (basis ↑)","cols":[{"h":"Short hedger (seller)","items":["effective price = F₁ + basis","gains","higher sale price"]},{"h":"Long hedger (buyer)","items":["effective cost = F₁ + basis","loses","higher purchase price"]}]}[[/DIAGRAM]]
 
 **Q11 — C.** *(Medium.)* Covered interest parity: $$F = S\,e^{(r - r_f)T} = 1.2000\,e^{(0.05-0.03)(1)} = 1.2000 \times 1.0202 = \textbf{1.2242}$$. A flips the sign of the rate differential — the high-rate currency (USD) must trade at a forward *discount* per EUR... i.e., more dollars per euro forward.
 
@@ -240,26 +241,33 @@ D (48) skips $$h^*$$ entirely; C (38) forgets the correlation.
 **Q14 — C.** *(Medium.)* Storage cost is a negative yield: $$F = S e^{(r+u)T} = 450e^{(0.04 + 0.005)(1)} = 450e^{0.045} = 450 \times 1.04603 = \textbf{\$470.71}$$. B omits storage; A flips the exponent's sign.
 
 **Q15 — B.** *(Easy.)* Splits adjust terms so the position's economics are unchanged: strike ÷ 3 = $20, shares × 3 = 300. (Cash dividends, by contrast, trigger **no** adjustment to exchange-traded options.)
+[[DIAGRAM]]{"type":"compare","title":"Option contract adjustments","cols":[{"h":"3-for-1 stock split","items":["strike ÷ 3 → $20","shares × 3 → 300","still 1 contract"]},{"h":"Cash dividend","items":["no adjustment","strike unchanged","shares unchanged"]}]}[[/DIAGRAM]]
 
 **Q16 — B.** *(Medium.)* $$p = c + Ke^{-rT} - S_0 = 3 + 30e^{-0.10 \times 0.25} - 31 = 3 + 29.2593 - 31 = \textbf{\$1.26}$$. C ($2.00) forgets to discount the strike.
 
 **Q17 — B.** *(Hard.)* Lower bound = $$S_0 - Ke^{-rT} = 20 - 18e^{-0.10} = 20 - 16.287 = \$3.71$$. The call at $3.00 is below its floor: buy the call, short the stock (+$17 net), invest at 10%; the strategy locks in a riskless profit. A uses the undiscounted intrinsic value $20 − $18 = $2.
+[[DIAGRAM]]{"type":"steps","title":"Underpriced-call arbitrage","steps":["Lower bound S₀ − Ke^(−rT) = $3.71","Call offered at $3.00 < bound","Buy call, short stock (+$17), invest at 10%","Riskless profit at expiry"]}[[/DIAGRAM]]
 
 **Q18 — B.** *(Medium.)* At 38, both calls finish in the money: payoff = (38 − 30) − (38 − 35) = 8 − 3 = $5 — the spread's $5 cap. Net cost = 3 − 1 = $2. Profit = 5 − 2 = **$3**. C forgets the premium; D ignores the short leg.
+[[DIAGRAM]]{"type":"steps","title":"Bull call spread P/L at S=38","steps":["Long 30 call payoff = +8","Short 35 call payoff = −3","Spread payoff = $5 (capped)","Net cost 3−1 = $2 → profit $3"]}[[/DIAGRAM]]
 
 **Q19 — A.** *(Easy.)* Total premium = 4 + 3 = $7, so breakevens are $$50 \pm 7$$ = **$43 and $57**. B and C use one premium only.
 
 **Q20 — B.** *(Easy.)* In–out parity: down-and-in + down-and-out = vanilla, so down-and-out = 6.50 − 2.10 = **$4.40**. The barrier level is already embedded in the down-and-in price (D wrong).
+[[DIAGRAM]]{"type":"steps","title":"In–out barrier parity","steps":["Down-and-in + Down-and-out = Vanilla","6.50 = 2.10 + DAO","DAO = 6.50 − 2.10","= $4.40"]}[[/DIAGRAM]]
 
 **Q21 — A.** *(Easy.)* $$r_c = 4\ln(1 + 0.08/4) = 4\ln(1.02) = 4 \times 0.019803 = 0.07921 = \textbf{7.92\%}$$. C (8.08%) runs the conversion backwards; D is the effective annual rate.
 
 **Q22 — C.** *(Easy.)* $$R_F = \dfrac{0.046 \times 3 - 0.040 \times 2}{3 - 2} = \dfrac{0.138 - 0.080}{1} = \textbf{5.8\%}$$. B is the average of the two zeros; A swaps the rates.
 
 **Q23 — B.** *(Medium.)* Expected payoff = $$0.97 \times 100 + 0.03 \times 45 = 97 + 1.35 = 98.35$$. Expected return = $$98.35/95 - 1 = \textbf{3.53\%}$$. D (5.26%) is the *promised* yield ($$100/95 - 1$$); A ignores recovery.
+[[DIAGRAM]]{"type":"steps","title":"Expected return with default","steps":["No default (0.97): pay 100","Default (0.03): recover 45","Expected payoff = 98.35","98.35/95 − 1 = 3.53%"]}[[/DIAGRAM]]
 
 **Q24 — B.** *(Medium.)* A fixed-price call lets the issuer redeem at the schedule price and refinance at lower rates. A make-whole call (A) prices the redemption off current Treasury rates, eliminating the refunding gain; a sinking fund (C) retires only a fixed slice; defeasance (D) requires buying Treasuries — expensive when rates have fallen.
+[[DIAGRAM]]{"type":"highlight","title":"Which lets issuer refinance cheaply?","options":["Make-whole call (priced off Treasuries)","Standard fixed-price call","Sinking fund (fixed slice, lottery)","Defeasance via Treasury trust"],"correct":1,"why":"Only a fixed call price lets the issuer redeem cheaply and reissue at lower rates."}[[/DIAGRAM]]
 
 **Q25 — C.** *(Medium.)* $$\text{SMM} = 1 - (1 - 0.08)^{1/12} = 1 - 0.92^{1/12} = 1 - 0.99308 = \textbf{0.69\%}$$. B (0.667%) divides CPR by 12, ignoring compounding — the classic error.
+[[DIAGRAM]]{"type":"compare","title":"SMM from CPR","cols":[{"h":"Correct (compound)","items":["SMM = 1 − (1−CPR)^(1/12)","1 − 0.92^(1/12)","= 0.69%"]},{"h":"Trap (linear)","items":["CPR / 12","8% / 12","= 0.667%"]}]}[[/DIAGRAM]]
 
 **Q26 — A.** *(Hard.)* Monthly rate = 0.4%, n = 360. Payment:
 

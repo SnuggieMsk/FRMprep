@@ -216,6 +216,7 @@ Watch the sign on the negative beta times a positive surprise.
 [[DIAGRAM]]{"type":"quadrant","title":"Fama-French style: SMB<0, HML>0","x":"growth -> value (HML)","y":"large -> small (SMB)","q":["large growth","LARGE VALUE","small growth","small value"]}[[/DIAGRAM]]
 
 **Q16 — C.** *(Easy.)* When the fund is the whole portfolio, idiosyncratic risk is borne in full — use total risk: Sharpe. Treynor/alpha suit components of a diversified whole; IR suits benchmark mandates.
+[[DIAGRAM]]{"type":"compare","title":"Which performance measure?","cols":[{"h":"Whole portfolio","items":["total risk borne","use SHARPE","denominator = sigma"]},{"h":"Component of portfolio","items":["only systematic risk","use Treynor/alpha","denominator = beta"]}]}[[/DIAGRAM]]
 
 **Q17 — A.** *(Medium.)*
 
@@ -230,19 +231,26 @@ B's Treynor wrongly divides by σ-scaled beta; C's Sharpe uses the market σ; D 
 $$RAROC = \frac{60 - 18 - 12 + 0.03 \times 120}{120} = \frac{30 + 3.6}{120} = \frac{33.6}{120} = 28.0\%$$
 
 Distractor A (25%) omits the return on economic capital; D divides by gross revenue components incorrectly.
+[[DIAGRAM]]{"type":"steps","title":"RAROC","steps":["Revenue","- costs","- expected loss","+ return on econ. capital","/ economic capital","= RAROC"]}[[/DIAGRAM]]
 
 **Q20 — B.** *(Hard.)*
 
 $$ARAROC = 28.0\% - 1.4 \times (9\% - 3\%) = 28.0\% - 8.4\% = 19.6\% > R_f = 3\%$$
 
 ARAROC exceeds the risk-free rate, so the unit clears its systematic-risk-adjusted hurdle. C states the wrong comparison; the ARAROC rule benchmarks against $$R_f$$, not $$E[R_m]$$.
+[[DIAGRAM]]{"type":"steps","title":"Adjusted RAROC decision","steps":["RAROC 28%","- beta x (Rm - Rf) = 8.4%","ARAROC = 19.6%","compare to Rf = 3%","19.6% > 3% -> create value"]}[[/DIAGRAM]]
 
 **Q21 — B.** *(Medium.)* Silo hedging ignores natural offsets across units; ERM nets exposures first and hedges only the residual — one of the standard cost arguments for ERM.
+[[DIAGRAM]]{"type":"compare","title":"Silo vs enterprise hedging","cols":[{"h":"Silo (per line)","items":["hedge gross exposures","ignores offsets","over-hedges, costly"]},{"h":"ERM (net)","items":["aggregate first","offsets cancel","hedge residual only"]}]}[[/DIAGRAM]]
 
 **Q22 — C.** *(Easy.)* GARP files LTCM (with Niederhoffer and the London Whale) under model risk: normal-market correlation and liquidity assumptions failed under the 1998 flight to quality, and leverage amplified the error. Barings = rogue trading; Northern Rock = funding liquidity; VW = reputational.
+[[DIAGRAM]]{"type":"compare","title":"Disaster -> risk type","cols":[{"h":"Case","items":["LTCM","Barings","Northern Rock","Volkswagen"]},{"h":"Risk type","items":["MODEL risk","rogue trading","funding liquidity","reputational"]}]}[[/DIAGRAM]]
 
 **Q23 — B.** *(Medium.)* Citron levered the municipal pool roughly threefold through reverse repos into inverse floaters and other structured notes — a leveraged bet on stable/falling rates that the 1994 Fed tightening destroyed. No rogue concealment of equities (A), no CDS (C — wrong decade), and the pool was not CP-funded in the relevant sense (D).
+[[DIAGRAM]]{"type":"steps","title":"Orange County 1994","steps":["Reverse repos add leverage","Buy inverse floaters","Bet on stable/low rates","Fed hikes rates 1994","Note values collapse -> bankruptcy"]}[[/DIAGRAM]]
 
 **Q24 — B.** *(Hard.)* Raising haircuts withdraws funding at the margin exactly like depositors queueing at a branch: borrowers must sell assets to repay, depressing collateral values and triggering further haircut rises — the fire-sale spiral that made repo a systemic channel.
+[[DIAGRAM]]{"type":"steps","title":"Repo run / fire-sale spiral","steps":["Haircuts rise","Funding withdrawn","Forced asset sales","Collateral prices fall","Haircuts rise again"]}[[/DIAGRAM]]
 
 **Q25 — B.** *(Medium.)* The professional standards require clear, accurate, not-misleading risk communication: disclose assumptions, limitations, and uncertainty, and separate fact from opinion. Omitting limitations (A) violates the Code; C and D are not Code requirements.
+[[DIAGRAM]]{"type":"highlight","title":"Code of Conduct: communicating a flawed model","options":["A. Show only point estimates","B. Disclose assumptions & limits","C. Refuse to present it","D. Report to GARP committee"],"correct":1,"why":"Clear, not-misleading communication; disclose limits, separate fact from opinion"}[[/DIAGRAM]]

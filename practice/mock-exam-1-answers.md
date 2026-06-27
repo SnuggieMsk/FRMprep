@@ -64,47 +64,56 @@ contracts scale both the loss and the margin, so they cancel.
 $$\frac{\Delta P}{P} \approx -6.5(0.01) + \tfrac{1}{2}(45)(0.01)^2 = -0.0650 + 0.00225 = -6.28\%$$.
 Choice B is duration-only; A (−6.73%) flips the sign of the convexity
 term — convexity always *cushions* the loss for a long bond.
+[[DIAGRAM]]{"type":"steps","title":"Duration + convexity","steps":["Duration term: −D·Δy = −6.5(0.01) = −6.50%","Convexity term: +½·C·Δy² = +0.225%","Convexity always adds (cushions)","Total ΔP/P ≈ −6.28%"]}[[/DIAGRAM]]
 
 **Q7 — Book 2, Bayes' theorem** — **C.**
 $$P(S \mid B) = \frac{0.10 \times 0.70}{0.10 \times 0.70 + 0.90 \times 0.50} = \frac{0.07}{0.52} = 13.5\%$$.
 Choice B (10%) ignores the evidence (the prior); D confuses
 $$P(B \mid S)$$ with $$P(S \mid B)$$ — the inverse-probability error.
+[[DIAGRAM]]{"type":"steps","title":"Bayes update","steps":["Prior P(S) = 10%","Likelihood of signal given S vs not-S","Posterior = joint / total evidence","P(S|B) = 0.07 / 0.52 = 13.5%"]}[[/DIAGRAM]]
 
 **Q8 — Book 3, Put-call parity** — **B.**
 $$p = c - S_0 + K e^{-rT} = 4.50 - 50 + 50\,e^{-0.02} = 4.50 - 50 + 49.01 = \$3.51$$.
 Choice D ($5.49) adds rather than subtracts the $0.99 financing term —
 a sign flip; A is the financing term alone.
+[[DIAGRAM]]{"type":"steps","title":"Put-call parity for p","steps":["p = c − S0 + K·e^(−rT)","= 4.50 − 50 + 49.01","Financing term K·e^(−rT) is subtracted from S0","p = 3.51"]}[[/DIAGRAM]]
 
 **Q9 — Book 1, Case studies (Barings)** — **A.** Nick Leeson both traded
 and controlled settlement/back-office records, so losses on unauthorized
 futures and options positions could be hidden in error account 88888.
 The lesson is segregation of duties, not model risk (B).
+[[DIAGRAM]]{"type":"highlight","title":"Barings: key failure","options":["Model risk in pricing","No segregation: trader controlled back office","Sovereign default exposure","Excessive regulatory capital"],"correct":1,"why":"Leeson ran both trading and settlement, hiding losses in account 88888."}[[/DIAGRAM]]
 
 **Q10 — Book 4, Binomial trees** — **B.** With $$u = 1.1$$, $$d = 0.9$$:
 $$p = \frac{e^{0.04 \times 0.25} - 0.9}{1.1 - 0.9} = \frac{1.01005 - 0.9}{0.2} = 0.5503$$
 $$c = e^{-0.01}\,[0.5503 \times 10 + 0.4497 \times 0] = \$5.45$$
 Choice C ($5.50) forgets to discount — the one-step-early error; A uses
 the "real-world" $$p = 0.5$$.
+[[DIAGRAM]]{"type":"steps","title":"One-step binomial call","steps":["Compute risk-neutral p = (e^(rΔt)−d)/(u−d)","p = 0.5503","Expected payoff = p·cu + (1−p)·cd","Discount at e^(−rΔt): c = 5.45"]}[[/DIAGRAM]]
 
 **Q11 — Book 2, AR(1) processes** — **C.** Long-run mean
 $$= \delta/(1 - \phi) = 2.0/(1 - 0.6) = 5.0$$. Choice B (3.33) divides by
 $$\phi$$ instead of $$1 - \phi$$.
+[[DIAGRAM]]{"type":"tree","title":"AR(1) long-run mean","root":"μ = δ / (1 − φ)","children":["δ = 2.0 (intercept)","φ = 0.6 (persistence)","μ = 2.0 / 0.4 = 5.0"]}[[/DIAGRAM]]
 
 **Q12 — Book 3, Covered interest parity** — **C.**
 $$F_0 = S_0 e^{(r_{USD} - r_{EUR})T} = 1.1000\,e^{(0.05 - 0.03)(1)} = 1.1000\,e^{0.02} = 1.1222$$.
 The currency with the higher interest rate (USD) depreciates forward,
 so the USD-per-EUR forward rate rises above spot. Choice A (1.0782)
 flips the sign of the rate differential.
+[[DIAGRAM]]{"type":"compare","title":"Covered interest parity","cols":[{"h":"Higher-rate ccy (USD)","items":["r = 5%","Depreciates forward","Trades at fwd discount"]},{"h":"Lower-rate ccy (EUR)","items":["r = 3%","Appreciates forward","Trades at fwd premium"]}]}[[/DIAGRAM]]
 
 **Q13 — Book 4, Bond pricing** — **C.** Four semiannual periods, $3
 coupon, 2.5% per period:
 $$P = 3 \times \frac{1 - 1.025^{-4}}{0.025} + \frac{100}{1.025^{4}} = 11.29 + 90.60 = \$101.88$$
 The bond trades above par because the 6% coupon exceeds the 5% yield —
 a quick sanity check that eliminates A immediately.
+[[DIAGRAM]]{"type":"scale","title":"Coupon vs yield → price","items":["yield > coupon (discount)","|coupon = yield (par)","coupon > yield (premium)"],"left":"below par","right":"above par"}[[/DIAGRAM]]
 
 **Q14 — Book 1, Sharpe ratio** — **A.**
 $$\text{Sharpe} = (11\% - 3\%)/16\% = 0.50$$. Choice B (0.69) forgets to
 subtract the risk-free rate.
+[[DIAGRAM]]{"type":"steps","title":"Sharpe ratio","steps":["Excess return = 11% − 3% = 8%","Divide by total volatility σ = 16%","Sharpe = 8 / 16 = 0.50"]}[[/DIAGRAM]]
 
 **Q15 — Book 3, SOFR futures** — **C.** The quote fell
 $$95.50 - 95.26 = 24$$ basis points; a long position loses when the quote
