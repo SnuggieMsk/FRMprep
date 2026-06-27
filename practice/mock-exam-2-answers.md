@@ -3,12 +3,16 @@
 ## Worked explanations
 
 **Q1 — Book 1, Risk taxonomy** — **B.** Credit risk is the risk of loss arising from a borrower or counterparty failing to meet its contractual obligations, such as a missed coupon payment. Market risk would relate to changes in interest rates or spreads moving prices; liquidity risk relates to funding or trading liquidity; operational risk relates to failed processes or people. The trigger here is issuer default on a scheduled payment, which is squarely credit risk.
+[[DIAGRAM]]{"type":"highlight","title":"Missed coupon payment = which risk?","options":["Market risk","Credit risk","Liquidity risk","Operational risk"],"correct":1,"why":"Counterparty fails contractual obligation"}[[/DIAGRAM]]
 
 **Q2 — Book 1, Risk taxonomy** — **C.** A "fat-finger" trade entry error combined with a failure of internal controls is operational risk, defined as the risk of loss from inadequate or failed internal processes, people, and systems, or from external events. The resulting market exposure may be realized through market prices, but the root cause and classification is operational. Business risk relates to strategic and demand uncertainty, not control failures.
+[[DIAGRAM]]{"type":"compare","title":"Operational vs Market risk","cols":[{"h":"Operational","items":["Failed processes/people/systems","Fat-finger + control failure","Root cause classification"]},{"h":"Market","items":["Price/rate moves","How loss is realized","Not the root cause"]}]}[[/DIAGRAM]]
 
 **Q3 — Book 1, How firms manage risk** — **A.** Firms should consider retaining risks in which they hold a comparative or informational advantage, because they may be better positioned than outside investors to bear and price that risk. Options B, C, and D all describe reasons that typically support hedging (reducing earnings volatility, lowering distress probability, and managing exposures outside the firm's expertise). The trap is assuming all risk should always be hedged.
+[[DIAGRAM]]{"type":"compare","title":"Retain vs Hedge a risk","cols":[{"h":"Retain","items":["Comparative/info advantage","Better positioned to price it"]},{"h":"Hedge","items":["Reduce earnings volatility","Lower distress probability","Outside firm's expertise"]}]}[[/DIAGRAM]]
 
 **Q4 — Book 1, Corporate governance** — **B.** The board's central risk responsibility is to establish the firm's risk appetite and oversee the risk management framework, not to perform operational tasks. Executing hedges, computing daily VaR, and negotiating covenants are management or staff functions. The trap conflates board oversight with day-to-day execution.
+[[DIAGRAM]]{"type":"compare","title":"Board vs Management","cols":[{"h":"Board (oversight)","items":["Set risk appetite","Oversee RM framework"]},{"h":"Management (execution)","items":["Execute hedges","Compute daily VaR","Negotiate covenants"]}]}[[/DIAGRAM]]
 
 **Q5 — Book 1, Credit risk transfer** — **B.** A single-name CDS lets the bank buy protection on a specific issuer, transferring credit risk to the protection seller while keeping the loan on its books and preserving the client relationship. An interest rate swap transfers rate risk, an equity index future transfers equity market risk, and a currency forward transfers FX risk—none address single-name default risk.
 

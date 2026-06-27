@@ -195,24 +195,31 @@ nav_order: 3
 ## Answers and explanations
 
 **Q1 — B.** *(Easy.)* Insured depositors stop demanding higher rates from riskier banks, so banks can fund risky strategies cheaply — classic moral hazard (a key lesson of the US S&L crisis). It is why deposit insurance is paired with capital regulation, not a substitute for it (C wrong).
+[[DIAGRAM]]{"type":"steps","title":"Deposit-insurance moral hazard","steps":["Deposits insured by government","Depositors stop monitoring bank risk","Bank funds risky bets cheaply","Risk-taking rises → moral hazard"]}[[/DIAGRAM]]
 
 **Q2 — B.** *(Medium.)* Combined ratio = 72% + 31% = 103%; after dividends = 103% + 2% = 105%; operating ratio = 105% − 8% investment income = **97%**. C and D stop one step early.
+[[DIAGRAM]]{"type":"steps","title":"Operating ratio build-up","steps":["Loss 72% + expense 31% = 103% combined","Add dividends 2% → 105%","Subtract investment income 8%","Operating ratio = 97%"]}[[/DIAGRAM]]
 
 **Q3 — C.** *(Medium.)* He must either die in year 1, or survive year 1 and die in year 2:
 
 $$0.16 + (1 - 0.16)(0.18) = 0.16 + 0.84 \times 0.18 = 0.16 + 0.1512 = 0.3112$$
 
 D (0.34) wrongly adds unconditional probabilities; A multiplies them.
+[[DIAGRAM]]{"type":"steps","title":"P(die within 2 years)","steps":["Die in year 1: 0.16","OR survive (0.84) then die year 2: 0.84×0.18","Sum: 0.16 + 0.1512","= 0.3112"]}[[/DIAGRAM]]
 
 **Q4 — B.** *(Medium.)* Management fee = 2% → $2M. Incentive = 20% × (25 − 2) = 20% × 23 = 4.6%. Net = 25 − 2 − 4.6 = **18.4%**. A applies the incentive to the gross 25% (25 − 2 − 5 = 18.0%) — read the fee basis carefully.
+[[DIAGRAM]]{"type":"steps","title":"Hedge-fund net return","steps":["Gross return 25%","Management fee 2%","Incentive 20%×(25−2)=4.6%","Net = 25−2−4.6 = 18.4%"]}[[/DIAGRAM]]
 
 **Q5 — C.** *(Easy.)* Short forward payoff = (K − S_T) × quantity = (1.3000 − 1.2500) × 1,000,000 = **+$50,000**. The firm locked in a higher sale price than the eventual spot.
 
 **Q6 — B.** *(Easy.)* The three pillars: mandatory central clearing for standardized trades between financial counterparties, platform trading, and trade reporting. Non-standard bilateral trades remain permitted but face margin requirements (A, D too strong).
+[[DIAGRAM]]{"type":"tree","title":"Post-crisis OTC reforms","root":"G20 / Dodd-Frank","children":["Central clearing (standardized)","Platform trading (SEFs)","Trade reporting (repositories)","Margin on bilateral trades"]}[[/DIAGRAM]]
 
 **Q7 — B.** *(Medium.)* With netting, exposure = max(sum of values, 0) = max(25 − 15 + 5, 0) = **$15M**. Without netting it would be the sum of positive values only: 25 + 5 = $30M (C). Netting cuts exposure in half here.
+[[DIAGRAM]]{"type":"compare","title":"Credit exposure: netting vs not","cols":[{"h":"With netting","items":["max(25−15+5, 0)","= $15M","negatives offset positives"]},{"h":"Without netting","items":["sum positive MTMs","25 + 5 = $30M","ignore the −15"]}]}[[/DIAGRAM]]
 
 **Q8 — C.** *(Medium.)* The margin call comes when the loss per contract exceeds initial minus maintenance margin: $6,000 − $4,500 = $1,500 per contract = $15/oz over 100 oz. Trigger price = 1,950 − 15 = **$1,935**. The number of contracts is irrelevant since margins are per contract — using 200 oz (D) is the trap.
+[[DIAGRAM]]{"type":"steps","title":"Margin-call trigger price","steps":["Cushion = initial − maint = $1,500/contract","Per oz: $1,500 / 100 oz = $15","Price drop allowed = $15","Trigger = 1,950 − 15 = $1,935"]}[[/DIAGRAM]]
 
 **Q9 — B.** *(Medium.)* Minimum-variance hedge ratio:
 

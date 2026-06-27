@@ -30,11 +30,13 @@ question you missed or guessed**, and log each one in your error log.
 $$F_0 = S_0 e^{rT} = 50\,e^{0.04 \times 0.5} = 50\,e^{0.02} = \$51.01$$.
 Choice A ($49.01) is the sign-flip error — discounting instead of
 compounding; D uses a full year instead of six months.
+[[DIAGRAM]]{"type":"steps","title":"No-income forward price","steps":["Start with spot S0 = 50","Grow at risk-free rate over T: e^(rT)","F0 = 50 e^(0.04×0.5) = 51.01"]}[[/DIAGRAM]]
 
 **Q2 — Book 1, CAPM** — **C.**
 $$E(R) = 3\% + 1.2\,(9\% - 3\%) = 3\% + 7.2\% = 10.2\%$$.
 Choice D (13.8%) multiplies beta by the whole market return instead of the
 excess return.
+[[DIAGRAM]]{"type":"steps","title":"CAPM expected return","steps":["Risk-free rate: 3%","Add beta × market risk premium","1.2 × (9% − 3%) = 7.2%","E(R) = 3% + 7.2% = 10.2%"]}[[/DIAGRAM]]
 
 **Q3 — Book 2, Moments of a distribution** — **B.** Mean
 $$= 0.2(-10) + 0.5(5) + 0.3(20) = 6.5\%$$. Second moment
@@ -42,11 +44,13 @@ $$E[R^2] = 0.2(100) + 0.5(25) + 0.3(400) = 152.5$$, so variance
 $$= 152.5 - 6.5^2 = 110.25$$ and $$\sigma = \sqrt{110.25} = 10.5\%$$.
 Choice C ($$\sqrt{152.5} = 12.35$$) forgets to subtract the squared mean;
 A is the mean itself.
+[[DIAGRAM]]{"type":"steps","title":"Variance from moments","steps":["Mean μ = Σ p·R = 6.5%","E[R²] = Σ p·R² = 152.5","Variance = E[R²] − μ² = 110.25","σ = √110.25 = 10.5%"]}[[/DIAGRAM]]
 
 **Q4 — Book 4, Parametric VaR** — **C.**
 $$\text{VaR} = 2.326 \times 0.015 \times \$10{,}000{,}000 = \$348{,}900$$.
 Choice A uses the 95% z-value 1.645; B uses the two-tailed 1.96 — both
 classic wrong-z errors. D is the ten-day number ($$\times\sqrt{10}$$).
+[[DIAGRAM]]{"type":"compare","title":"One-tailed VaR z-values","cols":[{"h":"Confidence","items":["95%","97.5%","99%"]},{"h":"z (one-tail)","items":["1.645","1.960","2.326"]}]}[[/DIAGRAM]]
 
 **Q5 — Book 3, Futures margin** — **D.** Equity starts at $4,000 per
 contract; a call comes when it falls below the $3,000 maintenance level,
@@ -54,6 +58,7 @@ i.e., after a loss of more than $1,000 per contract. Per bushel:
 $$1{,}000 / 5{,}000 = \$0.20$$, so the trigger is $$8.00 - 0.20 = \$7.80$$.
 Choice A ($7.20) wrongly lets equity fall all the way to zero. The two
 contracts scale both the loss and the margin, so they cancel.
+[[DIAGRAM]]{"type":"scale","title":"Margin account ($ per contract)","items":["0","|3,000 maintenance","4,000 initial"],"left":"margin call","right":"safe"}[[/DIAGRAM]]
 
 **Q6 — Book 4, Duration and convexity** — **C.**
 $$\frac{\Delta P}{P} \approx -6.5(0.01) + \tfrac{1}{2}(45)(0.01)^2 = -0.0650 + 0.00225 = -6.28\%$$.

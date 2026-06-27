@@ -165,20 +165,28 @@ nav_order: 1
 ## Answers and explanations
 
 **Q1 — C.** *(Easy.)* Expected losses are a priced cost covered by provisions/reserves; capital is the buffer against losses **beyond** the expected level (unexpected loss).
+[[DIAGRAM]]{"type":"scale","title":"What covers each loss layer","items":["Expected loss","|Unexpected loss","Stress loss"],"left":"provisions/pricing","right":"capital / extreme"}[[/DIAGRAM]]
 
 **Q2 — B.** *(Easy.)* Inability to exit a position without moving the price is market/trading liquidity risk. Funding liquidity (A) is the inability to raise cash to meet obligations.
+[[DIAGRAM]]{"type":"compare","title":"Two faces of liquidity risk","cols":[{"h":"Market/trading","items":["Can't SELL at fair price","wide spreads, thin quotes","asset-side"]},{"h":"Funding","items":["Can't RAISE cash","meet obligations","liability-side"]}]}[[/DIAGRAM]]
 
 **Q3 — C.** *(Easy.)* Under M&M assumptions, hedging is a zero-NPV repackaging investors can do themselves. Hedging adds value only via frictions — distress costs, convex taxes, underinvestment.
+[[DIAGRAM]]{"type":"compare","title":"When does hedging add value?","cols":[{"h":"Frictionless M&M","items":["zero NPV","investors self-hedge","no value added"]},{"h":"Real-world frictions","items":["distress costs","convex taxes","underinvestment"]}]}[[/DIAGRAM]]
 
 **Q4 — B.** *(Easy.)* A put creates a floor while retaining the upside, for a premium. Futures (A) and a swap (C) lock the price symmetrically; selling calls (D) caps the upside and gives no downside protection.
+[[DIAGRAM]]{"type":"compare","title":"Hedging gold output","cols":[{"h":"Buy put","items":["floor on downside","KEEP upside","pay premium"]},{"h":"Sell future/swap","items":["price locked","no upside","symmetric"]},{"h":"Sell call","items":["caps upside","no floor","wrong tool"]}]}[[/DIAGRAM]]
 
 **Q5 — B.** *(Easy.)* Independence requires a reporting line outside the businesses being monitored and direct board access. A, C, D each compromise independence through hierarchy or incentives.
+[[DIAGRAM]]{"type":"highlight","title":"CRO independence","options":["A. CRO reports to head of trading","B. CRO to CEO + board risk cmte","C. Bonus tied to desk revenue","D. Lines pay own risk officers"],"correct":1,"why":"Reporting line outside the monitored businesses + direct board access"}[[/DIAGRAM]]
 
 **Q6 — C.** *(Easy.)* Third line = internal audit: independent assurance over the first (business) and second (risk/compliance) lines, reporting to the audit committee.
+[[DIAGRAM]]{"type":"steps","title":"Three lines of defense","steps":["1st: business owns risk","2nd: risk & compliance oversee","3rd: internal audit assures"]}[[/DIAGRAM]]
 
 **Q7 — B.** *(Medium.)* The CDS replaces reference-entity credit risk with counterparty risk on the seller. If seller and reference credit are positively correlated (AIG insuring mortgage CDOs), this is wrong-way risk.
+[[DIAGRAM]]{"type":"steps","title":"CDS residual risk","steps":["Buyer hedges reference entity","Risk shifts to seller","Seller defaults?","If correlated = wrong-way risk"]}[[/DIAGRAM]]
 
 **Q8 — A.** *(Medium.)* A TRS passes the asset's full economics — coupons plus price changes — so the total-return payer sheds market **and** credit risk. It is unfunded (B wrong), not credit-event-triggered (C wrong), and bilateral counterparty risk remains (D wrong).
+[[DIAGRAM]]{"type":"compare","title":"TRS vs CDS","cols":[{"h":"Total return swap","items":["market + credit risk","pays on price moves","no credit event needed"]},{"h":"CDS","items":["credit risk only","pays on credit event","like insurance"]}]}[[/DIAGRAM]]
 
 **Q9 — B.** *(Medium.)*
 
@@ -191,10 +199,12 @@ Distractor A (16%) is the simple weighted average — correct only if ρ = 1.
 **Q10 — B.** *(Medium.)* $$\beta = 0.027/0.0225 = 1.2$$; $$E[R] = 3\% + 1.2 \times 5\% = 9.0\%$$. Distractor A uses β = 1; D adds the premium to a miscomputed base.
 
 **Q11 — C.** *(Medium.)* CML slope = $$(E[R_m]-R_f)/\sigma_m$$ = the market's Sharpe ratio. The CML uses total risk and holds only for efficient portfolios; the SML uses beta and holds for all assets.
+[[DIAGRAM]]{"type":"compare","title":"CML vs SML","cols":[{"h":"CML","items":["x-axis = total risk (sigma)","efficient portfolios only","slope = market Sharpe"]},{"h":"SML","items":["x-axis = beta","ALL assets","prices systematic risk"]}]}[[/DIAGRAM]]
 
 **Q12 — C.** *(Easy.)* $$\beta_p = 0.7(1.0) + 0.3(0) = 0.70$$ — portfolio beta is the weighted average of component betas; the risk-free asset has β = 0.
 
 **Q13 — B.** *(Medium.)* APT needs a factor structure, ample diversification, and no arbitrage. It dispenses with homogeneous expectations, universal market-portfolio holdings, and risk-free borrowing — those are CAPM machinery.
+[[DIAGRAM]]{"type":"compare","title":"APT vs CAPM assumptions","cols":[{"h":"APT requires","items":["linear factor model","diversification","no arbitrage"]},{"h":"CAPM requires","items":["homogeneous expectations","hold market portfolio","risk-free borrowing"]}]}[[/DIAGRAM]]
 
 **Q14 — A.** *(Medium.)*
 
@@ -203,6 +213,7 @@ $$R = 8\% + 1.5(+2\%) + (-0.8)(+1\%) + 0.5\% = 8\% + 3\% - 0.8\% + 0.5\% = 10.7\
 Watch the sign on the negative beta times a positive surprise.
 
 **Q15 — B.** *(Medium.)* Negative SMB loading = large-cap tilt; positive HML loading = value tilt → large-cap value.
+[[DIAGRAM]]{"type":"quadrant","title":"Fama-French style: SMB<0, HML>0","x":"growth -> value (HML)","y":"large -> small (SMB)","q":["large growth","LARGE VALUE","small growth","small value"]}[[/DIAGRAM]]
 
 **Q16 — C.** *(Easy.)* When the fund is the whole portfolio, idiosyncratic risk is borne in full — use total risk: Sharpe. Treynor/alpha suit components of a diversified whole; IR suits benchmark mandates.
 

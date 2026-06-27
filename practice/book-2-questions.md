@@ -172,11 +172,15 @@ $$P(H \mid D) = \frac{0.06}{0.06 + 0.18} = \frac{0.06}{0.24} = 0.25$$
 
 Distractor A is the joint probability (numerator only); D is the inverted conditional $$P(D \mid H)$$.
 
+[[DIAGRAM]]{"type":"steps","title":"Bayes update","steps":["P(D|H)·P(H)=0.06","P(D|L)·P(L)=0.18","P(D)=0.06+0.18=0.24","P(H|D)=0.06/0.24=0.25"]}[[/DIAGRAM]]
+
 **Q2 — A.** *(Easy.)* Independence gives $$P(A \cap B) = 0.4 \times 0.5 = 0.20$$, so
 
 $$P(A \cup B) = 0.40 + 0.50 - 0.20 = 0.70$$
 
 Distractor B forgets to subtract the intersection.
+
+[[DIAGRAM]]{"type":"compare","title":"Independent vs mutually exclusive","cols":[{"h":"Independent","items":["P(A∩B)=P(A)P(B)","both can occur","subtract overlap in union"]},{"h":"Mutually exclusive","items":["P(A∩B)=0","cannot co-occur","union = simple sum"]}]}[[/DIAGRAM]]
 
 **Q3 — B.** *(Easy.)* $$\mathrm{Var}(3 + 2X) = 2^2 \times 5 = 20$$. The additive constant does nothing (C wrong); the multiplier enters squared (A forgets the square); D squares the whole product.
 
@@ -202,19 +206,27 @@ Distractor D stops at $$s$$; A divides by $$n$$ instead of $$\sqrt{n}$$; C is $$
 
 **Q8 — B.** *(Easy.)* Negative skew = longer/heavier **left** tail (big losses more likely than big gains); kurtosis 6.5 means excess kurtosis of 3.5 — fatter tails than normal. Skew and kurtosis measure different things and never "offset" (D).
 
+[[DIAGRAM]]{"type":"scale","title":"Tail fatness (kurtosis)","items":["thin (platykurtic)","|normal (k=3)","fat (k=6.5, leptokurtic)"],"left":"fewer extremes","right":"more extremes"}[[/DIAGRAM]]
+
 **Q9 — B.** *(Medium.)*
 
 $$t = \frac{1.2 - 0}{3.6/\sqrt{36}} = \frac{1.2}{0.6} = 2.00$$
 
 With 35 df, the 5% two-tailed critical value is 2.03, so 2.00 falls just short — fail to reject at 5%. At 10% the critical value is 1.69, so reject. Distractor A applies the normal value 1.96 despite the small-sample t-test — exactly the trap the question sets; C forgets $$\sqrt{n}$$; D forgets to divide $$s$$ by $$\sqrt{n}$$ at all.
 
+[[DIAGRAM]]{"type":"scale","title":"t = 2.00 vs critical values","items":["1.69 (10%)","|2.00 (stat)","2.03 (5%)"],"left":"fail to reject","right":"reject"}[[/DIAGRAM]]
+
 **Q10 — A.** *(Medium.)* Power $$= 1 - \beta$$, so $$\beta = P(\text{Type II}) = 0.20$$; more observations sharpen the test and raise power. B confuses the two error types ($$P(\text{Type I}) = \alpha = 0.05$$). C is backwards — a stricter significance level makes rejection harder and *lowers* power for a fixed sample. D defines a Type I error, not power: power conditions on $$H_0$$ being **false**.
+
+[[DIAGRAM]]{"type":"quadrant","title":"Test outcomes","x":"H0 true →","y":"reject H0 →","q":["Type II error (β=0.20)","correct (1−α)","power (1−β=0.80)","Type I error (α=0.05)"]}[[/DIAGRAM]]
 
 **Q11 — A.** *(Hard.)* Chi-square test of a variance:
 
 $$\chi^2 = \frac{(n-1)s^2}{\sigma_0^2} = \frac{19 \times 0.0036}{0.0025} = \frac{0.0684}{0.0025} = 27.36$$
 
 Since 27.36 < 30.14, fail to reject — a sample standard deviation of 6% from only 20 observations is not statistically distinguishable from 5%. Distractor C uses $$n = 20$$ instead of $$n - 1 = 19$$ (and even then 28.80 < 30.14 would still fail to reject); D is the variance ratio $$s^2/\sigma_0^2$$ without the df scaling.
+
+[[DIAGRAM]]{"type":"scale","title":"χ² = 27.36 vs critical 30.14","items":["27.36 (stat)","|30.14 (5% crit)","reject region"],"left":"fail to reject","right":"reject"}[[/DIAGRAM]]
 
 **Q12 — A.** *(Medium.)*
 
@@ -234,9 +246,15 @@ $$t = \frac{0.85 - 1.00}{0.34} = -0.44$$
 
 $$|{-0.44}| < 1.96$$, so the slope is statistically indistinguishable from 1 — fail to reject. Distractor B is the trap: $$t = 0.85/0.34 = 2.50$$ tests $$\beta = 0$$, which is **not** the hypothesis asked. Always test against the value stated in the question.
 
+[[DIAGRAM]]{"type":"compare","title":"Which null? β=1 vs β=0","cols":[{"h":"H0: β=1 (asked)","items":["t=(0.85−1)/0.34","t=−0.44","|t|<1.96 → fail to reject"]},{"h":"H0: β=0 (trap)","items":["t=0.85/0.34","t=2.50","tests significance, not hedge"]}]}[[/DIAGRAM]]
+
 **Q15 — C.** *(Easy.)* Both conditions are required: the omitted variable must be a determinant of $$Y$$ **and** correlated with the included regressor. If it is uncorrelated with the regressor (B), its effect lands in the error term without biasing the slope.
 
+[[DIAGRAM]]{"type":"compare","title":"Omitted-variable bias needs BOTH","cols":[{"h":"Both hold → bias","items":["affects Y","correlated with included X","slope is biased"]},{"h":"Either fails → no bias","items":["irrelevant to Y, or","uncorrelated with X","effect absorbed by error"]}]}[[/DIAGRAM]]
+
 **Q16 — C.** *(Easy.)* Heteroskedasticity leaves OLS coefficients unbiased and consistent but invalidates the conventional standard errors, so t-stats and p-values mislead. White (heteroskedasticity-robust) standard errors fix the inference; no robust SE ever changes the coefficient estimates (D).
+
+[[DIAGRAM]]{"type":"highlight","title":"Heteroskedasticity effect","options":["Biased coefficients, invalid SEs","Unbiased coefficients, valid SEs","Unbiased coefficients, invalid SEs (use White)","Biased coefficients, White corrects bias"],"correct":2,"why":"OLS stays unbiased/consistent; only the SEs break, so robust (White) SEs fix inference, not the coefficients."}[[/DIAGRAM]]
 
 **Q17 — D.** *(Easy.)* Long-run mean of an AR(1):
 

@@ -200,7 +200,11 @@ $$VaR_{99\%} = 2.326 \times 0.015 \times \$200\text{m} = \$6.98\text{m}$$
 
 Distractor B uses 1.645 (95% value); C uses 1.96 — the two-tailed 95% critical value, never correct for VaR, which is a one-tailed quantile.
 
+[[DIAGRAM]]{"type":"highlight","title":"Which z for one-day 99% VaR?","options":["1.645 (95% one-tailed)","1.96 (95% two-tailed)","2.326 (99% one-tailed)","2.576 (99% two-tailed)"],"correct":2,"why":"VaR is a one-tailed quantile; 99% uses 2.326. The two-tailed values (1.96, 2.576) are distractors."}[[/DIAGRAM]]
+
 **Q2 — C.** *(Easy.)* VaR can violate subadditivity: merging two portfolios can *increase* measured VaR, penalizing diversification. Expected shortfall satisfies all four coherence axioms.
+
+[[DIAGRAM]]{"type":"tree","title":"Coherence axioms (VaR fails one)","root":"4 properties","children":["Monotonicity ✓","Positive homogeneity ✓","Translation invariance ✓","Subadditivity ✗ (VaR may fail)"]}[[/DIAGRAM]]
 
 **Q3 — C.** *(Medium.)* With 100 scenarios, the 95% ES is the average of the worst 5% — the worst five losses:
 
@@ -208,13 +212,19 @@ $$ES = \frac{12 + 10 + 9 + 8 + 7}{5} = \frac{46}{5} = \$9.2\text{m}$$
 
 Distractor A is the 95% VaR-style cutoff (5th worst), not the tail average; B wrongly averages six losses.
 
+[[DIAGRAM]]{"type":"compare","title":"VaR vs Expected Shortfall","cols":[{"h":"VaR (95%)","items":["the loss cutoff (quantile)","here = 5th-worst loss","not always subadditive"]},{"h":"ES (95%)","items":["average of losses beyond VaR","here = mean of worst 5","coherent; ES ≥ VaR"]}]}[[/DIAGRAM]]
+
 **Q4 — B.** *(Easy.)*
 
 $$VaR_{10d} = 3.0 \times \sqrt{10} = \$9.49\text{m}$$
 
 Volatility (and hence VaR) scales with $$\sqrt{t}$$; D scales linearly — that is how *variance* scales.
 
+[[DIAGRAM]]{"type":"compare","title":"How risk measures scale with time","cols":[{"h":"Variance","items":["scales linearly with t","σ² × t"]},{"h":"Volatility & VaR","items":["scale with √t","VaR × √t (here ×√10)"]}]}[[/DIAGRAM]]
+
 **Q5 — B.** *(Medium.)* 1% of 500 observations = 5, so the 99% VaR is the 5th worst loss: $5.7 million. Distractor A takes the 6th worst, D the very worst.
+
+[[DIAGRAM]]{"type":"steps","title":"Historical-simulation VaR","steps":["Collect 500 daily P&L observations","Sort losses worst to best","Count: 1% × 500 = 5","Pick the 5th-worst loss = $5.7m"]}[[/DIAGRAM]]
 
 **Q6 — C.** *(Medium.)* Work in variances (the sign of the return is irrelevant once squared):
 
@@ -223,6 +233,8 @@ $$\sigma_t^2 = 0.94 \times (0.010)^2 + 0.06 \times (0.030)^2 = 0.000094 + 0.0000
 $$\sigma_t = \sqrt{0.000148} = 1.22\%$$
 
 Distractor B averages volatilities ($$0.94 \times 1\% + 0.06 \times 3\% = 1.12\%$$); A drops the return term.
+
+[[DIAGRAM]]{"type":"compare","title":"EWMA vs GARCH(1,1)","cols":[{"h":"EWMA","items":["weights: λ on old var, (1−λ) on r²","no long-run mean term","RiskMetrics λ ≈ 0.94"]},{"h":"GARCH(1,1)","items":["adds constant ω → mean reversion","σ²=ω+αr²+βσ²","reverts to ω/(1−α−β)"]}]}[[/DIAGRAM]]
 
 **Q7 — B.** *(Easy.)*
 
