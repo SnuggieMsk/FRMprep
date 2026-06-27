@@ -490,17 +490,20 @@
     });
     return figd('<svg class="frm-svg" viewBox="0 0 340 150" preserveAspectRatio="xMidYMid meet">' + out + "</svg>", s.note, s.title);
   };
-  // labeled timeline
+  // labeled timeline (self-contained coordinates; alternates labels above/below)
   DIA.timeline = function (s) {
     var pts = (s.points || []).slice(0, 6), n = pts.length || 1, out = "";
-    out += line(0.04, 0.5, 0.96, 0.5, "var(--border)", 2);
+    function xp(i) { return n === 1 ? 170 : (32 + (276 * i) / (n - 1)); }
+    out += '<line x1="18" y1="78" x2="322" y2="78" stroke="var(--border)" stroke-width="2"/>';
     pts.forEach(function (p, i) {
-      var x = n === 1 ? 0.5 : 0.08 + (0.84 * i) / (n - 1), up = i % 2 === 0;
-      out += dot(x, 0.5, 4, "var(--brand)");
-      out += '<text x="' + X(x) + '" y="' + (Y(0.5) + (up ? -10 : 26)) + '" text-anchor="middle" fill="var(--brand)" font-size="9.5" font-weight="700" font-family="Inter,sans-serif">' + esc(p.t || "") + "</text>";
-      out += '<text x="' + X(x) + '" y="' + (Y(0.5) + (up ? -22 : 14)) + '" text-anchor="middle" fill="var(--text-soft)" font-size="8.5" font-family="Inter,sans-serif">' + esc((p.l || "").slice(0, 22)) + "</text>";
+      var x = xp(i), up = i % 2 === 0, by = up ? 34 : 100;
+      out += '<line x1="' + x + '" y1="78" x2="' + x + '" y2="' + (up ? 62 : 94) + '" stroke="var(--border)" stroke-width="1"/>';
+      out += '<circle cx="' + x + '" cy="78" r="4" fill="var(--brand)"/>';
+      out += '<text x="' + x + '" y="' + by + '" text-anchor="middle" font-family="Inter,sans-serif">'
+        + '<tspan x="' + x + '" fill="var(--brand)" font-size="10" font-weight="700">' + esc(p.t || "") + "</tspan>"
+        + '<tspan x="' + x + '" dy="12" fill="var(--text-soft)" font-size="8.5">' + esc((p.l || "").slice(0, 18)) + "</tspan></text>";
     });
-    return figd('<svg class="frm-svg" viewBox="0 0 340 130" preserveAspectRatio="xMidYMid meet">' + out + "</svg>", s.note, s.title);
+    return figd('<svg class="frm-svg" viewBox="0 0 340 150" preserveAspectRatio="xMidYMid meet">' + out + "</svg>", s.note, s.title);
   };
   // labeled answer map with the reason the right choice wins (for recall questions)
   DIA.highlight = function (s) {
