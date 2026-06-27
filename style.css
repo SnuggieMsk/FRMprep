@@ -589,3 +589,34 @@ body{
 .frm-chip-row.no{border-color:var(--danger);background:rgba(220,38,38,.10)}
 .frm-chip-row.no .frm-chip-key{background:var(--danger);color:#fff;border-color:var(--danger)}
 .frm-chip-row.no .frm-chip-mark{color:var(--danger)}
+
+/* ===================================================================
+   HOVER-TO-LEARN GLOSSARY TOOLTIPS (glossary.js)
+   =================================================================== */
+.frm-term{
+  border-bottom:1.5px dotted var(--brand);
+  cursor:help;color:inherit;position:relative;
+}
+.frm-term:hover,.frm-term:focus{background:var(--brand-soft);outline:none;border-radius:3px}
+.frm-tip{
+  position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%) translateY(4px);
+  width:min(280px,76vw);z-index:80;
+  background:var(--surface);color:var(--text);border:1px solid var(--border);
+  border-radius:11px;box-shadow:0 10px 34px rgba(10,20,50,.28);
+  padding:10px 12px;font-size:.84rem;line-height:1.5;font-weight:400;
+  text-align:left;letter-spacing:0;text-transform:none;
+  opacity:0;visibility:hidden;transition:opacity .14s,transform .14s;pointer-events:none;
+}
+.frm-tip b{display:block;color:var(--brand);font-weight:800;font-size:.8rem;margin-bottom:3px;text-transform:capitalize}
+.frm-tip::after{ /* little arrow */
+  content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:6px solid transparent;border-top-color:var(--border);
+}
+.frm-term:hover .frm-tip,.frm-term:focus .frm-tip,.frm-term.open .frm-tip{
+  opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);
+}
+@media (max-width:560px){
+  /* anchor tooltips to a comfortable width on small screens */
+  .frm-tip{position:fixed;left:50%;bottom:auto;top:auto;width:86vw}
+  .frm-term.open .frm-tip{transform:translateX(-50%)}
+}

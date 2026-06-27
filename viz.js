@@ -205,6 +205,18 @@
     s += line(0.33, 0.1, 0.33, 0.78, "var(--border)", 1, "2 2") + txt(0.33, 0.04, "30m", "middle", SOFT, 8.5);
     return frame(s, "<b>PSA prepayment ramp.</b> 100% PSA = prepayments rise 0.2% per month for 30 months, then level off at 6% CPR. Faster prepayment (higher PSA) shortens an MBS's life.");
   };
+  C.curvature = function () {
+    var s = axes("maturity →", "yield");
+    // base curve
+    s += poly([[0.05, 0.4], [0.5, 0.62], [0.95, 0.78]], BRAND, 2.4) + txt(0.9, 0.84, "base", "end", BRAND, 8.5);
+    // butterfly move: wings up, belly unchanged/down (curvature change)
+    s += poly([[0.05, 0.5], [0.5, 0.58], [0.95, 0.9]], MED, 2.2, "4 2") + txt(0.9, 0.96, "wings rally", "end", MED, 8.5);
+    s += line(0.05, 0.06, 0.05, 0.5, "var(--border)", 1, "2 2") + txt(0.05, 0.0, "2y", "middle", SOFT, 8.5);
+    s += line(0.5, 0.06, 0.5, 0.62, "var(--border)", 1, "2 2") + txt(0.5, 0.0, "10y (belly)", "middle", SOFT, 8.5);
+    s += line(0.95, 0.06, 0.95, 0.9, "var(--border)", 1, "2 2") + txt(0.95, 0.0, "30y", "middle", SOFT, 8.5);
+    s += txt(0.27, 0.3, "wings", "middle", ACC, 9) + txt(0.73, 0.3, "wings", "middle", ACC, 9);
+    return frame(s, "<b>Curvature / butterfly move.</b> The <i>wings</i> (2y &amp; 30y) move relative to the <i>belly</i> (10y). A zero-DV01 barbell-vs-bullet trade is hedged against parallel shifts but still wins or loses on this change in curve shape.");
+  };
   C.diversification = function () {
     var p = []; for (var i = 0; i <= 40; i++) { var n = i / 40; p.push([n, 0.2 + 0.62 * Math.exp(-4 * n)]); }
     var s = axes("number of stocks", "portfolio risk") + poly(p, BRAND, 2.6);
@@ -214,6 +226,7 @@
 
   // ---------- keyword -> concept ----------
   var RULES = [
+    [/curvature|barbell|\bbullet\b|\bbelly\b|\bwings\b/i, "curvature"],
     [/put[\s-]*call parity/i, "parity"],
     [/protective put/i, "protectivePut"],
     [/covered call/i, "coveredCall"],

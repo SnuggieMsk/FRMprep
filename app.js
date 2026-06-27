@@ -630,6 +630,7 @@
     contentEl.innerHTML = hero + "<h2>Jump to a chapter</h2>" + cards
       + '<hr><details open><summary style="cursor:pointer;font-weight:700;font-size:18px">📋 Full exam guide & study plan</summary>' + readme + "</details>";
     contentEl.querySelectorAll("[data-go]").forEach(function (card) { card.addEventListener("click", function () { location.hash = card.getAttribute("data-go"); }); });
+    if (window.FRMGlossary) window.FRMGlossary.annotate(contentEl.querySelector("details .markdown-body"));
     chapterNavEl.innerHTML = ""; highlightNav(null); document.title = "FRM Part I Study Hub";
   }
   function viewTabs(num, active) {
@@ -652,6 +653,7 @@
     var c = chapterByNum(num);
     contentEl.innerHTML = viewTabs(num, "notes") + conceptBanner(num) + '<div class="markdown-body">' + md(c.notes) + "</div>";
     bindMarkRead(num, "notes");
+    if (window.FRMGlossary) window.FRMGlossary.annotate(contentEl.querySelector(".markdown-body"));
   }
   // ----- Interactive quiz: parse markdown question bank into structured MCQs -----
   function parseBlocks(text) {
@@ -717,7 +719,7 @@
     "314": "straddle", "316": "yieldCurve", "318": "psa",
     "401": "normalVaR", "402": "normalVaR", "403": "ewma", "404": "lossDist", "406": "lossDist",
     "409": "yieldCurve", "410": "yieldCurve", "411": "bondConvexity", "412": "bondConvexity",
-    "413": "curveShift", "414": "binomial2", "415": "callPayoff", "416": "callPayoff"
+    "413": "curvature", "414": "binomial2", "415": "callPayoff", "416": "callPayoff"
   };
   function conceptBanner(num) {
     var key = CH_CONCEPT[num];
@@ -744,6 +746,7 @@
     });
     card.querySelector(".q-expl").hidden = false;
     injectViz(card, correct, chosen);
+    if (window.FRMGlossary) window.FRMGlossary.annotate(card.querySelector(".q-expl"));
     if (!restore) {
       var fl = chosen === correct ? "flash-ok" : "flash-no";
       card.classList.add(fl); setTimeout(function () { card.classList.remove(fl); }, 700);
@@ -867,6 +870,7 @@
       var cc = fcState.cards[fcState.idx];
       document.getElementById("fcFront").innerHTML = md(cc.q);
       document.getElementById("fcBack").innerHTML = md(cc.a);
+      if (window.FRMGlossary) { window.FRMGlossary.annotate(document.getElementById("fcFront")); window.FRMGlossary.annotate(document.getElementById("fcBack")); }
       document.getElementById("fcCounter").textContent = "Card " + (fcState.idx + 1) + " / " + fcState.cards.length;
     }
     function flip() { card.classList.toggle("flipped"); }
