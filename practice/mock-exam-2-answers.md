@@ -134,16 +134,20 @@
 **Q52 — Book 3, commodity forward with storage** — **B.** Storage cost as a proportional rate is added to $r$: $F_0 = S_0 e^{(r+u)T} = 1{,}900 \times e^{(0.04 + 0.015)\times 1} = 1{,}900 \times e^{0.055} = 1{,}900 \times 1.05654 = 2{,}007.4$. Trap: A treats storage as reducing the cost of carry; C uses only $r$; D subtracts both.
 
 **Q53 — Book 3, consumption commodity forward** — **C.** For a consumption asset, holders derive a convenience yield, so arbitrage gives only an inequality: $F_0 \le S_0 e^{(r+u)T}$. Equivalently $F_0 = S_0 e^{(r+u-y)T}$ holds only after introducing the convenience yield $y$; with $y \ge 0$ the forward cannot exceed $S_0 e^{(r+u)T}$, and equality requires $y=0$. Trap: A is the equality form (true only with the convenience-yield term made explicit but stated as exact equality, which over-claims); B adds $y$ with the wrong sign; D mis-signs storage.
+[[DIAGRAM]]{"type":"compare","title":"Investment vs Consumption asset","cols":[{"h":"Investment","items":["F0 = S0 e^(r+u)T","Exact equality"]},{"h":"Consumption","items":["F0 ≤ S0 e^(r+u)T","Convenience yield y","Equality only if y=0"]}]}[[/DIAGRAM]]
 
 **Q54 — Book 3, put-call parity** — **A.** Parity: $p = c - S_0 + K e^{-rT} = 5.20 - 52 + 50 e^{-0.04 \times 0.5} = 5.20 - 52 + 50(0.98020) = 5.20 - 52 + 49.01 = 2.21$. Trap: C ($7.20) forgets to discount/net the stock; B and D arise from sign or discounting errors on the strike.
 
 **Q55 — Book 3, option price bounds** — **A.** An American put can be exercised any time, and its maximum payoff is the strike $K$ (received when the stock falls to zero); so the price cannot exceed $K$. (A European put is bounded by $K e^{-rT}$.) Trap: B is the European-put bound (American is the looser $K$); C is the call upper bound; D is a lower-bound expression for a call.
+[[DIAGRAM]]{"type":"compare","title":"Put upper bound","cols":[{"h":"American put","items":["Exercise anytime","Max payoff = K","Price ≤ K"]},{"h":"European put","items":["Exercise at expiry","Price ≤ K e^(-rT)"]}]}[[/DIAGRAM]]
 
 **Q56 — Book 3, bull call spread** — **A.** Net premium paid = $6 − $2 = $4 (debit). Maximum profit at expiration = spread width − net cost = ($55 − $45) − $4 = $6. Breakeven = lower strike + net cost = $45 + $4 = $49. Trap: B ignores the premiums paid (uses full $10 spread, breakeven at midpoint); C adds the cost to the wrong strike; D mislabels max profit as the net debit.
+[[DIAGRAM]]{"type":"steps","title":"Bull call spread","steps":["Net debit = $6 - $2 = $4","Breakeven = $45 + $4 = $49","Max profit = ($55-$45) - $4 = $6","Max loss = $4 net debit"]}[[/DIAGRAM]]
 
 **Q57 — Book 3, long straddle payoff** — **A.** At $112 the call (strike 100) is worth $12 and the put is worth $0. Total payoff = $12. Net profit = payoff − premium = $12 − $9 = $3. Trap: B reports gross payoff and forgets the $9 premium; C double counts both legs; D reports the premium itself.
 
 **Q58 — Book 3, exotic / barrier options** — **A.** A knock-out option is extinguished if the underlying touches the barrier, removing some payoff scenarios that a vanilla option keeps; therefore it is worth no more than (and usually less than) the otherwise-identical vanilla. By in-out parity, knock-in + knock-out = vanilla. Trap: B reverses the value relationship; C describes a knock-in, not a knock-out (down-and-out call dies if the barrier is breached); D is simply false.
+[[DIAGRAM]]{"type":"compare","title":"Knock-out vs Vanilla","cols":[{"h":"Knock-out","items":["Dies if barrier touched","Fewer payoff paths","Worth ≤ vanilla"]},{"h":"In-out parity","items":["Knock-in + knock-out","= vanilla option"]}]}[[/DIAGRAM]]
 
 **Q59 — Book 3, forward rates from zero rates** — **A.** With continuous compounding, the forward rate from $T_1$ to $T_2$ is $f = \dfrac{R_2 T_2 - R_1 T_1}{T_2 - T_1} = \dfrac{0.036 \times 2 - 0.030 \times 1}{2 - 1} = \dfrac{0.072 - 0.030}{1} = 0.042 = 4.2\%$. Trap: B averages the two zero rates; C just restates the 2-year zero; D mis-weights.
 

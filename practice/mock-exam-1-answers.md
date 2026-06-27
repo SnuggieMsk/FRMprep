@@ -203,33 +203,39 @@ financing and storage. A and C imply contango.
 **Q29 — Book 1, Beta** — **C.**
 $$\beta = \frac{\text{Cov}(R_i, R_m)}{\sigma_m^2} = \frac{0.0288}{0.0256} = 1.125$$.
 Choice A (0.889) inverts the ratio.
+[[DIAGRAM]]{"type":"tree","title":"Beta","root":"β = Cov(Ri,Rm) / Var(Rm)","children":["Cov = 0.0288 (numerator)","σ²m = 0.0256 (denominator)","β = 1.125"]}[[/DIAGRAM]]
 
 **Q30 — Book 2, Annualizing volatility** — **B.**
 $$\sigma_{ann} = 1.2\% \times \sqrt{252} = 1.2\% \times 15.87 = 19.05\%$$.
 Choice D multiplies by 252 (the variance scaling applied to volatility);
 A divides by the square root.
+[[DIAGRAM]]{"type":"compare","title":"Scaling with time","cols":[{"h":"Variance","items":["Scales with t","×252"]},{"h":"Volatility","items":["Scales with √t","×√252 = 15.87","1.2% → 19.05%"]}]}[[/DIAGRAM]]
 
 **Q31 — Book 3, Forward price with known income** — **B.** Strip the
 dividend's present value, then compound:
 $$F_0 = \left(60 - 2\,e^{-0.05 \times 0.25}\right) e^{0.05 \times 0.5} = (60 - 1.975)\,(1.02532) = \$59.49$$
 Choice C ($61.52) forgets the dividend entirely; A stops one step early
 (no compounding).
+[[DIAGRAM]]{"type":"steps","title":"Forward with known income","steps":["PV the dividend: 2·e^(−0.05×0.25) = 1.975","Subtract from spot: 60 − 1.975 = 58.025","Compound to T: × e^(0.05×0.5)","F0 = 59.49"]}[[/DIAGRAM]]
 
 **Q32 — Book 2, R-squared** — **C.** In a single-variable regression,
 $$R^2$$ is the explained share of variance (36%) and equals the squared
 correlation, so $$\rho = \sqrt{0.36} = 0.60$$. B confuses explained with
 unexplained variation.
+[[DIAGRAM]]{"type":"tree","title":"R² in single-variable regression","root":"R² = 0.36 = explained share","children":["= squared correlation ρ²","ρ = √0.36 = 0.60","Unexplained share = 0.64"]}[[/DIAGRAM]]
 
 **Q33 — Book 4, Delta hedging** — **B.** Short calls on 2,000 shares
 have delta $$-0.60 \times 2{,}000 = -1{,}200$$; neutralize by **buying**
 1,200 shares. Choice A is the sign flip; D divides by delta instead of
 multiplying.
+[[DIAGRAM]]{"type":"steps","title":"Delta-neutral hedge","steps":["Short calls on 2,000 shares","Position delta = −0.60 × 2,000 = −1,200","Offset negative delta → buy shares","Buy 1,200 shares"]}[[/DIAGRAM]]
 
 **Q34 — Book 1, Security market line** — **C.** CAPM-required return
 $$= 3\% + 0.8(10\% - 3\%) = 8.6\%$$. The 9.0% forecast exceeds it, so
 the stock offers excess return: it is undervalued and plots **above**
 the SML. (Above the line always means undervalued — pairing "above"
 with "overvalued" is the classic trap in A.)
+[[DIAGRAM]]{"type":"compare","title":"Position vs the SML","cols":[{"h":"Above SML","items":["Forecast > required","Positive alpha","Undervalued (this stock)"]},{"h":"Below SML","items":["Forecast < required","Negative alpha","Overvalued"]}]}[[/DIAGRAM]]
 
 **Q35 — Book 3, American options** — **D.** Without dividends, early
 exercise of an American call is never optimal (you would forfeit time
