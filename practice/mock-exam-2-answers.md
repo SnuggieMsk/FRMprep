@@ -115,6 +115,7 @@
 [[DIAGRAM]]{"type":"steps","title":"CCP novation","steps":["Buyer and seller agree trade","CCP novates: becomes counterparty to each","Both post margin + default fund","Bilateral counterparty risk removed"]}[[/DIAGRAM]]
 
 **Q45 — Book 3, futures margin / variation margin** — **B.** Loss = $0.40 × 5,000 oz × 4 contracts = $8,000. Starting balance = 4 × $6,000 = $24,000; after loss = $16,000. Maintenance level = 4 × $4,500 = $18,000. Balance ($16,000) is below maintenance, so a call is triggered and the account must be restored to the initial margin: $24,000 − $16,000 = $8,000. Trap: C ($2,000) restores only to the maintenance level (wrong — calls top up to initial margin); A ignores that the balance fell below maintenance.
+[[DIAGRAM]]{"type":"scale","title":"Margin call mechanics","items":["Balance $16k","|Maintenance $18k","Initial $24k"],"left":"Below = call","right":"Top up to initial"}[[/DIAGRAM]]
 
 **Q46 — Book 3, beta adjustment with futures** — **A.** Number of contracts $= (\beta_{target} - \beta_{port}) \times \dfrac{V_{port}}{F \times m} = (0.60 - 1.30) \times \dfrac{50{,}000{,}000}{5{,}000 \times 250} = -0.70 \times \dfrac{50{,}000{,}000}{1{,}250{,}000} = -0.70 \times 40 = -28$. The negative sign means short 28 contracts. Trap: B (52) uses the full beta 1.30 instead of the difference; C reverses the sign (long); D mis-scales the contract value.
 
@@ -123,8 +124,10 @@
 **Q48 — Book 3, covered interest rate parity** — **B.** $F_0 = S_0 e^{(r_{USD} - r_{GBP})T} = 1.2500 \times e^{(0.04 - 0.06)\times 1} = 1.2500 \times e^{-0.02} = 1.2500 \times 0.98020 = 1.2253$. Because the GBP rate exceeds the USD rate, GBP trades at a forward discount. Trap: A (1.2747) flips the sign in the exponent ($e^{+0.02}$); C ignores rate differential; D mis-signs.
 
 **Q49 — Book 3, CIRP arbitrage** — **A.** The fair forward is 1.2253 but the market quotes 1.2500, so the forward GBP is overpriced — sell GBP forward (high) and obtain GBP cheaply for delivery. The financing trade: borrow USD at 4%, convert to GBP at spot, invest GBP at 6%, and sell the GBP proceeds forward at 1.2500. The 6% − 4% interest pickup plus the rich forward locks in profit. Trap: B/C go the wrong direction (buying the overpriced forward); D ignores that forward ≠ fair value, not forward ≠ spot.
+[[DIAGRAM]]{"type":"steps","title":"CIRP arbitrage (forward rich)","steps":["Borrow USD at 4%","Convert to GBP at spot","Invest GBP at 6%","Sell GBP forward at rich 1.2500","Lock in riskless profit"]}[[/DIAGRAM]]
 
 **Q50 — Book 3, forward pricing (no income) and arbitrage** — **A.** $F_0 = S_0 e^{rT} = 80 \times e^{0.05 \times 0.75} = 80 \times e^{0.0375} = 80 \times 1.03821 = 83.06$. The market forward ($85) exceeds fair value, so the forward is overpriced: sell (short) the forward and buy the stock with borrowed funds (cash-and-carry), delivering into the short forward for a locked gain of about $85 − $83.06 = $1.94. Trap: B reverses the arbitrage direction; C/D miscompute the carry.
+[[DIAGRAM]]{"type":"steps","title":"Cash-and-carry (forward rich)","steps":["Borrow funds at r","Buy stock at $80 spot","Short the $85 forward","At T deliver stock, repay loan","Lock ~$1.94 gain"]}[[/DIAGRAM]]
 
 **Q51 — Book 3, index forward (dividend yield)** — **A.** $F_0 = S_0 e^{(r-q)T} = 3{,}000 \times e^{(0.045 - 0.025)\times 0.5} = 3{,}000 \times e^{0.01} = 3{,}000 \times 1.01005 = 3{,}030.2$. Trap: B uses $r$ without subtracting the dividend yield; C subtracts the wrong way ($q-r$); D ignores carry entirely.
 

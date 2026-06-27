@@ -390,7 +390,11 @@ Distractor B uses the undiscounted strike ($$6.20 - 100 + 100$$); C flips the si
 
 **Q28 — B.** *(Easy.)* Position delta $$= -1{,}000 \times 100 \times 0.55 = -55{,}000$$. Buy 55,000 shares (each share has delta +1) to bring the net delta to zero. Selling shares (C) doubles the exposure; A confuses delta with $$1 - \Delta$$.
 
+[[DIAGRAM]]{"type":"steps","title":"Delta-neutral hedge","steps":["Position delta = −1,000×100×0.55 = −55,000","Need to add +55,000 delta","Each share = +1 delta","Buy 55,000 shares"]}[[/DIAGRAM]]
+
 **Q29 — A.** *(Hard.)* Gamma first: need $$+5{,}000$$ of gamma, so buy $$5{,}000 / 0.5 = 10{,}000$$ options. Those options add delta of $$10{,}000 \times 0.6 = +6{,}000$$, so sell 6,000 shares to restore delta neutrality (shares have zero gamma, so the gamma fix survives). Order matters: hedge gamma with options, then re-trim delta with stock.
+
+[[DIAGRAM]]{"type":"steps","title":"Gamma- then delta-neutral","steps":["Fix gamma first (only options have gamma)","Buy 5,000/0.5 = 10,000 options","These add 10,000×0.6 = +6,000 delta","Sell 6,000 shares (zero gamma) to re-trim delta"]}[[/DIAGRAM]]
 
 **Q30 — C.** *(Easy.)*
 

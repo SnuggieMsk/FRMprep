@@ -185,17 +185,20 @@ floating spread alone.
 $$\alpha$$ from 5% to 1% directly lowers the Type I error rate, but with
 a fixed sample the rejection region shrinks, so the Type II error rate
 rises (and power falls — D states the opposite).
+[[DIAGRAM]]{"type":"compare","title":"Lowering α (fixed n)","cols":[{"h":"Type I (α)","items":["5% → 1%","Falls","Reject true H0 less"]},{"h":"Type II (β)","items":["Rises","Power = 1−β falls","Miss false H0 more"]}]}[[/DIAGRAM]]
 
 **Q27 — Book 4, Black-Scholes-Merton** — **C.**
 $$c = S_0 N(d_1) - K e^{-rT} N(d_2) = 50(0.5977) - 50\,e^{-0.025}(0.5422)$$
 $$= 29.885 - 48.766 \times 0.5422 = 29.885 - 26.441 = \$3.44$$
 Choice B ($2.78) forgets to discount the strike — the wrong-compounding
 error $$50(0.5977 - 0.5422)$$.
+[[DIAGRAM]]{"type":"steps","title":"BSM call price","steps":["c = S0·N(d1) − K·e^(−rT)·N(d2)","Stock term: 50 × 0.5977 = 29.885","Strike term discounted: 50·e^(−0.025)·0.5422 = 26.441","c = 3.44"]}[[/DIAGRAM]]
 
 **Q28 — Book 3, Backwardation and convenience yield** — **D.** With
 continuous costs, $$F_0 = S_0 e^{(r + u - y)T}$$. Futures below spot
 requires $$y > r + u$$ — a convenience yield large enough to outweigh
 financing and storage. A and C imply contango.
+[[DIAGRAM]]{"type":"scale","title":"F0 = S0·e^((r+u−y)T)","items":["y > r+u (backwardation, F<S)","|y = r+u (F = S)","y < r+u (contango, F>S)"],"left":"futures below spot","right":"futures above spot"}[[/DIAGRAM]]
 
 **Q29 — Book 1, Beta** — **C.**
 $$\beta = \frac{\text{Cov}(R_i, R_m)}{\sigma_m^2} = \frac{0.0288}{0.0256} = 1.125$$.
