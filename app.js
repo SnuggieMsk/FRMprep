@@ -694,11 +694,12 @@
     ["A", "B", "C", "D"].forEach(function (L, i) {
       opts += '<button class="q-opt" data-i="' + i + '"><span class="q-letter">' + L + '</span><span class="q-otext">' + inlineMd(q.options[i]) + "</span></button>";
     });
-    return '<div class="q-card" data-tier="' + t.cls + '" data-qid="' + q.id + '" data-correct="' + q.correct + '" data-expl="' + encodeURIComponent(q.expl || "") + '">'
+    var d1 = splitDiagram(q.expl);
+    return '<div class="q-card" data-tier="' + t.cls + '" data-qid="' + q.id + '" data-correct="' + q.correct + '" data-expl="' + encodeURIComponent(d1.ex) + '" data-diagram="' + encodeURIComponent(d1.spec) + '">'
       + '<div class="q-head"><span class="q-num">Q' + q.id + '</span><span class="q-tierlabel ' + t.cls + '">' + t.dot + " " + t.label + "</span></div>"
       + '<div class="q-text">' + inlineMd(q.q) + "</div>"
       + '<div class="q-opts">' + opts + "</div>"
-      + '<div class="q-expl markdown-body" hidden>' + md(q.expl) + "</div></div>";
+      + '<div class="q-expl markdown-body" hidden>' + md(d1.ex) + "</div></div>";
   }
   function renderTierCards(parsed) {
     var h = "";
@@ -726,15 +727,21 @@
     if (!key || !window.FRMViz || !window.FRMViz.has(key)) return "";
     return '<div class="concept-banner"><div class="q-viz-title">📊 Visualize this topic</div>' + window.FRMViz.conceptSVG(key) + "</div>";
   }
+  // pull an authored [[DIAGRAM]]{json}[[/DIAGRAM]] block out of an explanation
+  function splitDiagram(expl) {
+    var ex = expl || "", m = ex.match(/\[\[DIAGRAM\]\]([\s\S]*?)\[\[\/DIAGRAM\]\]/);
+    return m ? { ex: ex.replace(m[0], "").trim(), spec: m[1].trim() } : { ex: ex, spec: "" };
+  }
   function injectViz(card, correct, chosen) {
     if (!window.FRMViz) return;
     var expl = card.querySelector(".q-expl");
     if (!expl || expl.querySelector(".q-viz")) return;
     var opts = Array.prototype.map.call(card.querySelectorAll(".q-otext"), function (o) { return o.textContent.trim(); });
     var stem = (card.querySelector(".q-text") || {}).textContent || "";
-    var rawExpl = "";
+    var rawExpl = "", spec = "";
     try { rawExpl = decodeURIComponent(card.dataset.expl || ""); } catch (e) { rawExpl = card.dataset.expl || ""; }
-    var html = window.FRMViz.buildQuestionViz(opts, correct, chosen, stem + " " + (expl.textContent || ""), rawExpl);
+    try { spec = decodeURIComponent(card.dataset.diagram || ""); } catch (e) { spec = card.dataset.diagram || ""; }
+    var html = window.FRMViz.buildQuestionViz(opts, correct, chosen, stem + " " + (expl.textContent || ""), rawExpl, spec || null);
     if (html) expl.insertAdjacentHTML("beforeend", html);
   }
   function applyAnswer(card, chosen, restore) {
@@ -963,11 +970,12 @@
     ["A", "B", "C", "D"].forEach(function (L, i) {
       opts += '<button class="q-opt" data-i="' + i + '"><span class="q-letter">' + L + '</span><span class="q-otext">' + inlineMd(q.options[i]) + "</span></button>";
     });
-    return '<div class="q-card" data-sec="' + gi + '" data-qid="' + q.id + '" data-correct="' + q.correct + '" data-expl="' + encodeURIComponent(q.expl || "") + '">'
+    var d1 = splitDiagram(q.expl);
+    return '<div class="q-card" data-sec="' + gi + '" data-qid="' + q.id + '" data-correct="' + q.correct + '" data-expl="' + encodeURIComponent(d1.ex) + '" data-diagram="' + encodeURIComponent(d1.spec) + '">'
       + '<div class="q-head"><span class="q-num">Q' + q.id + '</span><span class="q-tierlabel mix">' + g.marks + " mark" + (g.marks > 1 ? "s" : "") + "</span></div>"
       + '<div class="q-text">' + inlineMd(q.q) + "</div>"
       + '<div class="q-opts">' + opts + "</div>"
-      + '<div class="q-expl markdown-body" hidden>' + md(q.expl) + "</div></div>";
+      + '<div class="q-expl markdown-body" hidden>' + md(d1.ex) + "</div></div>";
   }
   function renderPaper(num) {
     clearPaperTimer();

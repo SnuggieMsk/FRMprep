@@ -432,6 +432,93 @@
     return out;
   }
 
+  // ===================================================================
+  // BESPOKE DIAGRAM DSL — authored per conceptual question, rendered here.
+  // spec = {type, title, ...}; types below. Always wrapped in <figure>.
+  // ===================================================================
+  function figd(inner, cap, title) {
+    return '<figure class="frm-fig frm-dia">' + (title ? '<div class="frm-dia-title">' + esc(title) + "</div>" : "")
+      + inner + (cap ? '<figcaption>' + esc(cap) + "</figcaption>" : "") + "</figure>";
+  }
+  var DIA = {};
+  // side-by-side comparison of 2–3 concepts
+  DIA.compare = function (s) {
+    var cols = (s.cols || []).slice(0, 3).map(function (c, i) {
+      var items = (c.items || []).map(function (it) { return "<li>" + esc(it) + "</li>"; }).join("");
+      return '<div class="frm-cmp-col c' + (i % 3) + '"><div class="frm-cmp-h">' + esc(c.h || "") + "</div><ul>" + items + "</ul></div>";
+    }).join('<div class="frm-cmp-vs">vs</div>');
+    return figd('<div class="frm-cmp">' + cols + "</div>", s.note, s.title);
+  };
+  // ordered flow / sequence of steps
+  DIA.steps = function (s) {
+    var st = (s.steps || []).map(function (x, i) {
+      return '<span class="frm-step s' + (i % 6) + '">' + esc(x) + "</span>";
+    }).join('<span class="frm-step-arr">→</span>');
+    return figd('<div class="frm-steps">' + st + "</div>", s.note, s.title);
+  };
+  // ranked / spectrum scale (e.g. ratings, seniority) with optional boundary "|"
+  DIA.scale = function (s) {
+    var items = (s.items || []).map(function (x) {
+      var b = /^\|/.test(x); var t = b ? x.slice(1) : x;
+      return '<span class="frm-scale-item' + (b ? " brk" : "") + '">' + esc(t) + "</span>";
+    }).join('<span class="frm-scale-sep">›</span>');
+    var ends = (s.left || s.right) ? '<div class="frm-scale-ends"><span>' + esc(s.left || "") + "</span><span>" + esc(s.right || "") + "</span></div>" : "";
+    return figd('<div class="frm-scale">' + items + "</div>" + ends, s.note || s.mark, s.title);
+  };
+  // 2x2 matrix; q = [bottom-left, bottom-right, top-left, top-right]
+  DIA.quadrant = function (s) {
+    var q = s.q || [];
+    function cell(i, cls) { return '<div class="frm-quad-cell ' + cls + '">' + esc(q[i] || "") + "</div>"; }
+    var grid = '<div class="frm-quad">'
+      + '<div class="frm-quad-yl">' + esc(s.y || "") + "</div>"
+      + '<div class="frm-quad-grid">' + cell(2, "tl") + cell(3, "tr") + cell(0, "bl") + cell(1, "br") + "</div>"
+      + '<div class="frm-quad-xl">' + esc(s.x || "") + "</div></div>";
+    return figd(grid, s.note, s.title);
+  };
+  // simple one-level hierarchy
+  DIA.tree = function (s) {
+    var kids = (s.children || []).slice(0, 6);
+    var n = kids.length || 1, W = 340, H = 150, topY = 0.85, botY = 0.28;
+    var rootX = 0.5, out = "";
+    out += '<rect x="' + (X(rootX) - 52) + '" y="' + (Y(topY) - 14) + '" width="104" height="26" rx="7" fill="var(--brand)"/>'
+      + '<text x="' + X(rootX) + '" y="' + (Y(topY) + 4) + '" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="Inter,sans-serif">' + esc(s.root || "") + "</text>";
+    kids.forEach(function (k, i) {
+      var x = n === 1 ? 0.5 : 0.08 + (0.84 * i) / (n - 1);
+      out += line(rootX, topY - 0.06, x, botY + 0.06, "var(--border)", 1.4);
+      out += '<rect x="' + (X(x) - 34) + '" y="' + (Y(botY) - 13) + '" width="68" height="24" rx="6" fill="var(--surface-2)" stroke="var(--border)"/>'
+        + '<text x="' + X(x) + '" y="' + (Y(botY) + 3) + '" text-anchor="middle" fill="var(--text)" font-size="9.5" font-family="Inter,sans-serif">' + esc(k) + "</text>";
+    });
+    return figd('<svg class="frm-svg" viewBox="0 0 340 150" preserveAspectRatio="xMidYMid meet">' + out + "</svg>", s.note, s.title);
+  };
+  // labeled timeline
+  DIA.timeline = function (s) {
+    var pts = (s.points || []).slice(0, 6), n = pts.length || 1, out = "";
+    out += line(0.04, 0.5, 0.96, 0.5, "var(--border)", 2);
+    pts.forEach(function (p, i) {
+      var x = n === 1 ? 0.5 : 0.08 + (0.84 * i) / (n - 1), up = i % 2 === 0;
+      out += dot(x, 0.5, 4, "var(--brand)");
+      out += '<text x="' + X(x) + '" y="' + (Y(0.5) + (up ? -10 : 26)) + '" text-anchor="middle" fill="var(--brand)" font-size="9.5" font-weight="700" font-family="Inter,sans-serif">' + esc(p.t || "") + "</text>";
+      out += '<text x="' + X(x) + '" y="' + (Y(0.5) + (up ? -22 : 14)) + '" text-anchor="middle" fill="var(--text-soft)" font-size="8.5" font-family="Inter,sans-serif">' + esc((p.l || "").slice(0, 22)) + "</text>";
+    });
+    return figd('<svg class="frm-svg" viewBox="0 0 340 130" preserveAspectRatio="xMidYMid meet">' + out + "</svg>", s.note, s.title);
+  };
+  // labeled answer map with the reason the right choice wins (for recall questions)
+  DIA.highlight = function (s) {
+    var opts = s.options || [];
+    var rows = opts.map(function (o, i) {
+      var ok = i === s.correct;
+      return '<div class="frm-hl-row' + (ok ? " ok" : "") + '"><span class="frm-hl-key">' + "ABCD"[i] + "</span><span>" + esc(o) + "</span><span class='frm-hl-mark'>" + (ok ? "✓" : "") + "</span></div>";
+    }).join("");
+    return figd('<div class="frm-hl">' + rows + "</div>", s.why, s.title);
+  };
+  function renderSpec(spec) {
+    try {
+      if (typeof spec === "string") spec = JSON.parse(spec);
+      if (!spec || !DIA[spec.type]) return "";
+      return DIA[spec.type](spec) || "";
+    } catch (e) { return ""; }
+  }
+
   // ---------- public: build the full visual block for a question ----------
   // is this answer option essentially just a number (not a sentence)?
   function answerValue(s) {
@@ -439,13 +526,15 @@
     if (!/^[-−+(]?\s*\$?\s*\d[\d,]*(?:\.\d+)?\s*%?\s*\)?$/.test(t)) return null;
     return { val: parseNum(t), unit: /%/.test(t) ? "%" : (/\$/.test(t) ? "$" : "") };
   }
-  function buildQuestionViz(opts, correct, chosen, conceptText, rawExpl) {
+  function buildQuestionViz(opts, correct, chosen, conceptText, rawExpl, bespoke) {
     var ansStr = (opts && opts[correct] != null) ? opts[correct] : "";
     var av = answerValue(ansStr);
     var parts = av ? calcExplainers(rawExpl, av.val, av.unit) : [];  // 1) the exact arithmetic that yields THIS answer
     var num = numericChartHTML(opts, correct, chosen);  // 2) compare the four choices (answer-specific)
     if (num) parts.push(num);
-    if (!parts.length) {                                // 3) conceptual question -> concept diagram
+    var beHtml = bespoke ? renderSpec(bespoke) : "";    // 3) authored bespoke diagram for this question
+    if (beHtml) parts.unshift(beHtml);
+    if (!parts.length) {                                // 4) else auto concept diagram
       var ck = pickConcept(conceptText);
       if (ck) parts.push(conceptSVG(ck));
     }
@@ -459,6 +548,7 @@
     conceptSVG: conceptSVG,
     numericChartHTML: numericChartHTML,
     buildQuestionViz: buildQuestionViz,
+    renderSpec: renderSpec,
     has: function (k) { return !!C[k]; }
   };
 })();
