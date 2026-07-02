@@ -36,11 +36,12 @@ Books 3 and 4 are 60% of the exam and the most calculation-heavy — weight your
 
 ## 🗓️ How to use this hub
 
-1. **Read** a chapter's Notes, then immediately flip its **Flashcards** to lock in the vocabulary.
-2. **Drill** the chapter **Quiz** — tap to answer, read every explanation, even when right.
-3. After each book, revise with its **Formula Sheet** (Reference & Revision section).
-4. In the final fortnight: sit the **Mock Exam** (sidebar → 📝 Mock Exam) under timed conditions, then re-study your weakest chapters.
-5. Keep an **error log**: for every miss, write down *why* (concept gap, formula slip, calculator error, or misread) — your top-5 error chapters are your final-week syllabus.
+1. **Read** a chapter's Notes, then immediately flip its **Flashcards** — and *rate each card* (Again / Hard / Good / Easy). Rated cards come back for review on exactly the right day via **🔁 Smart Flashcards**.
+2. **Drill** the chapter **Quiz** — tap to answer, read every explanation (each one shows the exact calculation and a diagram), and ⭐ star anything you want to revisit.
+3. Do the **🎯 Daily Drill** every day — ten exam-weighted questions, fresh each morning. Keep the 🔥 streak alive; consistency beats cramming.
+4. Your **error log keeps itself**: every question you miss, anywhere, lands in the **🧠 Review Hub** and stays there until you answer it correctly. The hub also shows your accuracy by book against the exam weights.
+5. After each book, revise with its **Formula Sheet** (Reference & Revision section).
+6. In the final fortnight: sit both **Mock Exams** (timed, no notes), clear your Review Hub, and sweep your ⭐ bookmarks.
 
 ## ⏱️ Two study schedules
 

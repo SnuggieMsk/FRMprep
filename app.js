@@ -553,6 +553,9 @@
     if (PRIMER) html += '<a class="nav-tool" data-link="primer" href="#/primer"><span class="nav-chap-num">📐</span><span class="nav-chap-title">Financial Maths Primer</span></a>';
     if (EXCEL) html += '<a class="nav-tool" data-link="excel" href="#/excel"><span class="nav-chap-num">💻</span><span class="nav-chap-title">Excel TVM Calculator</span></a>';
     if (PAPERS.length) html += '<a class="nav-tool" data-link="papers" href="#/papers"><span class="nav-chap-num">📑</span><span class="nav-chap-title">Mock Test Papers</span></a>';
+    html += '<a class="nav-tool" data-link="daily" href="#/daily"><span class="nav-chap-num">🎯</span><span class="nav-chap-title">Daily Drill</span></a>';
+    html += '<a class="nav-tool" data-link="review" href="#/review"><span class="nav-chap-num">🧠</span><span class="nav-chap-title">Review Hub</span></a>';
+    html += '<a class="nav-tool" data-link="srs" href="#/srs"><span class="nav-chap-num">🔁</span><span class="nav-chap-title">Smart Flashcards <span class="nav-badge" id="srsBadge" hidden></span></span></a>';
     html += '<button class="nav-tool" id="navCalc"><span class="nav-chap-num">🧮</span><span class="nav-chap-title">Financial Calculator</span></button>';
     var lastModule = null;
     CH.forEach(function (c) {
@@ -599,6 +602,9 @@
       else if (h.indexOf("/excel") > -1) { var ex = document.querySelector('.nav-tool[data-link="excel"]'); if (ex) ex.classList.add("active"); }
       else if (h.indexOf("/lab") > -1) { var l = document.querySelector('.nav-tool[data-link="lab"]'); if (l) l.classList.add("active"); }
       else if (h.indexOf("/paper") > -1) { var pp = document.querySelector('.nav-tool[data-link="papers"]'); if (pp) pp.classList.add("active"); }
+      else if (h.indexOf("/review") > -1) { var rv = document.querySelector('.nav-tool[data-link="review"]'); if (rv) rv.classList.add("active"); }
+      else if (h.indexOf("/daily") > -1) { var dl = document.querySelector('.nav-tool[data-link="daily"]'); if (dl) dl.classList.add("active"); }
+      else if (h.indexOf("/srs") > -1) { var sr = document.querySelector('.nav-tool[data-link="srs"]'); if (sr) sr.classList.add("active"); }
       else { var home = document.querySelector('.nav-chap-head[href="#/home"]'); if (home) home.classList.add("active"); }
       return;
     }
@@ -627,7 +633,20 @@
     });
     cards += "</div>";
     var readme = '<div class="markdown-body">' + md(DATA.readme || "") + "</div>";
-    contentEl.innerHTML = hero + "<h2>Jump to a chapter</h2>" + cards
+    var last = gj("frm_last", null);
+    var pctv = totalUnits() ? Math.round(doneCount() / totalUnits() * 100) : 0;
+    var dueN = 0, now = Date.now(); for (var sk in srs) { if (srs[sk] && srs[sk].d <= now) dueN++; }
+    var dash = '<div class="dash">'
+      + '<div class="dash-chips">'
+      + '<span class="lab-stat">🔥 Streak <b>' + streakCount() + "</b></span>"
+      + '<span class="lab-stat">📈 Progress <b>' + pctv + "%</b></span>"
+      + '<span class="lab-stat">🔁 Cards due <b>' + dueN + "</b></span>"
+      + "</div><div class='dash-actions'>"
+      + (last ? '<a class="cta" href="' + last.h + '">▶ Continue: ' + esc(last.t.slice(0, 34)) + "</a>" : "")
+      + '<a class="cta" href="#/daily">🎯 Daily Drill</a>'
+      + '<a class="cta ghost2" href="#/review">🧠 Review Hub</a>'
+      + "</div></div>";
+    contentEl.innerHTML = hero + dash + "<h2>Jump to a chapter</h2>" + cards
       + '<hr><details open><summary style="cursor:pointer;font-weight:700;font-size:18px">📋 Full exam guide & study plan</summary>' + readme + "</details>";
     contentEl.querySelectorAll("[data-go]").forEach(function (card) { card.addEventListener("click", function () { location.hash = card.getAttribute("data-go"); }); });
     if (window.FRMGlossary) window.FRMGlossary.annotate(contentEl.querySelector("details .markdown-body"));
@@ -689,23 +708,28 @@
   }
 
   var quizCtx = null;
-  function qCard(q, t) {
+  function markBtn(mk, qid) {
+    if (!mk) return "";
+    var k = mk + qid, on = !!marks[k];
+    return '<button class="q-mark' + (on ? " on" : "") + '" data-mk="' + k + '" title="Bookmark this question">' + (on ? "\u2605" : "\u2606") + "</button>";
+  }
+  function qCard(q, t, mk) {
     var opts = "";
     ["A", "B", "C", "D"].forEach(function (L, i) {
       opts += '<button class="q-opt" data-i="' + i + '"><span class="q-letter">' + L + '</span><span class="q-otext">' + inlineMd(q.options[i]) + "</span></button>";
     });
     var d1 = splitDiagram(q.expl);
     return '<div class="q-card" data-tier="' + t.cls + '" data-qid="' + q.id + '" data-correct="' + q.correct + '" data-expl="' + encodeURIComponent(d1.ex) + '" data-diagram="' + encodeURIComponent(d1.spec) + '">'
-      + '<div class="q-head"><span class="q-num">Q' + q.id + '</span><span class="q-tierlabel ' + t.cls + '">' + t.dot + " " + t.label + "</span></div>"
+      + '<div class="q-head"><span class="q-num">Q' + q.id + '</span><span class="q-tierlabel ' + t.cls + '">' + t.dot + " " + t.label + '</span><span class="q-head-spacer"></span>' + markBtn(mk, q.id) + "</div>"
       + '<div class="q-text">' + inlineMd(q.q) + "</div>"
       + '<div class="q-opts">' + opts + "</div>"
       + '<div class="q-expl markdown-body" hidden>' + md(d1.ex) + "</div></div>";
   }
-  function renderTierCards(parsed) {
+  function renderTierCards(parsed, mk) {
     var h = "";
     parsed.tiers.forEach(function (t) {
       h += '<div class="q-tier-head ' + t.cls + '">' + t.dot + " " + esc(t.label) + ' <span class="q-tier-count">' + t.questions.length + " questions</span></div>";
-      t.questions.forEach(function (q) { h += qCard(q, t); });
+      t.questions.forEach(function (q) { h += qCard(q, t, mk); });
     });
     return h;
   }
@@ -780,7 +804,7 @@
     quizCtx.parsed.tiers.forEach(function (t) {
       for (var i = t.questions.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var tmp = t.questions[i]; t.questions[i] = t.questions[j]; t.questions[j] = tmp; }
     });
-    var list = document.getElementById("qList"); list.innerHTML = renderTierCards(quizCtx.parsed);
+    var list = document.getElementById("qList"); list.innerHTML = renderTierCards(quizCtx.parsed, "c:" + quizCtx.num + ":");
     Object.keys(quizCtx.saved).forEach(function (qid) { var card = list.querySelector('.q-card[data-qid="' + qid + '"]'); if (card) applyAnswer(card, quizCtx.saved[qid], true); });
   }
   function toggleReading() {
@@ -821,7 +845,7 @@
     var tip = '<div class="q-tip">💡 Tap an option to lock your answer — you will instantly see the right choice and a full explanation. FRM Part I has <b>no negative marking</b>, so never leave a question blank.</div>';
     var caseHtml = parsed.caseMd ? '<div class="q-case markdown-body"><div class="q-case-tag">🧩 Worked Case Study — read & learn the method</div>' + md(parsed.caseMd.replace(/^##\s*🧩[^\n]*\n/, "")) + "</div>" : "";
     contentEl.innerHTML = viewTabs(num, "questions") + conceptBanner(num)
-      + '<div id="quizInteractive">' + chips + bar + tip + tools + '<div id="qList">' + renderTierCards(parsed) + "</div>" + caseHtml + "</div>";
+      + '<div id="quizInteractive">' + chips + bar + tip + tools + '<div id="qList">' + renderTierCards(parsed, "c:" + num + ":") + "</div>" + caseHtml + "</div>";
     bindMarkRead(num, "questions");
 
     var root = document.getElementById("quizInteractive"), list = document.getElementById("qList");
@@ -832,6 +856,7 @@
       var card = btn.closest(".q-card"); if (card.classList.contains("answered")) return;
       var i = parseInt(btn.dataset.i, 10);
       applyAnswer(card, i, false); quizCtx.saved[card.dataset.qid] = i; saveQuiz(); updateQuizScore();
+      if (i !== parseInt(card.dataset.correct, 10)) { var fk = "c:" + num + ":" + card.dataset.qid; if (fixed[fk]) { delete fixed[fk]; sj(FKEY, fixed); } }
     });
     root.querySelectorAll(".q-chip").forEach(function (ch) {
       ch.addEventListener("click", function () {
@@ -861,7 +886,7 @@
   }
   var fcState = { cards: [], idx: 0 };
   function renderFlashcards(num) {
-    var c = chapterByNum(num), cards = parseFlashcards(c.flashcards);
+    var c = chapterByNum(num), cards = cardsFor(num).slice();
     fcState = { cards: cards, idx: 0 };
     if (!cards.length) { contentEl.innerHTML = viewTabs(num, "flashcards") + '<div class="markdown-body">' + md(c.flashcards) + "</div>"; bindMarkRead(num, "flashcards"); return; }
     contentEl.innerHTML = viewTabs(num, "flashcards")
@@ -871,7 +896,8 @@
       + '<div class="fc-face fc-front"><div class="fc-tag">Question</div><div class="fc-body" id="fcFront"></div><div class="fc-hint">Click card / press Space to flip</div></div>'
       + '<div class="fc-face fc-back"><div class="fc-tag">Answer</div><div class="fc-body" id="fcBack"></div><div class="fc-hint">Click to flip back</div></div>'
       + "</div></div>"
-      + '<div class="fc-controls"><button id="fcPrev">← Prev</button><button class="primary" id="fcFlip">Flip</button><button id="fcNext">Next →</button></div>';
+      + '<div class="fc-controls"><button id="fcPrev">← Prev</button><button class="primary" id="fcFlip">Flip</button><button id="fcNext">Next →</button></div>'
+      + gradeRowHTML();
     bindMarkRead(num, "flashcards");
     var orig = cards.slice(), card = document.getElementById("flashcard");
     function show() {
@@ -894,6 +920,13 @@
       fcState.idx = 0; show();
     };
     document.getElementById("fcReset").onclick = function () { fcState.cards = orig.slice(); fcState.idx = 0; show(); };
+    var gr = document.getElementById("gradeRow");
+    if (gr) gr.addEventListener("click", function (e) {
+      var b = e.target.closest(".grade-btn"); if (!b) return;
+      var cc = fcState.cards[fcState.idx];
+      if (cc && cc._i != null) { srsGrade(num + ":" + cc._i, parseInt(b.dataset.g, 10)); updateSrsBadge(); }
+      next();
+    });
     fcState._nav = { next: next, prev: prev, flip: flip };
     show();
   }
@@ -965,14 +998,14 @@
       } else done.hidden = true;
     }
   }
-  function paperCardHtml(q, g, gi) {
+  function paperCardHtml(q, g, gi, mk) {
     var opts = "";
     ["A", "B", "C", "D"].forEach(function (L, i) {
       opts += '<button class="q-opt" data-i="' + i + '"><span class="q-letter">' + L + '</span><span class="q-otext">' + inlineMd(q.options[i]) + "</span></button>";
     });
     var d1 = splitDiagram(q.expl);
     return '<div class="q-card" data-sec="' + gi + '" data-qid="' + q.id + '" data-correct="' + q.correct + '" data-expl="' + encodeURIComponent(d1.ex) + '" data-diagram="' + encodeURIComponent(d1.spec) + '">'
-      + '<div class="q-head"><span class="q-num">Q' + q.id + '</span><span class="q-tierlabel mix">' + g.marks + " mark" + (g.marks > 1 ? "s" : "") + "</span></div>"
+      + '<div class="q-head"><span class="q-num">Q' + q.id + '</span><span class="q-tierlabel mix">' + g.marks + " mark" + (g.marks > 1 ? "s" : "") + '</span><span class="q-head-spacer"></span>' + markBtn(mk, q.id) + "</div>"
       + '<div class="q-text">' + inlineMd(q.q) + "</div>"
       + '<div class="q-opts">' + opts + "</div>"
       + '<div class="q-expl markdown-body" hidden>' + md(d1.ex) + "</div></div>";
@@ -1006,11 +1039,11 @@
     parsed.groups.forEach(function (g, gi) {
       if (g.kind === "mcq") {
         qhtml += '<div class="p-section-head">' + esc(g.title) + "</div>";
-        g.questions.forEach(function (q) { qhtml += paperCardHtml(q, g, gi); });
+        g.questions.forEach(function (q) { qhtml += paperCardHtml(q, g, gi, "p:" + num + ":"); });
       } else {
         qhtml += '<div class="p-case"><div class="p-case-head">🧩 ' + esc(g.title) + ' <span class="p-case-marks">5 × ' + g.marks + ' = ' + (5 * g.marks) + ' marks</span></div>'
           + '<div class="p-case-scenario markdown-body">' + md(g.scenario) + "</div>";
-        g.questions.forEach(function (q) { qhtml += paperCardHtml(q, g, gi); });
+        g.questions.forEach(function (q) { qhtml += paperCardHtml(q, g, gi, "p:" + num + ":"); });
         qhtml += "</div>";
       }
     });
@@ -1201,11 +1234,358 @@
     chapterNavEl.innerHTML = h;
   }
 
+  /* =====================================================================
+     LEARNING LOOP — bookmarks, mistake drill, readiness, spaced repetition,
+     daily drill and streaks. All state lives in localStorage.
+     ===================================================================== */
+  function gj(k, def) { try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? def : v; } catch (e) { return def; } }
+  function sj(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+
+  var MKEY = "frm_marks", marks = gj(MKEY, {});
+  var FKEY = "frm_fixed", fixed = gj(FKEY, {});
+  var SKEY = "frm_srs", srs = gj(SKEY, {});
+  var DDONE = "frm_dailyDone";
+
+  // bookmark star toggle (delegated; buttons exist in quiz + paper cards)
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest && e.target.closest(".q-mark");
+    if (!b) return;
+    e.preventDefault(); e.stopPropagation();
+    var k = b.dataset.mk;
+    if (marks[k]) { delete marks[k]; b.classList.remove("on"); b.textContent = "☆"; }
+    else {
+      var card = b.closest(".q-card");
+      var txt = card && card.querySelector(".q-text") ? card.querySelector(".q-text").textContent.trim().slice(0, 110) : "";
+      marks[k] = { t: txt, ts: Date.now() };
+      b.classList.add("on"); b.textContent = "★";
+    }
+    sj(MKEY, marks);
+  });
+  function markHref(k) {
+    var p = k.split(":"); // kind : ref : qid
+    return p[0] === "p" ? "#/paper/" + p[1] : "#/ch/" + p[1] + "/questions";
+  }
+  function markWhere(k) {
+    var p = k.split(":");
+    if (p[0] === "p") return "Mock " + p[1] + " · Q" + p[2];
+    var c = chapterByNum(p[1]);
+    return (c ? p[1] + ". " + c.title : p[1]) + " · Q" + p[2];
+  }
+
+  // ---- cached parsing ----
+  var quizCache = {}, fcCache = {};
+  function parsedQuizFor(num) {
+    if (!quizCache[num]) { var c = chapterByNum(num); quizCache[num] = c ? parseQuiz(c.questions) : { tiers: [] }; }
+    return quizCache[num];
+  }
+  function quizMapFor(num) {
+    var p = parsedQuizFor(num), map = {};
+    p.tiers.forEach(function (t) { t.questions.forEach(function (q) { map[q.id] = q; }); });
+    return map;
+  }
+  function cardsFor(num) {
+    if (!fcCache[num]) {
+      var c = chapterByNum(num), cards = c ? parseFlashcards(c.flashcards) : [];
+      cards.forEach(function (cd, i) { cd._i = i; });
+      fcCache[num] = cards;
+    }
+    return fcCache[num];
+  }
+  function studyChapters() { return CH.filter(function (c) { return c.num.charAt(0) !== "9"; }); }
+
+  // ---- mistakes (anything answered wrong anywhere, until redone correctly) ----
+  function collectMistakes() {
+    var out = [];
+    studyChapters().forEach(function (c) {
+      var saved = gj("frm_quiz_" + c.num, {}), ids = Object.keys(saved);
+      if (!ids.length) return;
+      var map = quizMapFor(c.num);
+      ids.forEach(function (qid) {
+        var q = map[qid];
+        if (q && saved[qid] !== q.correct && !fixed["c:" + c.num + ":" + qid]) out.push({ key: "c:" + c.num + ":" + qid, where: c.num + ". " + c.title, hash: "#/ch/" + c.num + "/questions", q: q });
+      });
+    });
+    PAPERS.forEach(function (p) {
+      var saved = gj("frm_paper_" + p.num, {}), ids = Object.keys(saved);
+      if (!ids.length) return;
+      var parsed = parsePaper(p.md), map = {};
+      parsed.groups.forEach(function (g) { g.questions.forEach(function (q) { map[q.id] = q; }); });
+      ids.forEach(function (qid) {
+        var q = map[qid];
+        if (q && saved[qid] !== q.correct && !fixed["p:" + p.num + ":" + qid]) out.push({ key: "p:" + p.num + ":" + qid, where: parsed.title, hash: "#/paper/" + p.num, q: q });
+      });
+    });
+    return out;
+  }
+
+  // ---- readiness by book ----
+  var BOOKW = { 1: 0.2, 2: 0.2, 3: 0.3, 4: 0.3 };
+  var BOOKNAME = { 1: "Foundations", 2: "Quantitative Analysis", 3: "Markets & Products", 4: "Valuation & Risk Models" };
+  function bookStats() {
+    var st = {};
+    [1, 2, 3, 4].forEach(function (b) { st[b] = { units: 0, unitsDone: 0, att: 0, cor: 0 }; });
+    studyChapters().forEach(function (c) {
+      var b = +c.num.charAt(0); if (!st[b]) return;
+      VIEWS.forEach(function (v) { st[b].units++; if (isDone(c.num, v.key)) st[b].unitsDone++; });
+      var saved = gj("frm_quiz_" + c.num, {}), ids = Object.keys(saved);
+      if (ids.length) {
+        var map = quizMapFor(c.num);
+        ids.forEach(function (qid) { if (map[qid]) { st[b].att++; if (saved[qid] === map[qid].correct) st[b].cor++; } });
+      }
+    });
+    PAPERS.forEach(function (p) {
+      var saved = gj("frm_paper_" + p.num, {}), ids = Object.keys(saved);
+      if (!ids.length) return;
+      var parsed = parsePaper(p.md);
+      parsed.groups.forEach(function (g) {
+        var b = { "Foundations of Risk Management": 1, "Quantitative Analysis": 2, "Financial Markets and Products": 3, "Valuation and Risk Models": 4 }[g.title.replace(/\s*\(.*$/, "")];
+        if (!b) return;
+        g.questions.forEach(function (q) { if (saved[q.id] != null) { st[b].att++; if (saved[q.id] === q.correct) st[b].cor++; } });
+      });
+    });
+    return st;
+  }
+
+  // ---- spaced repetition (Leitner boxes) ----
+  var SRS_DAYS = [0.007, 1, 3, 7, 14, 30]; // by box 0..5
+  function srsGrade(key, g) { // 0 again / 1 hard / 2 good / 3 easy
+    var s = srs[key] || { b: 0 };
+    if (g === 0) s.b = 0;
+    else if (g === 1) s.b = Math.max(1, s.b || 1);
+    else if (g === 2) s.b = Math.min(5, (s.b || 0) + 1);
+    else s.b = Math.min(5, (s.b || 0) + 2);
+    var days = g === 0 ? SRS_DAYS[0] : (g === 1 ? 1 : SRS_DAYS[s.b]);
+    s.d = Date.now() + days * 864e5;
+    srs[key] = s; sj(SKEY, srs);
+  }
+  function dueCards() {
+    var now = Date.now(), out = [];
+    studyChapters().forEach(function (c) {
+      cardsFor(c.num).forEach(function (cd) {
+        var k = c.num + ":" + cd._i, s = srs[k];
+        if (s && s.d <= now) out.push({ key: k, num: c.num, title: c.title, q: cd.q, a: cd.a, box: s.b });
+      });
+    });
+    out.sort(function (a, b) { return (srs[a.key].d || 0) - (srs[b.key].d || 0); });
+    return out;
+  }
+  function updateSrsBadge() {
+    var el = document.getElementById("srsBadge");
+    if (!el) return;
+    var n = 0, now = Date.now();
+    for (var k in srs) { if (srs[k] && srs[k].d <= now) n++; }
+    el.hidden = !n; el.textContent = n;
+  }
+  function gradeRowHTML() {
+    return '<div class="grade-row" id="gradeRow">'
+      + '<span class="grade-hint">How well did you know it?</span>'
+      + '<button class="grade-btn again" data-g="0">Again</button>'
+      + '<button class="grade-btn hard" data-g="1">Hard</button>'
+      + '<button class="grade-btn good" data-g="2">Good</button>'
+      + '<button class="grade-btn easy" data-g="3">Easy</button></div>';
+  }
+
+  // ---- daily drill (10 exam-weighted questions, seeded by date) ----
+  function dayKey(d) { d = d || new Date(); return d.getFullYear() * 1e4 + (d.getMonth() + 1) * 100 + d.getDate(); }
+  function seededRand(seed) {
+    return function () {
+      seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+      var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function dailySet() {
+    var rnd = seededRand(dayKey() * 7919), out = [], seen = {};
+    var counts = { 1: 2, 2: 2, 3: 3, 4: 3 };
+    [1, 2, 3, 4].forEach(function (b) {
+      var chs = studyChapters().filter(function (c) { return c.num.charAt(0) === String(b); });
+      var need = counts[b], guard = 0;
+      while (need > 0 && guard++ < 80) {
+        var c = chs[Math.floor(rnd() * chs.length)];
+        var qs = [];
+        parsedQuizFor(c.num).tiers.forEach(function (t) { t.questions.forEach(function (q) { qs.push(q); }); });
+        if (!qs.length) continue;
+        var q = qs[Math.floor(rnd() * qs.length)];
+        var id = c.num + "_" + q.id;
+        if (seen[id]) continue;
+        seen[id] = 1;
+        out.push({ ref: c.num, title: c.num + ". " + c.title, uid: id, q: q });
+        need--;
+      }
+    });
+    return out;
+  }
+  function streakCount() {
+    var done = gj(DDONE, {}), n = 0, d = new Date();
+    if (!done[dayKey(d)]) d.setDate(d.getDate() - 1);
+    while (done[dayKey(d)]) { n++; d.setDate(d.getDate() - 1); }
+    return n;
+  }
+
+  function bindLooseQuiz(container, onAnswer) {
+    container.addEventListener("click", function (e) {
+      var btn = e.target.closest(".q-opt"); if (!btn) return;
+      var card = btn.closest(".q-card"); if (card.classList.contains("answered")) return;
+      var i = parseInt(btn.dataset.i, 10);
+      applyAnswer(card, i, false);
+      if (onAnswer) onAnswer(card, i, parseInt(card.dataset.correct, 10));
+    });
+  }
+
+  // ---- Daily Drill page ----
+  function renderDaily() {
+    clearPaperTimer();
+    var items = dailySet(), dk = dayKey();
+    var saved = gj("frm_daily_" + dk, {});
+    var doneMap = gj(DDONE, {});
+    var hero = '<div class="hero"><h1>🎯 Daily Drill</h1>'
+      + '<p>Ten fresh questions every day, weighted like the real exam (2·2·3·3 across the four books). Small daily reps beat weekend cramming — keep the streak alive.</p></div>';
+    var stat = '<div class="daily-bar"><span class="lab-stat">🔥 Streak <b id="dStreak">' + streakCount() + '</b></span>'
+      + '<span class="lab-stat">✅ <b id="dDone">0</b>/' + items.length + ' · <b id="dCor">0</b> correct</span></div>';
+    var body = "";
+    items.forEach(function (it) {
+      var t = { cls: "mix", dot: "🎯", label: it.title };
+      var card = qCard(it.q, t, "c:" + it.ref + ":");
+      body += card.replace('data-qid="' + it.q.id + '"', 'data-qid="' + it.uid + '"');
+    });
+    contentEl.innerHTML = hero + stat + '<div id="dailyList">' + body + '</div><div id="dailyDone" class="q-done" hidden></div>';
+    chapterNavEl.innerHTML = "";
+    var list = document.getElementById("dailyList");
+    function refresh() {
+      var ans = Object.keys(saved).length, cor = 0;
+      items.forEach(function (it) { if (saved[it.uid] != null && saved[it.uid] === it.q.correct) cor++; });
+      var g = function (id) { return document.getElementById(id); };
+      if (g("dDone")) g("dDone").textContent = ans;
+      if (g("dCor")) g("dCor").textContent = cor;
+      if (ans >= items.length && items.length) {
+        if (!doneMap[dk]) { doneMap[dk] = 1; sj(DDONE, doneMap); }
+        if (g("dStreak")) g("dStreak").textContent = streakCount();
+        var d = g("dailyDone");
+        d.hidden = false;
+        d.innerHTML = "🏁 Daily drill complete — <b>" + cor + "/" + items.length + "</b>. " + (cor >= 8 ? "Excellent!" : cor >= 6 ? "Solid — review the misses above." : "Re-read the explanations above, then hit the Review Hub.") + " Come back tomorrow for a fresh set.";
+      }
+    }
+    items.forEach(function (it) {
+      if (saved[it.uid] != null) { var card = list.querySelector('.q-card[data-qid="' + it.uid + '"]'); if (card) applyAnswer(card, saved[it.uid], true); }
+    });
+    refresh();
+    bindLooseQuiz(list, function (card, i) {
+      saved[card.dataset.qid] = i; sj("frm_daily_" + dk, saved); refresh();
+    });
+    highlightNav(null);
+    document.title = "Daily Drill — FRM Part I";
+  }
+
+  // ---- Smart Flashcards (due deck) ----
+  function renderSRS() {
+    clearPaperTimer();
+    var deck = dueCards();
+    var hero = '<div class="hero"><h1>🔁 Smart Flashcards</h1>'
+      + '<p>Spaced repetition across all 62 chapters: cards you rate come back just before you’d forget them. Rate honestly — <b>Again</b> repeats today, <b>Easy</b> pushes it out for weeks.</p></div>';
+    if (!deck.length) {
+      contentEl.innerHTML = hero + '<div class="srs-empty">🎉 <b>No cards due right now.</b> Rate cards on any chapter’s 🃏 Flashcards tab (Again / Hard / Good / Easy) and they’ll queue up here on exactly the right day.<br><br><a class="rv-card" style="display:inline-block" href="#/ch/101/flashcards"><b>🃏 Study a deck now →</b></a></div>';
+      chapterNavEl.innerHTML = ""; highlightNav(null); document.title = "Smart Flashcards — FRM Part I"; updateSrsBadge();
+      return;
+    }
+    contentEl.innerHTML = hero
+      + '<div class="fc-toolbar"><span class="fc-counter" id="srsCount"></span><div style="flex:1"></div><span class="lab-stat" id="srsFrom"></span></div>'
+      + '<div class="flashcard" id="flashcard"><div class="flashcard-inner">'
+      + '<div class="fc-face fc-front"><div class="fc-tag">Question</div><div class="fc-body" id="fcFront"></div><div class="fc-hint">Click card / press Space to flip</div></div>'
+      + '<div class="fc-face fc-back"><div class="fc-tag">Answer</div><div class="fc-body" id="fcBack"></div><div class="fc-hint">Rate below to schedule the next review</div></div>'
+      + "</div></div>" + gradeRowHTML();
+    chapterNavEl.innerHTML = "";
+    var card = document.getElementById("flashcard");
+    function show() {
+      if (!deck.length) { renderSRS(); return; }
+      card.classList.remove("flipped");
+      var cc = deck[0];
+      document.getElementById("fcFront").innerHTML = md(cc.q);
+      document.getElementById("fcBack").innerHTML = md(cc.a);
+      if (window.FRMGlossary) { window.FRMGlossary.annotate(document.getElementById("fcFront")); window.FRMGlossary.annotate(document.getElementById("fcBack")); }
+      document.getElementById("srsCount").textContent = deck.length + " due";
+      document.getElementById("srsFrom").textContent = "📖 " + cc.num + ". " + cc.title;
+    }
+    card.addEventListener("click", function () { card.classList.toggle("flipped"); });
+    document.getElementById("gradeRow").addEventListener("click", function (e) {
+      var b = e.target.closest(".grade-btn"); if (!b) return;
+      srsGrade(deck[0].key, parseInt(b.dataset.g, 10));
+      deck.shift(); updateSrsBadge(); show();
+    });
+    fcState._nav = { next: function () {}, prev: function () {}, flip: function () { card.classList.toggle("flipped"); } };
+    show();
+    highlightNav(null);
+    document.title = "Smart Flashcards — FRM Part I";
+  }
+
+  // ---- Review Hub ----
+  function pct100(a, b) { return b ? Math.round(a / b * 100) : 0; }
+  function renderReview() {
+    clearPaperTimer();
+    var st = bookStats(), mist = collectMistakes(), due = dueCards().length, mk = Object.keys(marks);
+    var hero = '<div class="hero"><h1>🧠 Review Hub</h1>'
+      + '<p>Your personal weak-spot tracker: readiness by book, every question you’ve missed (until you fix it), your bookmarks, and what’s due for review.</p></div>';
+    var rows = "", wAcc = 0, wSum = 0;
+    [1, 2, 3, 4].forEach(function (b) {
+      var s = st[b], acc = pct100(s.cor, s.att), cov = pct100(s.unitsDone, s.units);
+      if (s.att) { wAcc += BOOKW[b] * acc; wSum += BOOKW[b]; }
+      rows += '<div class="rv-row"><div class="rv-name">Book ' + b + ' · ' + BOOKNAME[b] + '<span class="rv-meta">' + s.att + ' answered · ' + cov + '% studied</span></div>'
+        + '<div class="rv-bar"><div class="rv-fill' + (s.att ? (acc >= 75 ? " ok" : acc >= 60 ? " mid" : " low") : "") + '" style="width:' + (s.att ? Math.max(acc, 4) : 0) + '%"></div></div>'
+        + '<div class="rv-pct">' + (s.att ? acc + "%" : "—") + '</div></div>';
+    });
+    var overall = wSum ? Math.round(wAcc / wSum) : null;
+    var readiness = '<h2>📊 Readiness by book</h2>'
+      + (overall != null ? '<p>Exam-weighted accuracy so far: <b class="q-pct">' + overall + '%</b> — target 75%+ before exam day. Books 3 &amp; 4 carry 60% of the marks.</p>' : "<p>Answer some quiz questions and your accuracy will appear here.</p>")
+      + '<div class="rv-books">' + rows + "</div>";
+    var short = '<div class="rv-cards">'
+      + '<a class="rv-card" href="#/daily"><b>🎯 Daily Drill</b><span>🔥 streak ' + streakCount() + '</span></a>'
+      + '<a class="rv-card" href="#/srs"><b>🔁 Smart Flashcards</b><span>' + due + ' due</span></a>'
+      + '<a class="rv-card" href="#/papers"><b>📑 Mock Exams</b><span>timed, full length</span></a></div>';
+    var mistHtml = '<h2>❌ Mistake drill <span class="q-tier-count">' + mist.length + ' to clear</span></h2>';
+    if (!mist.length) mistHtml += '<p class="srs-empty">🎉 <b>Nothing to redo.</b> Wrong answers from any chapter quiz or mock land here automatically — answer them correctly once to clear them.</p>';
+    else {
+      mistHtml += '<p>Every question you answered wrong, anywhere in the app. Answer it <b>correctly here</b> and it disappears — that’s your error log working itself off.</p><div id="mistList">';
+      mist.slice(0, 40).forEach(function (m) {
+        var t = { cls: "hard", dot: "🔁", label: m.where };
+        mistHtml += qCard(m.q, t, null).replace('data-qid="' + m.q.id + '"', 'data-qid="' + m.key + '" data-fixkey="' + m.key + '"');
+      });
+      mistHtml += "</div>";
+      if (mist.length > 40) mistHtml += '<p class="rv-meta">Showing the first 40 — clear some and more will appear.</p>';
+    }
+    var mkHtml = '<h2>⭐ Bookmarked questions <span class="q-tier-count">' + mk.length + '</span></h2>';
+    if (!mk.length) mkHtml += '<p class="srs-empty">Tap the ☆ star on any quiz or mock question to pin it here for the final-week sweep.</p>';
+    else {
+      mkHtml += '<div class="mk-list">';
+      mk.sort(function (a, b) { return (marks[b].ts || 0) - (marks[a].ts || 0); }).forEach(function (k) {
+        mkHtml += '<div class="mk-row"><a href="' + markHref(k) + '"><span class="mk-where">' + esc(markWhere(k)) + '</span>' + esc(marks[k].t || "") + '</a><button class="mk-del" data-un="' + k + '" title="Remove">✕</button></div>';
+      });
+      mkHtml += "</div>";
+    }
+    contentEl.innerHTML = hero + short + readiness + mistHtml + mkHtml;
+    chapterNavEl.innerHTML = "";
+    var ml = document.getElementById("mistList");
+    if (ml) bindLooseQuiz(ml, function (card, i, correct) {
+      if (i === correct) {
+        fixed[card.dataset.fixkey] = Date.now(); sj(FKEY, fixed);
+        card.classList.add("cleared");
+      }
+    });
+    contentEl.querySelectorAll(".mk-del").forEach(function (b) {
+      b.addEventListener("click", function () { delete marks[b.dataset.un]; sj(MKEY, marks); renderReview(); });
+    });
+    highlightNav(null);
+    document.title = "Review Hub — FRM Part I";
+  }
+
+
   // ---------- Router ----------
   function route() {
     var hash = location.hash || "#/home";
     window.scrollTo(0, 0); closeSidebar();
     if (typeof clearPaperTimer === "function") clearPaperTimer();
+    if (/^#\/review/.test(hash)) { renderReview(); return; }
+    if (/^#\/daily/.test(hash)) { renderDaily(); return; }
+    if (/^#\/srs/.test(hash)) { renderSRS(); return; }
     if (/^#\/primer/.test(hash)) { renderPrimer(); return; }
     if (/^#\/excel/.test(hash)) { renderExcel(); return; }
     if (/^#\/papers/.test(hash)) { renderPapersHome(); return; }
@@ -1217,6 +1597,7 @@
       var num = m[1], view = m[2], c = chapterByNum(num);
       if (!c) { renderHome(); return; }
       if (view === "notes") renderNotes(num); else if (view === "flashcards") renderFlashcards(num); else renderQuestions(num);
+      try { localStorage.setItem("frm_last", JSON.stringify({ h: hash, t: num + ". " + c.title })); } catch (e) {}
       renderChapterNav(num); highlightNav(num, view);
       document.title = num + ". " + c.title + " — FRM Part I";
     } else renderHome();
@@ -1269,7 +1650,12 @@
     if (e.key === "/" && !typing) { e.preventDefault(); searchInput.focus(); return; }
     if (e.key === "c" && !typing) { var p = document.getElementById("calcPanel"); if (p) { p.hidden = !p.hidden; if (!p.hidden) p.classList.add("show"); } return; }
     if (typing) return;
-    if (fcState._nav && location.hash.indexOf("/flashcards") > -1) {
+    var grr = document.getElementById("gradeRow");
+    if (grr && /[1-4]/.test(e.key) && (location.hash.indexOf("/flashcards") > -1 || location.hash.indexOf("/srs") > -1)) {
+      var gb = grr.querySelector('.grade-btn[data-g="' + (parseInt(e.key, 10) - 1) + '"]');
+      if (gb) { gb.click(); return; }
+    }
+    if (fcState._nav && (location.hash.indexOf("/flashcards") > -1 || location.hash.indexOf("/srs") > -1)) {
       if (e.key === "ArrowRight") fcState._nav.next();
       else if (e.key === "ArrowLeft") fcState._nav.prev();
       else if (e.key === " ") { e.preventDefault(); fcState._nav.flip(); }
@@ -1278,6 +1664,7 @@
 
   // ---------- Init ----------
   buildSidebar();
+  updateSrsBadge();
   buildCalculator();
   updateProgressUI();
   window.addEventListener("hashchange", route);
