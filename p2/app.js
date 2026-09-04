@@ -1,4 +1,4 @@
-/* FRM Part I Study Hub — single-page study app
+/* FRM Part II Study Hub — single-page study app
    Works hosted (GitHub Pages) or opened locally; all content is in content.js */
 (function () {
   "use strict";
@@ -83,7 +83,7 @@
   function pct(x, d) { return (isFinite(x) ? (x).toFixed(d == null ? 2 : d) : "—") + "%"; }
 
   // ---------- Progress (localStorage) ----------
-  var PKEY = "frm_progress_v1";
+  var PKEY = "frm2_progress_v1";
   function loadProgress() { try { return JSON.parse(localStorage.getItem(PKEY)) || {}; } catch (e) { return {}; } }
   function saveProgress(p) { try { localStorage.setItem(PKEY, JSON.stringify(p)); } catch (e) {} }
   var progress = loadProgress();
@@ -100,7 +100,7 @@
   }
 
   // ---------- Theme ----------
-  var TKEY = "frm_theme";
+  var TKEY = "frm2_theme";
   function applyTheme(t) {
     document.documentElement.setAttribute("data-theme", t);
     var b = document.getElementById("themeBtn");
@@ -114,7 +114,7 @@
   })();
 
   // ---------- Reading text size ----------
-  var FKEY = "frm_readscale", readScale = 1;
+  var FKEY = "frm2_readscale", readScale = 1;
   function applyScale(s) {
     readScale = Math.max(0.85, Math.min(1.45, Math.round(s * 100) / 100));
     // rem-based reading text scales; fixed-px chrome stays put
@@ -466,7 +466,7 @@
     chapterNavEl.innerHTML = "";
     highlightNav(null);
     var lk = document.querySelector('.nav-tool[data-link="lab"]'); if (lk) lk.classList.add("active");
-    document.title = "Financial Maths Lab — FRM Part I";
+    document.title = "Financial Maths Lab — FRM Part II";
   }
   function syncLabScores() {
     document.getElementById("labScore").textContent = labState.score;
@@ -556,7 +556,7 @@
     html += '<a class="nav-tool" data-link="daily" href="#/daily"><span class="nav-chap-num">🎯</span><span class="nav-chap-title">Daily Drill</span></a>';
     html += '<a class="nav-tool" data-link="review" href="#/review"><span class="nav-chap-num">🧠</span><span class="nav-chap-title">Review Hub</span></a>';
     html += '<a class="nav-tool" data-link="srs" href="#/srs"><span class="nav-chap-num">🔁</span><span class="nav-chap-title">Smart Flashcards <span class="nav-badge" id="srsBadge" hidden></span></span></a>';
-    html += '<a class="nav-tool" href="p2/" target="_self"><span class="nav-chap-num">\u2192</span><span class="nav-chap-title">Switch to Part II</span></a>';
+    html += '<a class="nav-tool" href="../" target="_self"><span class="nav-chap-num">\u2190</span><span class="nav-chap-title">Switch to Part I</span></a>';
     html += '<button class="nav-tool" id="navCalc"><span class="nav-chap-num">🧮</span><span class="nav-chap-title">Financial Calculator</span></button>';
     var lastModule = null;
     CH.forEach(function (c) {
@@ -620,7 +620,7 @@
   var chapterNavEl = document.getElementById("chapterNav");
 
   function renderHome() {
-    var hero = '<div class="hero"><h1>🎯 FRM&reg; Part I Study Hub</h1>'
+    var hero = '<div class="hero"><h1>🎯 FRM&reg; Part II Study Hub</h1>'
       + '<p>Financial Risk Manager — Part I (2026 curriculum). Notes, flashcards &amp; exam-style MCQs for all 62 readings. Study at your own pace.</p>'
       + '<div class="hero-cta">'
       + (PAPERS.length ? '<a href="#/papers" class="cta">📝 Mock Exam</a>' : "")
@@ -634,7 +634,7 @@
     });
     cards += "</div>";
     var readme = '<div class="markdown-body">' + md(DATA.readme || "") + "</div>";
-    var last = gj("frm_last", null);
+    var last = gj("frm2_last", null);
     var pctv = totalUnits() ? Math.round(doneCount() / totalUnits() * 100) : 0;
     var dueN = 0, now = Date.now(); for (var sk in srs) { if (srs[sk] && srs[sk].d <= now) dueN++; }
     var dash = '<div class="dash">'
@@ -651,7 +651,7 @@
       + '<hr><details open><summary style="cursor:pointer;font-weight:700;font-size:18px">📋 Full exam guide & study plan</summary>' + readme + "</details>";
     contentEl.querySelectorAll("[data-go]").forEach(function (card) { card.addEventListener("click", function () { location.hash = card.getAttribute("data-go"); }); });
     if (window.FRMGlossary) window.FRMGlossary.annotate(contentEl.querySelector("details .markdown-body"));
-    chapterNavEl.innerHTML = ""; highlightNav(null); document.title = "FRM Part I Study Hub";
+    chapterNavEl.innerHTML = ""; highlightNav(null); document.title = "FRM Part II Study Hub";
   }
   function viewTabs(num, active) {
     var done = isDone(num, active), h = '<div class="view-tabs">';
@@ -827,7 +827,7 @@
       contentEl.innerHTML = viewTabs(num, "questions") + '<div class="markdown-body">' + md(c.questions) + "</div>";
       bindMarkRead(num, "questions"); return;
     }
-    var qkey = "frm_quiz_" + num, saved = {};
+    var qkey = "frm2_quiz_" + num, saved = {};
     try { saved = JSON.parse(localStorage.getItem(qkey)) || {}; } catch (e) {}
     quizCtx = { num: num, parsed: parsed, saved: saved, qkey: qkey, total: total };
 
@@ -843,7 +843,7 @@
       + '<div class="q-progress"><div id="qFill" class="q-progress-fill"></div></div>'
       + '<div id="qDone" class="q-done" hidden><span id="qDoneMsg"></span></div></div>';
     var tools = '<div class="quiz-tools"><button id="qShuffle">🔀 Shuffle</button><button id="qReset">↺ Reset answers</button><button id="qReading">📄 Reading mode</button><button id="toTop">↑ Top</button></div>';
-    var tip = '<div class="q-tip">💡 Tap an option to lock your answer — you will instantly see the right choice and a full explanation. FRM Part I has <b>no negative marking</b>, so never leave a question blank.</div>';
+    var tip = '<div class="q-tip">💡 Tap an option to lock your answer — you will instantly see the right choice and a full explanation. FRM Part II has <b>no negative marking</b>, so never leave a question blank.</div>';
     var caseHtml = parsed.caseMd ? '<div class="q-case markdown-body"><div class="q-case-tag">🧩 Worked Case Study — read & learn the method</div>' + md(parsed.caseMd.replace(/^##\s*🧩[^\n]*\n/, "")) + "</div>" : "";
     contentEl.innerHTML = viewTabs(num, "questions") + conceptBanner(num)
       + '<div id="quizInteractive">' + chips + bar + tip + tools + '<div id="qList">' + renderTierCards(parsed, "c:" + num + ":") + "</div>" + caseHtml + "</div>";
@@ -995,7 +995,7 @@
         done.className = "p-done " + (passed ? "pass" : "fail");
         done.innerHTML = "<b>" + (passed ? "✅ On track" : "📚 Below target") + "</b> — Score <b>" + score + " / " + max
           + " (" + pctv + "%)</b> · " + correct + "/" + total + " correct · Time " + fmtTime(paperCtx.elapsed)
-          + ". <span class='p-passnote'>FRM Part I has no fixed pass mark; ~60%+ is a reasonable target.</span>";
+          + ". <span class='p-passnote'>FRM Part II has no fixed pass mark; ~60%+ is a reasonable target.</span>";
       } else done.hidden = true;
     }
   }
@@ -1017,7 +1017,7 @@
     if (!p) { renderPapersHome(); return; }
     var parsed = parsePaper(p.md);
     if (!parsed.groups.length) { contentEl.innerHTML = '<div class="markdown-body">' + md(p.md) + "</div>"; return; }
-    var qkey = "frm_paper_" + num, saved = {}, elapsed = 0, ekey = "frm_paper_time_" + num;
+    var qkey = "frm2_paper_" + num, saved = {}, elapsed = 0, ekey = "frm2_paper_time_" + num;
     try { saved = JSON.parse(localStorage.getItem(qkey)) || {}; } catch (e) {}
     try { elapsed = parseInt(localStorage.getItem(ekey), 10) || 0; } catch (e) {}
     paperCtx = { num: num, parsed: parsed, saved: saved, qkey: qkey, ekey: ekey, elapsed: elapsed, running: false };
@@ -1069,7 +1069,7 @@
         renderPaper(num);
       }
     };
-    document.title = parsed.title + " — FRM Part I";
+    document.title = parsed.title + " — FRM Part II";
     highlightNav(null);
     var pl = document.querySelector('.nav-tool[data-link="papers"]'); if (pl) pl.classList.add("active");
   }
@@ -1094,7 +1094,7 @@
     var cards = '<div class="home-cards">';
     if (!PAPERS.length) cards += '<p class="markdown-body">Mock papers are being prepared — check back shortly.</p>';
     PAPERS.forEach(function (p) {
-      var saved = {}; try { saved = JSON.parse(localStorage.getItem("frm_paper_" + p.num)) || {}; } catch (e) {}
+      var saved = {}; try { saved = JSON.parse(localStorage.getItem("frm2_paper_" + p.num)) || {}; } catch (e) {}
       var att = Object.keys(saved).length;
       var ttl = (p.md.match(/^#\s+(.*)/) || [])[1] || ("Mock Paper " + p.num);
       var totalQ = (p.md.match(/\bQ[\w-]+\./g) || []).length || 100;
@@ -1110,7 +1110,7 @@
     chapterNavEl.innerHTML = "";
     highlightNav(null);
     var pl = document.querySelector('.nav-tool[data-link="papers"]'); if (pl) pl.classList.add("active");
-    document.title = "Mock Test Papers — FRM Part I";
+    document.title = "Mock Test Papers — FRM Part II";
   }
 
   function renderPrimer() {
@@ -1121,7 +1121,7 @@
     chapterNavEl.innerHTML = "";
     highlightNav(null);
     var pl = document.querySelector('.nav-tool[data-link="primer"]'); if (pl) pl.classList.add("active");
-    document.title = "Financial Maths Primer — FRM Part I";
+    document.title = "Financial Maths Primer — FRM Part II";
   }
 
   var XL_PRESETS = [
@@ -1224,7 +1224,7 @@
       + '<a class="next" href="#/lab"><div class="cn-label">Practice →</div><div class="cn-title">🔢 Financial Maths Lab</div></a>';
     highlightNav(null);
     var el = document.querySelector('.nav-tool[data-link="excel"]'); if (el) el.classList.add("active");
-    document.title = "Excel TVM Calculator — FRM Part I";
+    document.title = "Excel TVM Calculator — FRM Part II";
   }
 
   function renderChapterNav(num) {
@@ -1242,10 +1242,10 @@
   function gj(k, def) { try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? def : v; } catch (e) { return def; } }
   function sj(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
 
-  var MKEY = "frm_marks", marks = gj(MKEY, {});
-  var FKEY = "frm_fixed", fixed = gj(FKEY, {});
-  var SKEY = "frm_srs", srs = gj(SKEY, {});
-  var DDONE = "frm_dailyDone";
+  var MKEY = "frm2_marks", marks = gj(MKEY, {});
+  var FKEY = "frm2_fixed", fixed = gj(FKEY, {});
+  var SKEY = "frm2_srs", srs = gj(SKEY, {});
+  var DDONE = "frm2_dailyDone";
 
   // bookmark star toggle (delegated; buttons exist in quiz + paper cards)
   document.addEventListener("click", function (e) {
@@ -1298,7 +1298,7 @@
   function collectMistakes() {
     var out = [];
     studyChapters().forEach(function (c) {
-      var saved = gj("frm_quiz_" + c.num, {}), ids = Object.keys(saved);
+      var saved = gj("frm2_quiz_" + c.num, {}), ids = Object.keys(saved);
       if (!ids.length) return;
       var map = quizMapFor(c.num);
       ids.forEach(function (qid) {
@@ -1307,7 +1307,7 @@
       });
     });
     PAPERS.forEach(function (p) {
-      var saved = gj("frm_paper_" + p.num, {}), ids = Object.keys(saved);
+      var saved = gj("frm2_paper_" + p.num, {}), ids = Object.keys(saved);
       if (!ids.length) return;
       var parsed = parsePaper(p.md), map = {};
       parsed.groups.forEach(function (g) { g.questions.forEach(function (q) { map[q.id] = q; }); });
@@ -1328,14 +1328,14 @@
     studyChapters().forEach(function (c) {
       var b = +c.num.charAt(0); if (!st[b]) return;
       VIEWS.forEach(function (v) { st[b].units++; if (isDone(c.num, v.key)) st[b].unitsDone++; });
-      var saved = gj("frm_quiz_" + c.num, {}), ids = Object.keys(saved);
+      var saved = gj("frm2_quiz_" + c.num, {}), ids = Object.keys(saved);
       if (ids.length) {
         var map = quizMapFor(c.num);
         ids.forEach(function (qid) { if (map[qid]) { st[b].att++; if (saved[qid] === map[qid].correct) st[b].cor++; } });
       }
     });
     PAPERS.forEach(function (p) {
-      var saved = gj("frm_paper_" + p.num, {}), ids = Object.keys(saved);
+      var saved = gj("frm2_paper_" + p.num, {}), ids = Object.keys(saved);
       if (!ids.length) return;
       var parsed = parsePaper(p.md);
       parsed.groups.forEach(function (g) {
@@ -1438,7 +1438,7 @@
   function renderDaily() {
     clearPaperTimer();
     var items = dailySet(), dk = dayKey();
-    var saved = gj("frm_daily_" + dk, {});
+    var saved = gj("frm2_daily_" + dk, {});
     var doneMap = gj(DDONE, {});
     var hero = '<div class="hero"><h1>🎯 Daily Drill</h1>'
       + '<p>Ten fresh questions every day, weighted like the real exam (2·2·3·3 across the four books). Small daily reps beat weekend cramming — keep the streak alive.</p></div>';
@@ -1472,10 +1472,10 @@
     });
     refresh();
     bindLooseQuiz(list, function (card, i) {
-      saved[card.dataset.qid] = i; sj("frm_daily_" + dk, saved); refresh();
+      saved[card.dataset.qid] = i; sj("frm2_daily_" + dk, saved); refresh();
     });
     highlightNav(null);
-    document.title = "Daily Drill — FRM Part I";
+    document.title = "Daily Drill — FRM Part II";
   }
 
   // ---- Smart Flashcards (due deck) ----
@@ -1486,7 +1486,7 @@
       + '<p>Spaced repetition across all 62 chapters: cards you rate come back just before you’d forget them. Rate honestly — <b>Again</b> repeats today, <b>Easy</b> pushes it out for weeks.</p></div>';
     if (!deck.length) {
       contentEl.innerHTML = hero + '<div class="srs-empty">🎉 <b>No cards due right now.</b> Rate cards on any chapter’s 🃏 Flashcards tab (Again / Hard / Good / Easy) and they’ll queue up here on exactly the right day.<br><br><a class="rv-card" style="display:inline-block" href="#/ch/101/flashcards"><b>🃏 Study a deck now →</b></a></div>';
-      chapterNavEl.innerHTML = ""; highlightNav(null); document.title = "Smart Flashcards — FRM Part I"; updateSrsBadge();
+      chapterNavEl.innerHTML = ""; highlightNav(null); document.title = "Smart Flashcards — FRM Part II"; updateSrsBadge();
       return;
     }
     contentEl.innerHTML = hero
@@ -1516,7 +1516,7 @@
     fcState._nav = { next: function () {}, prev: function () {}, flip: function () { card.classList.toggle("flipped"); } };
     show();
     highlightNav(null);
-    document.title = "Smart Flashcards — FRM Part I";
+    document.title = "Smart Flashcards — FRM Part II";
   }
 
   // ---- Review Hub ----
@@ -1575,7 +1575,7 @@
       b.addEventListener("click", function () { delete marks[b.dataset.un]; sj(MKEY, marks); renderReview(); });
     });
     highlightNav(null);
-    document.title = "Review Hub — FRM Part I";
+    document.title = "Review Hub — FRM Part II";
   }
 
 
@@ -1598,9 +1598,9 @@
       var num = m[1], view = m[2], c = chapterByNum(num);
       if (!c) { renderHome(); return; }
       if (view === "notes") renderNotes(num); else if (view === "flashcards") renderFlashcards(num); else renderQuestions(num);
-      try { localStorage.setItem("frm_last", JSON.stringify({ h: hash, t: num + ". " + c.title })); } catch (e) {}
+      try { localStorage.setItem("frm2_last", JSON.stringify({ h: hash, t: num + ". " + c.title })); } catch (e) {}
       renderChapterNav(num); highlightNav(num, view);
-      document.title = num + ". " + c.title + " — FRM Part I";
+      document.title = num + ". " + c.title + " — FRM Part II";
     } else renderHome();
   }
 
