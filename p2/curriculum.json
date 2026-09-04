@@ -1,0 +1,534 @@
+{
+ "books": [
+  {
+   "num": 1,
+   "name": "Market Risk Measurement and Management",
+   "shortName": "Market Risk",
+   "weightPct": 20,
+   "approxQuestions": 16,
+   "confidence": "high",
+   "chapters": [
+    {
+     "num": 1,
+     "title": "Estimating Market Risk Measures: An Introduction and Overview"
+    },
+    {
+     "num": 2,
+     "title": "Non-parametric Approaches"
+    },
+    {
+     "num": 3,
+     "title": "Parametric Approaches (II): Extreme Value"
+    },
+    {
+     "num": 4,
+     "title": "Backtesting VaR"
+    },
+    {
+     "num": 5,
+     "title": "VaR Mapping"
+    },
+    {
+     "num": 6,
+     "title": "Validating Bank Holding Companies' Value-at-Risk Models for Market Risk"
+    },
+    {
+     "num": 7,
+     "title": "Beyond Exceedance-Based Backtesting of Value-at-Risk Models: Methods for Backtesting the Entire Forecasting Distribution Using Probability Integral Transform"
+    },
+    {
+     "num": 8,
+     "title": "Correlation Basics: Definitions, Applications, and Terminology"
+    },
+    {
+     "num": 9,
+     "title": "Empirical Properties of Correlation: How Do Correlations Behave in the Real World?"
+    },
+    {
+     "num": 10,
+     "title": "Financial Correlation Modeling—Bottom-Up Approaches"
+    },
+    {
+     "num": 11,
+     "title": "Regression Hedging and Principal Component Analysis"
+    },
+    {
+     "num": 12,
+     "title": "Arbitrage Pricing with Term Structure Models"
+    },
+    {
+     "num": 13,
+     "title": "Expectations, Risk Premium, Convexity, and the Shape of the Term Structure"
+    },
+    {
+     "num": 14,
+     "title": "The Art of Term Structure Models: Drift"
+    },
+    {
+     "num": 15,
+     "title": "The Art of Term Structure Models: Volatility and Distribution"
+    },
+    {
+     "num": 16,
+     "title": "The Vasicek and Gauss+ Models"
+    },
+    {
+     "num": 17,
+     "title": "Volatility Smiles"
+    },
+    {
+     "num": 18,
+     "title": "Fundamental Review of the Trading Book"
+    }
+   ]
+  },
+  {
+   "num": 2,
+   "name": "Credit Risk Measurement and Management",
+   "shortName": "Credit Risk",
+   "weightPct": 20,
+   "approxQuestions": 16,
+   "confidence": "high",
+   "chapters": [
+    {
+     "num": 1,
+     "title": "Fundamentals of Credit Risk"
+    },
+    {
+     "num": 2,
+     "title": "Governance"
+    },
+    {
+     "num": 3,
+     "title": "Credit Risk Management"
+    },
+    {
+     "num": 4,
+     "title": "Capital Structure in Banks"
+    },
+    {
+     "num": 5,
+     "title": "Introduction to Credit Risk Modeling and Assessment"
+    },
+    {
+     "num": 6,
+     "title": "Credit Scoring and Rating"
+    },
+    {
+     "num": 7,
+     "title": "Credit Scoring and Retail Credit Risk Management"
+    },
+    {
+     "num": 8,
+     "title": "Country Risk: Determinants, Measures, and Implications"
+    },
+    {
+     "num": 9,
+     "title": "Estimating Default Probabilities"
+    },
+    {
+     "num": 10,
+     "title": "Credit Value at Risk"
+    },
+    {
+     "num": 11,
+     "title": "Portfolio Credit Risk"
+    },
+    {
+     "num": 12,
+     "title": "Credit Risk"
+    },
+    {
+     "num": 13,
+     "title": "Credit Derivatives"
+    },
+    {
+     "num": 14,
+     "title": "Derivatives"
+    },
+    {
+     "num": 15,
+     "title": "Counterparty Risk and Beyond"
+    },
+    {
+     "num": 16,
+     "title": "Netting, Close-out and Related Aspects"
+    },
+    {
+     "num": 17,
+     "title": "Margin (Collateral) and Settlement"
+    },
+    {
+     "num": 18,
+     "title": "Central Clearing"
+    },
+    {
+     "num": 19,
+     "title": "Future Value and Exposure"
+    },
+    {
+     "num": 20,
+     "title": "CVA"
+    },
+    {
+     "num": 21,
+     "title": "The Evolution of Stress Testing Counterparty Exposures"
+    },
+    {
+     "num": 22,
+     "title": "Structured Credit Risk"
+    },
+    {
+     "num": 23,
+     "title": "An Introduction to Securitisation"
+    }
+   ]
+  },
+  {
+   "num": 3,
+   "name": "Operational Risk and Resilience",
+   "shortName": "Operational Risk",
+   "weightPct": 20,
+   "approxQuestions": 16,
+   "confidence": "high",
+   "chapters": [
+    {
+     "num": 1,
+     "title": "Introduction to Operational Risk and Resilience"
+    },
+    {
+     "num": 2,
+     "title": "Risk Governance"
+    },
+    {
+     "num": 3,
+     "title": "Risk Identification"
+    },
+    {
+     "num": 4,
+     "title": "Risk Measurement and Assessment"
+    },
+    {
+     "num": 5,
+     "title": "Risk Mitigation"
+    },
+    {
+     "num": 6,
+     "title": "Risk Reporting"
+    },
+    {
+     "num": 7,
+     "title": "Integrated Risk Management"
+    },
+    {
+     "num": 8,
+     "title": "Cyber-resilience: Range of practices"
+    },
+    {
+     "num": 9,
+     "title": "Case Study: Cyberthreats and Information Security Risks"
+    },
+    {
+     "num": 10,
+     "title": "Sound Management of Risks related to Money Laundering and Financing of Terrorism"
+    },
+    {
+     "num": 11,
+     "title": "Case Study: Financial Crime and Fraud"
+    },
+    {
+     "num": 12,
+     "title": "Guidance on Managing Outsourcing Risk"
+    },
+    {
+     "num": 13,
+     "title": "Case Study: Third-Party Risk Management"
+    },
+    {
+     "num": 14,
+     "title": "Case Study: Investor Protection and Compliance Risks in Investment Activities"
+    },
+    {
+     "num": 15,
+     "title": "Supervisory Guidance on Model Risk Management"
+    },
+    {
+     "num": 16,
+     "title": "Case Study: Model Risk and Model Validation"
+    },
+    {
+     "num": 17,
+     "title": "Stress Testing Banks"
+    },
+    {
+     "num": 18,
+     "title": "Risk Capital Attribution and Risk-Adjusted Performance Measurement"
+    },
+    {
+     "num": 19,
+     "title": "Range of practices and issues in economic capital frameworks"
+    },
+    {
+     "num": 20,
+     "title": "Capital Planning at Large Bank Holding Companies: Supervisory Expectations and Range of Current Practice"
+    },
+    {
+     "num": 21,
+     "title": "Capital Regulation Before the Global Financial Crisis"
+    },
+    {
+     "num": 22,
+     "title": "Solvency, Liquidity and Other Regulation After the Global Financial Crisis"
+    },
+    {
+     "num": 23,
+     "title": "High-level summary of Basel III reforms"
+    },
+    {
+     "num": 24,
+     "title": "Basel III: Finalising post-crisis reforms"
+    }
+   ]
+  },
+  {
+   "num": 4,
+   "name": "Liquidity and Treasury Risk Measurement and Management",
+   "shortName": "Liquidity & Treasury",
+   "weightPct": 15,
+   "approxQuestions": 12,
+   "confidence": "high",
+   "chapters": [
+    {
+     "num": 1,
+     "title": "Liquidity Risk"
+    },
+    {
+     "num": 2,
+     "title": "Liquidity and Leverage"
+    },
+    {
+     "num": 3,
+     "title": "Early Warning Indicators"
+    },
+    {
+     "num": 4,
+     "title": "The Investment Function in Financial-Services Management"
+    },
+    {
+     "num": 5,
+     "title": "Liquidity and Reserves Management: Strategies and Policies"
+    },
+    {
+     "num": 6,
+     "title": "Intraday Liquidity Risk Management"
+    },
+    {
+     "num": 7,
+     "title": "Monitoring Liquidity"
+    },
+    {
+     "num": 8,
+     "title": "The Failure Mechanics of Dealer Banks"
+    },
+    {
+     "num": 9,
+     "title": "Liquidity Stress Testing"
+    },
+    {
+     "num": 10,
+     "title": "Liquidity Risk Reporting and Stress Testing"
+    },
+    {
+     "num": 11,
+     "title": "Contingency Funding Planning"
+    },
+    {
+     "num": 12,
+     "title": "Managing Nondeposit Liabilities"
+    },
+    {
+     "num": 13,
+     "title": "Repurchase Agreements and Financing"
+    },
+    {
+     "num": 14,
+     "title": "Liquidity Transfer Pricing: A Guide to Better Practice"
+    },
+    {
+     "num": 15,
+     "title": "The US Dollar Shortage in Global Banking and the International Policy Response"
+    },
+    {
+     "num": 16,
+     "title": "Covered Interest Parity Lost: Understanding the Cross-Currency Basis"
+    },
+    {
+     "num": 17,
+     "title": "Risk Management for Changing Interest Rates: Asset-Liability Management and Duration Techniques"
+    }
+   ]
+  },
+  {
+   "num": 5,
+   "name": "Risk Management and Investment Management",
+   "shortName": "Investment Management",
+   "weightPct": 15,
+   "approxQuestions": 12,
+   "confidence": "high",
+   "chapters": [
+    {
+     "num": 1,
+     "title": "Factor Theory"
+    },
+    {
+     "num": 2,
+     "title": "Factors"
+    },
+    {
+     "num": 3,
+     "title": "Alpha (and the Low-Risk Anomaly)"
+    },
+    {
+     "num": 4,
+     "title": "Portfolio Construction"
+    },
+    {
+     "num": 5,
+     "title": "Portfolio Risk: Analytical Methods"
+    },
+    {
+     "num": 6,
+     "title": "VaR and Risk Budgeting in Investment Management"
+    },
+    {
+     "num": 7,
+     "title": "Portfolio Performance Evaluation"
+    },
+    {
+     "num": 8,
+     "title": "Hedge Fund Investment Strategies"
+    },
+    {
+     "num": 9,
+     "title": "Risk, Regulation and Organizational Structure"
+    },
+    {
+     "num": 10,
+     "title": "The Rise and Risks of Private Credit"
+    },
+    {
+     "num": 11,
+     "title": "Private Markets Investing (up to section 3.3.10)"
+    },
+    {
+     "num": 12,
+     "title": "Performing Due Diligence on Specific Managers and Funds"
+    },
+    {
+     "num": 13,
+     "title": "Distress Symptoms and Remedies"
+    },
+    {
+     "num": 14,
+     "title": "Madoff: A Riot of Red Flags"
+    },
+    {
+     "num": 15,
+     "title": "Market-Driven Scenarios: An Approach for Plausible Scenario Construction"
+    },
+    {
+     "num": 16,
+     "title": "Liquidity Risk Management"
+    },
+    {
+     "num": 17,
+     "title": "Illiquid Assets"
+    }
+   ]
+  },
+  {
+   "num": 6,
+   "name": "Current Issues in Financial Markets",
+   "shortName": "Current Issues",
+   "weightPct": 10,
+   "approxQuestions": 8,
+   "confidence": "high",
+   "chapters": [
+    {
+     "num": 1,
+     "title": "Advances in Artificial Intelligence: Implications for Capital Markets Activities (IMF, Global Financial Stability Report, October 2024)"
+    },
+    {
+     "num": 2,
+     "title": "The Financial Stability Implications of Artificial Intelligence (FSB, November 2024)"
+    },
+    {
+     "num": 3,
+     "title": "The Global Drivers of Private Credit (BIS, February 2025)"
+    },
+    {
+     "num": 4,
+     "title": "International Monetary Fund (2025), Global Financial Stability Report, April 2025, Chapter 2 — \"Geopolitical Risks: Implications for Asset Prices and Financial Stability\""
+    },
+    {
+     "num": 5,
+     "title": "BIS Annual Economic Report, Section 2: Monetary and fiscal policy: safeguarding stability and trust"
+    },
+    {
+     "num": 6,
+     "title": "Regulating the Crypto Ecosystem: The Case of Unbacked Crypto Assets (IMF)"
+    },
+    {
+     "num": 7,
+     "title": "Tokenization and Financial Market Inefficiencies (IMF Fintech Note, January 2025)"
+    },
+    {
+     "num": 8,
+     "title": "Digital Resilience and Financial Stability: The Quest for Policy Tools in the Financial Sector"
+    }
+   ]
+  }
+ ],
+ "examFormat": {
+  "questionCount": 80,
+  "durationHours": 4,
+  "negativeMarking": false,
+  "calculators": [
+   "Hewlett Packard 12C (including HP 12C Platinum and 12C 25th/30th Anniversary Editions)",
+   "Texas Instruments BA II Plus (including BA II Plus Professional)",
+   "Hewlett Packard 10B II",
+   "Hewlett Packard 10BII+",
+   "Hewlett Packard 20B Business Consultant II"
+  ],
+  "examWindows": "Three sittings per year, computer-based at PSI test centres worldwide (ATA in China Mainland, Hong Kong SAR and Thailand). 2026 Part II windows: May 16-19, 2026; August 7-8, 2026 (Part I and Part II both offered; same-day both-parts option available); November 21-25, 2026. (2026 Part I for reference: May 9-15, Aug 7-8, Nov 14-20.) Registration ladder per window, all deadlines 11:59pm ET: registration opens Dec 1 2025 / Mar 1 2026 / May 1 2026; early registration ends Jan 31 / Apr 30 / Jul 31 2026; standard (final) registration closes Mar 31 / Jun 30 / Sep 30 2026; last date to schedule or reschedule the appointment Apr 25 / Jul 25 / Oct 24 2026. Fees: USD 600 early / USD 800 standard, plus a one-time USD 400 enrollment fee for first-time candidates; USD 250 deferral fee.",
+  "notes": "FORMAT: 80 equally weighted multiple-choice questions, four choices each (a/b/c/d), delivered CBT in a single continuous 4-hour session with no scheduled break (restroom breaks permitted but the clock keeps running). That is ~3.0 minutes per question, versus 2.4 min/question on Part I (100 questions in 4 hours) — the extra time is absorbed by longer scenario/vignette stems, not by easier questions. NO NEGATIVE MARKING: a wrong answer scores zero and GARP publishes no guessing penalty, so never leave a blank. NO FORMULA SHEET is provided; two sheets of scratch paper and a pencil are supplied. Calculators must be one of the five GARP-approved models above, carried in by the candidate — GARP states these are approved 'with no exceptions' and an unapproved calculator means the exam is not graded (no borrowing, no manuals, no cases). Widely repeated prep-site claims of 'BA II Plus or HP 12C only' are incomplete. EXAM-DAY ID: an original, valid, non-expired government-issued passport or driver's license plus a printed Confirmation of Appointment email; arriving after the scheduled start forfeits the fee; the on-screen clock is the official timekeeper. NATURE OF PART II: GARP's own wording is that Part II 'comprises 80 questions emphasizing the APPLICATION of the tools and techniques covered in Part I' — markedly more qualitative, regulatory, judgement- and scenario-based, with cross-topic reasoning, fewer plug-and-chug calculations and much more Basel/regulatory detail. Six topic areas versus Part I's four. Questions are drawn across topics without labelled sections; GARP does not guarantee an exact per-topic count. SCORING: strict PASS/FAIL. GARP does not publish a raw score, a percentage, or the Minimum Passing Score. The MPS is set each sitting by the FRM Committee/Board of Trustees via a standard-setting process benchmarked to top-scoring candidates, so the raw percentage needed drifts by form. Candidate-survey estimates (300Hours) put the Part II MPS in the low 50s percent (~53% May 2026, ~51% Aug 2026) — ESTIMATES, not official; do not present these as GARP figures in the app. Candidates also receive per-topic QUARTILE feedback: Q1 = 76th-100th percentile (best), Q2 = 51st-75th, Q3 = 26th-50th, Q4 = 0-25th. Quartiles are relative and do NOT determine pass/fail — it is possible to fail while scoring Q1/Q2 in several topics. RESULTS: emailed and posted to the GARP candidate portal within eight weeks of the exam window's closing (GARP FAQ verbatim); in practice ~6-8 weeks. Recent Part II pass rates: ~50% (Nov 2025, per GARP); ~52% for 2025 overall. SEQUENCING AND DEADLINES: Part I must be passed for a Part II result to count (both may be sat the same day in the August window, but Part II is only graded if Part I is passed). Part II must be passed by December 31 of the fourth year following the Part I pass, or the Part I result is voided and Part I must be retaken. CERTIFICATION (post-exam, not required to sit): two years of full-time relevant professional financial risk management experience, within 10 years of sitting Part II, submitted within five years of passing Part II; part-time work, internships and academic work do not count."
+ },
+ "totalChapters": 107,
+ "whatsNew2026": [
+  "TOTALS: Part II readings rose from 104 (2025) to 107 (2026). Per-book 2026 counts reconcile exactly: MR 18 + CR 23 + ORR 24 + LTR 17 + IM 17 + CI 8 = 107. The 2025 baseline (18+23+24+19+11+9 = 104) reconciles too, which is the strongest independent check on the per-book counts in this spec.",
+  "WEIGHTS AND FORMAT UNCHANGED for 2026: 20/20/20/15/15/10 and 80 questions in 4 hours. No source found reports any weight or format change; this split has been stable since roughly 2021.",
+  "BOOK 6 (Current Issues) WAS FULLY REFRESHED, as it is every year — 5 of the 8 readings are NEW, and the 2025 set was retired down to 3 carry-overs. NEW for 2026: Advances in Artificial Intelligence: Implications for Capital Markets Activities (IMF GFSR Oct 2024); The Financial Stability Implications of Artificial Intelligence (FSB, Nov 2024); The Global Drivers of Private Credit (BIS); IMF GFSR April 2025 Ch.2 on Geopolitical Risks; Tokenization and Financial Market Inefficiencies (IMF Fintech Note, Jan 2025). RETAINED from 2025: BIS Annual Economic Report Section 2 (monetary and fiscal policy); Regulating the Crypto Ecosystem (unbacked crypto assets); Digital Resilience and Financial Stability. 2026 themes are AI (2 readings), private credit, geopolitical risk, rising government debt, crypto/digital assets (2 readings), digital resilience.",
+  "BOOK 6 NOTABLE ABSENCES for 2026, contrary to common expectation: there is NO dedicated climate/transition-risk reading, NO SVB or Credit Suisse CoCo / 2023-banking-turmoil reading, NO standalone cyber reading beyond Digital Resilience, and no T+1 settlement or NBFI-leverage reading. Any Current Issues list containing SVB, the Credit Suisse CoCo wipeout, or the BCBS climate trilogy is pre-2026 and must not be used.",
+  "BOOK 5 (Risk Management and Investment Management) WAS OVERHAULED: 11 chapters (2025) -> 17 (2026). Do not study this book from 2025 notes. ADDED (9): Hedge Fund Investment Strategies (Stowell Ch.12); Risk, Regulation and Organizational Structure (Stowell Ch.14); The Rise and Risks of Private Credit (MOVED IN from Current Issues); Private Markets Investing; Distress Symptoms and Remedies; Madoff: A Riot of Red Flags; Market-Driven Scenarios (BlackRock); Liquidity Risk Management (BlackRock); Illiquid Assets (Ang Ch.13, MOVED IN from Book 4). RETIRED (3): Risk Monitoring and Performance Measurement (Litterman); Hedge Funds (Constantinides/Harris/Stulz); Detecting Fraud by Investment Managers (Dimmock & Gerken). Arithmetic: 11 - 3 + 9 = 17. ORDER CHANGE: Portfolio Performance Evaluation moves from position 8 to position 7 now that Risk Monitoring is retired.",
+  "BOOK 4 (Liquidity and Treasury) SHRANK: 19 chapters (2025) -> 17 (2026), all deletions, nothing added. REMOVED ENTIRELY: 'Managing and Pricing Deposit Services' (Rose & Hudgins Ch.12), formerly Ch.12. MOVED OUT: 'Illiquid Assets' (Ang Ch.13), formerly Ch.19, now Book 5 Ch.17. Consequence: 2025 chapters 13-18 renumber up one slot to 2026 chapters 12-17 — relative order is unchanged, this is renumbering not reordering. One LOS was also deleted inside Ch.5 'Liquidity and Reserves Management: Strategies and Policies', so per-chapter learning objectives should be refreshed rather than carried over. Practical effect: deposit-modeling coverage is materially thinner for 2026.",
+  "BOOK 1 (Market Risk) UNCHANGED for 2026: 18 readings, no additions, removals or moves. Only delta is LOS wording for VaR — described over 'asset price distributions' rather than 'return distributions'. The major Market Risk overhaul (Tuckman 3e -> 4e, Meissner retitle, two new VaR-validation readings, Vasicek/Gauss+ added) landed in the 2025 cycle, not 2026.",
+  "BOOK 2 (Credit Risk) UNCHANGED for 2026: 23 readings, no additions or removals. Only delta is an LOS refinement in Ch.9 'Estimating Default Probabilities' — the Altman Z-score objective now emphasises describing and applying the methodology rather than naming the underlying statistical technique (linear discriminant analysis). Basel III finalisation content within Credit Risk was also refreshed. 2025 Credit Risk notes remain usable.",
+  "BOOK 3 (Operational Risk and Resilience) UNCHANGED for 2026: 24 readings, no additions, removals, reorderings or detected LOS edits. 2025 materials are fully reusable. Prep copy claiming a '2026 new emphasis on cyber/third-party/resilience' is describing content present since the 2023 restructure.",
+  "BOOK 3 RENAMED: GARP's 2026 pages render this book 'Operational Risk and Resilience'. Older GARP materials and several prep sites still say 'Operational Risk and Resiliency', and older still 'Operational and Integrated Risk Management'. Same 20% book — use 'Resilience' as the current official title (this spec applies that correction to the researcher's original 'Resiliency').",
+  "STALE-SOURCE WARNING FOR ANY FUTURE CONTENT WORK: AnalystPrep's public study-notes index pages are outdated for FIVE of the six books and would produce a wrong 2026 curriculum. Their Market Risk index still serves the pre-2025 16-chapter list (Messages from the Academic Literature; Some Correlation Basics; Empirical Approaches to Risk Metrics and Hedging; The Science of Term Structure Models; The Evolution of Short Rates). Their Credit Risk index serves a pre-2023 19-21 item list (The Credit Decision; The Credit Analyst; Rating Assignment Methodologies; Spread Risk and Default Intensity Models; Collateral; Credit Exposure; Central Counterparties; Wrong-Way Risk; Understanding the Securitization of Subprime Mortgage Credit). Their Liquidity index (dated Jun 2020) still shows 19 chapters including the two removed readings. Their Investment Management index still shows the 11-chapter 2025 sequence. Their Current Issues index still shows the 2024-era 10-reading list. Their per-reading pages and their own 2025->2026 curriculum-changes article are current and contradict their own index pages. Exams Academy claims 'reviewed for 2026' on lists that are byte-for-byte the 2025 set. RBei (rbeiset.com) and PrepAscend publish paraphrased SEO topic labels, not GARP reading titles, and were discarded for chapter lists (RBei's weights are correct).",
+  "TITLE FORMS APPLIED FROM THE VERIFIER (where sources disagreed): Book 1 Ch.8 uses the Meissner 2nd-ed wording 'Correlation Basics: Definitions, Applications, and Terminology', not the retired 1st-ed 'Some Correlation Basics: Properties, Motivation, Terminology'. Book 2 Ch.8 uses Damodaran's 'Country Risk: Determinants, Measures, and Implications', not the paraphrase 'Sovereign Default Risk'. Book 2 Ch.16 has NO Oxford comma ('Netting, Close-out and Related Aspects'). Book 2 Ch.23 keeps Choudhry's British 'Securitisation'. Book 4 Ch.4 keeps the hyphen in 'Financial-Services Management'; Ch.12 is one word 'Nondeposit'; Ch.16 is 'Covered Interest Parity Lost' (AnalystPrep's inserted 'Rate' is wrong). Book 5 Ch.8 is singular 'Hedge Fund Investment Strategies' (MidhaFin's plural is wrong). Book 6 item 5 restores GARP's source-first word order. Books 3 chapters 8, 19, 23 and 24 keep BCBS/BIS sentence casing and British spelling by design ('Cyber-resilience: Range of practices', 'Range of practices and issues in economic capital frameworks', 'High-level summary of Basel III reforms', 'Basel III: Finalising post-crisis reforms')."
+ ],
+ "openQuestions": [
+  "PRIMARY SOURCE NOT UNIFORMLY READ. GARP's 2026 FRM Study Guide and 2026 Learning Objectives PDFs are lead-form/login gated at garp.org (and archive.org was unreachable from this environment). Only Book 5 was read off the official PDFs, which carry explicit [IM-1]..[IM-17] reading codes. Books 1, 2, 3, 4 and the numbering of Book 6 are reconstructed from convergent GARP-aligned prep providers (MidhaFin, IFT World, Exams Academy, RiskHub, plus AnalystPrep per-chapter pages). Book 6's reading SET is from GARP's own public 2026 required-readings page and is solid; only its 1-8 numbering is provider-derived. RECOMMENDED: a one-time visual diff of the whole chapter table against the downloaded official 2026 Learning Objectives PDF (free after registering at garp.org) before treating this table as canonical.",
+  "THE WEIGHTS ARE NOT PUBLISHED ON GARP'S PUBLIC WEBSITE. The 20/20/20/15/15/10 split appears only in the gated Study Guide PDF. Every independent provider checked (AnalystPrep, 300Hours, Quintedge, RBei, Zell, LearnSignal, FreeFellow, MentorMe, MidhaFin) reports the same split for 2026, it sums to 100 with no reconciliation needed, and it has been stable since ~2021 — but it is worth confirming from the PDF's section-header pages, which print e.g. 'PART II EXAM WEIGHT | 15%'.",
+  "BOOK 2, CHAPTERS 12 AND 14. 'Credit Risk' and 'Derivatives' are unusually short, generic titles for GARP readings and are exactly the kind a prep provider might silently re-word or truncate. Ch.12's learning objectives match Hull, Options Futures and Other Derivatives, 'Credit Risk'; Exams Academy renders it 'Credit Risk (Counterparty Risk)'. Verify both titles character-for-character against the official 2026 Study Guide.",
+  "BOOK 5, CHAPTER 11 SCOPE NOTE. The parenthetical '(up to section 3.3.10)' on 'Private Markets Investing' could not be independently corroborated — MidhaFin and RiskHub both list the reading as plain 'Private Markets Investing'. GARP does routinely attach such scope limits and the verifier could not refute it, but treat the scope text as lower confidence than the title. If the app surfaces reading scope to users, confirm this one first.",
+  "BOOK 4 CHAPTER COUNT: 17 vs 19. This is the single biggest live disagreement across sources. Multiple sites still say 19, but every one traces to the 2025-or-earlier curriculum, and the 104->107 total-readings arithmetic only reconciles if LTR = 19 in 2025 and 17 in 2026. Confidence is high, but this is the number most worth checking directly because the whole 107 total hinges on it.",
+  "BOOK 6 NUMBERING IS AN IMPOSED CONVENTION. GARP's public page groups the 8 readings under 6 thematic headings (Artificial Intelligence x2, Private Credit, Geopolitical Risk, Risk of Rising Government Debt, Cryptocurrency and Digital Assets x2, Digital Resilience) and prints NO chapter numbers. The 1-8 numbering here comes from MidhaFin's syllabus, whose order matches GARP's page order item for item. If the app displays chapter numbers for Book 6, label them as a study-ordering convention, not GARP numbering. Consider also surfacing the six theme names, since that is how GARP actually presents them.",
+  "BOOK 6 CITATION DETAILS. (a) GARP dates the private-credit reading 'February 2025' but BIS actually published 'The global drivers of private credit' (Avalos, Doerr, Pinter) in the March 2025 BIS Quarterly Review — GARP's own date appears off by one month; GARP's wording is retained here. (b) The subtitle appended to item 4 ('Geopolitical Risks: Implications for Asset Prices and Financial Stability') is the IMF's real chapter title but is NOT on GARP's page, which cites only 'IMF (2025), Global Financial Stability Report, April 2025, Chapter 2' — it is a helper annotation, not GARP-verbatim. (c) Item 5's underlying document is BIS Annual Economic Report 2023, Chapter II; GARP does not print the year.",
+  "BOOK 6 RETIRED SET IS UNVERIFIED. AnalystPrep states 6 Current Issues readings were removed for 2026 (implying 9 in 2025 vs 8 in 2026), but no source enumerates the removed titles and the 2025 GARP readings page could not be retrieved. Candidates commonly named — the SVB supervision review, the Credit Suisse CoCo wipeout, Artificial Intelligence and Bank Supervision, Financial Risk Management and Explainable/Trustworthy/Responsible AI, the NIST AI Risk Management Framework, the BCBS climate readings, The Crypto Ecosystem: Key Elements and Risks — are indicative only. This does not affect the 2026 list, but do not publish a 'what was removed' section for Book 6 without confirming it.",
+  "MINIMUM PASSING SCORE IS NOT OFFICIAL. The ~51-53% figures are 300Hours candidate-survey estimates. GARP publishes no MPS, no raw score and no percentage. If the app shows a target score, label it clearly as a community estimate; do not compute pass/fail against it as though it were GARP's threshold.",
+  "COSMETIC TITLE VARIANTS THAT REMAIN UNRESOLVED (identity is certain, exact punctuation is not, so exact-string matching against GARP output may fail): Book 1 Ch.10 em dash vs en dash vs colon; Ch.2 'Non-parametric' vs 'Non-Parametric'; Ch.7 'Backtesting' vs 'Back-testing' and frequent truncation; Ch.17 'Volatility Smiles' vs Hull's 'Volatility Smiles and Volatility Surfaces' (AnalystPrep's live H1 says 'Volatility Smiles', which is used here); Ch.18 sometimes rendered 'Fundamental Review of the Trading Book (FRTB)'. Book 3 Ch.9 'Cyberthreats' vs 'Cyber Threats', Ch.22 with or without a serial comma after 'Liquidity', Ch.24 'Finalising' vs 'Finalizing'. Book 5 Ch.9 is printed with an Oxford comma in Stowell ('Risk, Regulation, and Organizational Structure') but every FRM-facing source drops it.",
+  "APPROXIMATE QUESTION COUNTS (16/16/16/12/12/8) are arithmetic from the weights and sum to 80, but GARP does not guarantee an exact per-topic count and the exam has no labelled sections. Present these as approximate in the app, not as a promise."
+ ]
+}

@@ -621,7 +621,7 @@
 
   function renderHome() {
     var hero = '<div class="hero"><h1>🎯 FRM&reg; Part II Study Hub</h1>'
-      + '<p>Financial Risk Manager — Part I (2026 curriculum). Notes, flashcards &amp; exam-style MCQs for all 62 readings. Study at your own pace.</p>'
+      + '<p>Financial Risk Manager — Part II (2026 curriculum). Notes, flashcards &amp; exam-style MCQs for all 107 readings. Study at your own pace.</p>'
       + '<div class="hero-cta">'
       + (PAPERS.length ? '<a href="#/papers" class="cta">📝 Mock Exam</a>' : "")
       + '<a href="#/ch/101/notes" class="cta ghost">📖 Start Book 1</a></div></div>';
@@ -1034,7 +1034,7 @@
       + '</div>'
       + '<div class="q-progress"><div id="pFill" class="q-progress-fill"></div></div>'
       + '<div id="pDone" class="p-done" hidden></div>'
-      + '<div class="q-tip">💡 Full-length mock. Tap an option to lock it in — you will see the worked solution instantly. <b>No negative marking</b> on the FRM. Keep the 🧮 calculator (bottom-right) handy and watch your pace (~2.4 min/question).</div>';
+      + '<div class="q-tip">💡 Full-length mock. Tap an option to lock it in — you will see the worked solution instantly. <b>No negative marking</b> on the FRM. Keep the 🧮 calculator (bottom-right) handy and watch your pace (~3 min/question).</div>';
 
     var qhtml = "";
     parsed.groups.forEach(function (g, gi) {
@@ -1320,11 +1320,11 @@
   }
 
   // ---- readiness by book ----
-  var BOOKW = { 1: 0.2, 2: 0.2, 3: 0.3, 4: 0.3 };
-  var BOOKNAME = { 1: "Foundations", 2: "Quantitative Analysis", 3: "Markets & Products", 4: "Valuation & Risk Models" };
+  var BOOKW = { 1: 0.20, 2: 0.20, 3: 0.20, 4: 0.15, 5: 0.15, 6: 0.10 };
+  var BOOKNAME = { 1: "Market Risk", 2: "Credit Risk", 3: "Operational Risk", 4: "Liquidity & Treasury", 5: "Investment Management", 6: "Current Issues" };
   function bookStats() {
     var st = {};
-    [1, 2, 3, 4].forEach(function (b) { st[b] = { units: 0, unitsDone: 0, att: 0, cor: 0 }; });
+    [1, 2, 3, 4, 5, 6].forEach(function (b) { st[b] = { units: 0, unitsDone: 0, att: 0, cor: 0 }; });
     studyChapters().forEach(function (c) {
       var b = +c.num.charAt(0); if (!st[b]) return;
       VIEWS.forEach(function (v) { st[b].units++; if (isDone(c.num, v.key)) st[b].unitsDone++; });
@@ -1339,7 +1339,7 @@
       if (!ids.length) return;
       var parsed = parsePaper(p.md);
       parsed.groups.forEach(function (g) {
-        var b = { "Foundations of Risk Management": 1, "Quantitative Analysis": 2, "Financial Markets and Products": 3, "Valuation and Risk Models": 4 }[g.title.replace(/\s*\(.*$/, "")];
+        var b = { "Market Risk Measurement and Management": 1, "Credit Risk Measurement and Management": 2, "Operational Risk and Resilience": 3, "Liquidity and Treasury Risk Measurement and Management": 4, "Risk Management and Investment Management": 5, "Current Issues in Financial Markets": 6 }[g.title.replace(/\s*\(.*$/, "")];
         if (!b) return;
         g.questions.forEach(function (q) { if (saved[q.id] != null) { st[b].att++; if (saved[q.id] === q.correct) st[b].cor++; } });
       });
@@ -1398,8 +1398,8 @@
   }
   function dailySet() {
     var rnd = seededRand(dayKey() * 7919), out = [], seen = {};
-    var counts = { 1: 2, 2: 2, 3: 3, 4: 3 };
-    [1, 2, 3, 4].forEach(function (b) {
+    var counts = { 1: 2, 2: 2, 3: 2, 4: 2, 5: 1, 6: 1 };
+    [1, 2, 3, 4, 5, 6].forEach(function (b) {
       var chs = studyChapters().filter(function (c) { return c.num.charAt(0) === String(b); });
       var need = counts[b], guard = 0;
       while (need > 0 && guard++ < 80) {
@@ -1527,7 +1527,7 @@
     var hero = '<div class="hero"><h1>🧠 Review Hub</h1>'
       + '<p>Your personal weak-spot tracker: readiness by book, every question you’ve missed (until you fix it), your bookmarks, and what’s due for review.</p></div>';
     var rows = "", wAcc = 0, wSum = 0;
-    [1, 2, 3, 4].forEach(function (b) {
+    [1, 2, 3, 4, 5, 6].forEach(function (b) {
       var s = st[b], acc = pct100(s.cor, s.att), cov = pct100(s.unitsDone, s.units);
       if (s.att) { wAcc += BOOKW[b] * acc; wSum += BOOKW[b]; }
       rows += '<div class="rv-row"><div class="rv-name">Book ' + b + ' · ' + BOOKNAME[b] + '<span class="rv-meta">' + s.att + ' answered · ' + cov + '% studied</span></div>'

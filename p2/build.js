@@ -17,10 +17,12 @@ const fs = require("fs");
 const path = require("path");
 
 const BOOKS = {
-  1: { name: "Foundations of Risk Management", chapters: 11, weight: "20%" },
-  2: { name: "Quantitative Analysis", chapters: 15, weight: "20%" },
-  3: { name: "Financial Markets and Products", chapters: 30 > 20 ? 20 : 20, weight: "30%" },
-  4: { name: "Valuation and Risk Models", chapters: 16, weight: "30%" }
+  1: { name: "Market Risk Measurement and Management", short: "Market Risk", chapters: 18, weight: "20%" },
+  2: { name: "Credit Risk Measurement and Management", short: "Credit Risk", chapters: 23, weight: "20%" },
+  3: { name: "Operational Risk and Resilience", short: "Operational Risk", chapters: 24, weight: "20%" },
+  4: { name: "Liquidity and Treasury Risk Measurement and Management", short: "Liquidity & Treasury", chapters: 17, weight: "15%" },
+  5: { name: "Risk Management and Investment Management", short: "Investment Management", chapters: 17, weight: "15%" },
+  6: { name: "Current Issues in Financial Markets", short: "Current Issues", chapters: 8, weight: "10%" }
 };
 const ROOT = __dirname;
 const read = (p) => fs.existsSync(p) ? fs.readFileSync(p, "utf8") : "";
@@ -243,7 +245,7 @@ function buildOnePaper(qsrc, asrc, title) {
   // questions: **1.** stem \n - A. .. - B. ..
   const body = qsrc.replace(/^---\n[\s\S]*?\n---\n?/, "");
   const parts = body.split(/\n(?=\*\*\d+\.\*\*)/);
-  const bucket = { 1: [], 2: [], 3: [], 4: [] };
+  const bucket = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] };
   parts.forEach((p) => {
     const qm = p.match(/\*\*(\d+)\.\*\*\s*([\s\S]*)/);
     if (!qm) return;
@@ -256,9 +258,9 @@ function buildOnePaper(qsrc, asrc, title) {
     if (!opts || !ans) return;
     bucket[ans.book].push({ num: parseInt(num, 10), stem, opts, L: ans.L, expl: ans.expl });
   });
-  let md = "# " + title + "\n**Total: 100 questions · 4 hours · no negative marking**\n\n";
+  let md = "# " + title + "\n**Total: 80 questions · 4 hours · no negative marking**\n\n";
   let emitted = 0;
-  [1, 2, 3, 4].forEach((b) => {
+  [1, 2, 3, 4, 5, 6].forEach((b) => {
     if (!bucket[b].length) return;
     md += "## " + BOOKS[b].name + " (1 mark)\n\n";
     bucket[b].sort((x, y) => x.num - y.num).forEach((q) => {
@@ -290,7 +292,7 @@ function buildReadme() {
 
 // ================= assemble =================
 const chapters = [];
-for (let b = 1; b <= 4; b++) {
+for (let b = 1; b <= 6; b++) {
   const bk = BOOKS[b];
   const bankByCh = parseBank(b);
   for (let c = 1; c <= bk.chapters; c++) {
@@ -317,14 +319,16 @@ for (let b = 1; b <= 4; b++) {
 
 // ---- reference & revision pages (formula sheets, glossary, plan, guide) ----
 const REF = [
-  { num: "901", title: "Formula Sheet — Book 1 (Foundations)", file: "formula-sheets/book-1.md" },
-  { num: "902", title: "Formula Sheet — Book 2 (Quant)", file: "formula-sheets/book-2.md" },
-  { num: "903", title: "Formula Sheet — Book 3 (Markets)", file: "formula-sheets/book-3.md" },
-  { num: "904", title: "Formula Sheet — Book 4 (Valuation)", file: "formula-sheets/book-4.md" },
-  { num: "905", title: "Glossary (A–Z)", file: "glossary.md" },
-  { num: "906", title: "Study Plan", file: "study-plan.md" },
-  { num: "907", title: "Exam-Day Guide", file: "exam-guide.md" },
-  { num: "908", title: "Free Resources", file: "resources.md" }
+  { num: "901", title: "Formula Sheet — Book 1 (Market Risk)", file: "formula-sheets/book-1.md" },
+  { num: "902", title: "Formula Sheet — Book 2 (Credit Risk)", file: "formula-sheets/book-2.md" },
+  { num: "903", title: "Formula Sheet — Book 3 (Operational Risk)", file: "formula-sheets/book-3.md" },
+  { num: "904", title: "Formula Sheet — Book 4 (Liquidity & Treasury)", file: "formula-sheets/book-4.md" },
+  { num: "905", title: "Formula Sheet — Book 5 (Investment Management)", file: "formula-sheets/book-5.md" },
+  { num: "906", title: "Formula Sheet — Book 6 (Current Issues)", file: "formula-sheets/book-6.md" },
+  { num: "907", title: "Glossary (A–Z)", file: "glossary.md" },
+  { num: "908", title: "Study Plan", file: "study-plan.md" },
+  { num: "909", title: "Exam-Day Guide", file: "exam-guide.md" },
+  { num: "910", title: "Free Resources", file: "resources.md" }
 ];
 const refNote = "_This is a reference page — open the **Notes** tab to read it._\n";
 REF.forEach((r) => {
